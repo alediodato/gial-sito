@@ -1,0 +1,740 @@
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+        <style>
+            /* Lightbox semplice */
+            .lightbox-bg {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0; top: 0; width: 100vw; height: 100vh;
+                background: rgba(0,0,0,0.8);
+                justify-content: center;
+                align-items: center;
+            }
+            .lightbox-bg.active { display: flex; }
+            .lightbox-img {
+                max-width: 90vw;
+                max-height: 80vh;
+                border-radius: 1rem;
+                box-shadow: 0 4px 32px #0008;
+            }
+            .lightbox-arrow, .lightbox-close {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: #fff;
+                border-radius: 50%;
+                width: 48px; height: 48px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 2rem;
+                color: #2563eb;
+                cursor: pointer;
+                opacity: 0.95;
+                border: none;
+                box-shadow: 0 2px 8px #0002;
+                transition: background 0.2s;
+            }
+            .lightbox-arrow.left { left: 2vw; }
+            .lightbox-arrow.right { right: 2vw; }
+            .lightbox-arrow svg { width: 28px; height: 28px; }
+            .lightbox-arrow:hover { background: #e0eaff; }
+            .lightbox-close { top: 5vh; right: 5vw; font-size: 2.2rem; background: #fff; }
+        </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
+    <link rel="canonical" href="https://www.gialsrl.it/" />
+    <link rel="alternate" hreflang="it" href="https://www.gialsrl.it/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gialsrl.it/" />
+    <link rel="apple-touch-icon" href="/img/chi-siamo.jpg">
+    <!-- Font preview: Lato, Nunito, Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Termoidraulica a Prato — GIAL SRL | Bagni, Climatizzazione e Ristrutturazioni</title>
+    <meta name="description" content="GIAL SRL — termoidraulica a Prato: rifacimento bagni, ristrutturazioni, climatizzazione e pronto intervento. Assicurazione postuma decennale. Preventivo gratuito." />
+    <meta name="keywords" content="termoidraulica Prato, idraulico Prato, pronto intervento idraulico Prato, rifacimento bagno Prato, ristrutturazioni Prato, climatizzazione Prato, Assicurazione postuma 10 anni, impianti gas, sostituzione sanitari, manutenzione idraulica" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta property="og:title" content="GIAL SRL — Termoidraulica a Prato" />
+    <meta property="og:description" content="Rifacimento bagni, ristrutturazioni, climatizzazione e pronto intervento. Assicurazione postuma decennale." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gialsrl.it/" />
+    <meta property="og:image" content="https://www.gialsrl.it/img/chi-siamo.jpg" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GIAL SRL — Termoidraulica a Prato" />
+    <meta name="twitter:description" content="Rifacimento bagni, ristrutturazioni, climatizzazione e pronto intervento. Assicurazione postuma decennale." />
+    <meta name="twitter:image" content="https://www.gialsrl.it/img/chi-siamo.jpg" />
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Plumber",
+            "name": "GIAL SRL",
+            "image": "https://www.gialsrl.it/img/chi-siamo.jpg",
+            "@id": "https://www.gialsrl.it/",
+            "url": "https://www.gialsrl.it/",
+            "telephone": "+393279371705",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Via Traversa Pistoiese 12/L",
+                "addressLocality": "Prato",
+                "addressRegion": "PO",
+                "postalCode": "59100",
+                "addressCountry": "IT"
+            },
+            "email": "gialsrl2018@gmail.com",
+            "description": "GIAL SRL: termoidraulica a Prato, rifacimento bagno, ristrutturazioni, climatizzazione, pronto intervento idraulico. Assicurazione postuma decennale su tutti i lavori.",
+            "areaServed": ["Prato", "Firenze", "Pistoia", "Toscana", "Italia"],
+            "priceRange": "€€",
+            "openingHours": "Mo-Fr 08:00-19:00",
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "43.8806",
+                "longitude": "11.0906"
+            },
+            "sameAs": [
+                "https://www.facebook.com/gialsrlprato",
+                "https://www.instagram.com/gialsrlprato/"
+            ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Servizi Termoidraulici - GIAL SRL",
+            "provider": { "@type": "Plumber", "@id": "https://www.gialsrl.it/" },
+            "areaServed": ["Prato","Firenze","Pistoia","Toscana","Italia"],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Catalogo Servizi GIAL SRL",
+                "itemListElement": [
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pronto Intervento idraulico"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Climatizzazione - installazione e manutenzione"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Riscaldamento e manutenzione caldaie"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Rifacimento bagno e impianti completi"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Ristrutturazione completa"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Impianti gas - installazione e certificazione"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sostituzione sanitari"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Manutenzione ordinaria impianti"}}
+                ]
+            }
+        }
+        </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Cambia qui per provare i font: */
+        /* body { font-family: 'Inter', sans-serif; } */
+        /* body { font-family: 'Lato', sans-serif; } */
+        /* body { font-family: 'Nunito', sans-serif; } */
+        /* body { font-family: 'Montserrat', sans-serif; } */
+        body { font-family: 'Raleway', sans-serif; }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInText 2.5s ease-in-out forwards;
+        }
+        /* Accessibility helpers */
+        .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .skip-link:focus, .skip-link:active { left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem 1rem; background: #fff; color: #003366; z-index: 60; border-radius: .25rem; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+        :focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+    </style>
+        <!-- Cookie consent: carica gtag solo dopo consenso -->
+        <script>
+        (function(){
+          function setCookie(name,value,days){var d=new Date();d.setTime(d.getTime()+days*24*60*60*1000);var s=name+"="+value+";path=/;SameSite=Lax"; if(location.protocol==='https:') s += ";Secure"; document.cookie = s;}
+          function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
+          function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true;
+            var s = document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+            gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+          }
+          window.GIALCookieConsent = {
+            accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
+            decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
+          };
+          if (getCookie('gial_cookie_consent') === 'granted') loadGtag();
+        })();
+        </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <a href="#main-content" class="skip-link">Salta al contenuto</a>
+    <!-- Banner consenso cookie -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-lg bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex items-center gap-4 z-50">
+        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="#privacy" class="underline text-blue-600">Leggi la privacy</a></div>
+        <div class="flex gap-2">
+            <button id="cookie-accept" class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Accetta</button>
+            <button id="cookie-decline" class="bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 focus:outline-none">Rifiuta</button>
+        </div>
+    </div>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" aria-label="Menu principale">
+        <div class="max-w-7xl mx-auto px-4 pt-2 flex flex-col">
+            <div class="w-full flex justify-between items-center pb-2">
+                <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
+                    <img src="img/gial-logo-quadrato-nosfondo.png" alt="" aria-hidden="true" style="height:75px; width:auto;">
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#chi-siamo" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Chi Siamo">Chi Siamo</a>
+                    <a href="#filosofia" class="hover:text-blue-600 transition" aria-label="Vai alla sezione La Nostra Filosofia">La Nostra Filosofia</a>
+                    <a href="#team" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Team">Team</a>
+                    <a href="#servizi" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Servizi">Servizi</a>
+                    <!-- <a href="#portfolio" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Portfolio">Portfolio</a> -->
+                    <a href="#faq" class="hover:text-blue-600 transition" aria-label="Vai alla sezione FAQ">FAQ</a>
+                    <a href="#contatti" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Contatti">Contatti</a>
+                </div>
+                <button id="callBtn" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition focus:outline-none" aria-label="Chiama GIAL SRL">Chiama Ora</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white text-center">
+        <div class="flex justify-center mb-2 mt-[-40px]">
+            <a href="/" aria-label="Home GIAL SRL">
+                <img src="img/gial-logo-quadrato-nosfondo.png" alt="" aria-hidden="true" style="height:px; width:auto;" class="inline-block align-middle md:hidden">
+            </a>
+        </div>
+        <h1 id="valore-garanzia" class="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900">GIAL SRL - Termoidraulica a Prato | Rifacimento Bagni, Ristrutturazioni e Climatizzazione</h1>
+        <div class="max-w-3xl mx-auto mb-8">
+            <div class="relative">
+                <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-2 relative z-10">Termoidraulica a Prato.</p>
+                <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed relative z-10">Dalla riparazione urgente al rifacimento del bagno fino alla ristrutturazione completa della tua casa.</p>
+                <img src="img/gial-logo-quadrato-nosfondo.png" alt="" aria-hidden="true" class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none" style="height:360px; width:auto; z-index:1; opacity:0.10;">
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#servizi" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Scopri i Servizi</a>
+            <a href="#contatti" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Richiedi Preventivo</a>
+        </div>
+
+        <div class="mt-12 flex justify-center">
+            <a href="#assicurazione-postuma" class="inline-flex items-center gap-3 bg-white border border-blue-200 shadow-md rounded-full px-6 py-2 hover:shadow-lg transition" aria-label="Vai alla sezione Assicurazione postuma 10 anni">
+                <div class="bg-blue-600 text-white rounded-full p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 4.925-3.467 9.043-8 10.155-4.533-1.112-8-5.23-8-10.155 0-.68.056-1.35.166-2.001zm9.496 3.161a1 1 0 00-1.414-1.415L9 7.914 7.752 6.666a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l3-3z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <span class="text-sm font-bold text-gray-700 uppercase tracking-wider">Assicurazione Postuma 10 Anni Inclusa</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <section id="chi-siamo" class="py-20 max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-blue-100 h-[28rem] rounded-2xl flex items-center justify-center text-blue-300 overflow-hidden relative">
+                <button id="gial-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine precedente"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7' /></svg></button>
+                <img id="gial-slideshow" src="img/gial/gial-1.webp" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full rounded-2xl transition duration-500" />
+                <button id="gial-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine successiva"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' /></svg></button>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-6 italic text-blue-600">Chi Siamo</h2>
+            <p class="text-lg text-gray-600 mb-4"><strong>GIAL</strong> non è solo un acronimo: rappresenta l'unione dei nomi di <strong>Giovanna</strong> e <strong>Alessio</strong>, i soci fondatori che hanno dato vita a questa realtà.</p>
+            <p class="text-lg text-gray-600 mb-4">Sebbene l'azienda sia nata ufficialmente nel <strong>2018</strong>, le sue radici affondano in un'attività artigianale iniziata oltre <strong>50</strong> anni fa.</p>
+            <p class="text-lg text-gray-600">In mezzo secolo di esperienza abbiamo costruito un percorso di eccellenza, collaborando con grandi enti come <strong>Ferrovie dello Stato</strong> e <strong>CASA S.p.A.</strong> e realizzando interventi su <strong>case, ville e immobili di pregio</strong>.</p>
+            <p class="text-lg text-gray-600 mt-4">Oggi l’azienda è amministrata dal figlio Alessandro, ingegnere robotico, che ha scelto di proseguire la tradizione familiare mettendo a disposizione le proprie competenze tecnico-scientifiche nei processi aziendali.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Slideshow per immagini GIAL con autoplay
+    const gialImages = [
+        'img/gial/gial-1.webp',
+        'img/gial/gial-2.webp',
+        'img/gial/gial-3.webp',
+        'img/gial/gial-4.webp',
+        'img/gial/gial-5.webp',
+    ];
+    let gialIndex = 0;
+    const gialImg = document.getElementById('gial-slideshow');
+    const gialPrev = document.getElementById('gial-prev');
+    const gialNext = document.getElementById('gial-next');
+    let gialTimer = null;
+    function showGialImage(idx) {
+        gialImg.src = gialImages[idx];
+    }
+    function nextGialImage() {
+        gialIndex = (gialIndex + 1) % gialImages.length;
+        showGialImage(gialIndex);
+    }
+    function prevGialImage() {
+        gialIndex = (gialIndex - 1 + gialImages.length) % gialImages.length;
+        showGialImage(gialIndex);
+    }
+    function startGialAutoplay() {
+        if (gialTimer) clearInterval(gialTimer);
+        gialTimer = setInterval(nextGialImage, 5000);
+    }
+    if (gialImg && gialPrev && gialNext) {
+        gialPrev.onclick = () => { prevGialImage(); startGialAutoplay(); };
+        gialNext.onclick = () => { nextGialImage(); startGialAutoplay(); };
+        startGialAutoplay();
+    }
+    </script>
+
+    <section id="filosofia" class="py-16 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="relative bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-16 shadow-2xl overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/15 rounded-full blur-3xl"></div>
+                <div class="relative grid gap-12 items-center text-center">
+                    <div class="text-gray-800 mx-auto max-w-4xl">
+                        <h2 id="assicurazione-postuma" class="text-3xl md:text-4xl font-black mb-6 leading-tight text-blue-600">Diamo valore a chi lavora, diamo garanzia a chi ci sceglie.</h2>
+                        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                            La vostra soddisfazione dipende da due cose: dalla <strong>competenza e serenità</strong> di chi realizza il vostro progetto.
+                        </p>
+                        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                            Conosciamo un solo modo per garantirvele: pagare bene e trattare con rispetto le nostre persone. <strong>È una scelta semplice: chi lavora bene per noi, lavora bene per voi</strong>.
+                        </p>
+                        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                            Se cercate il preventivo più basso, non siamo l’azienda giusta per voi. 
+                        </p>
+                        <p class="text-gray-600 text-lg mb-4 leading-relaxed">
+                            Tuttavia, siamo competitivi. Lo siamo perché abbiamo un’organizzazione snella, senza burocrazia o costi inutili: <strong>ogni vostro euro finisce direttamente nell’opera</strong>.
+                        </p>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Siamo umani e possiamo sbagliare. Ma qui c’è la differenza: <strong>noi non vi abbandoniamo.</strong> Ogni intervento è coperto da <strong><a href="doc/polizza-gial.pdf" target="_blank" rel="noopener noreferrer" aria-label="Apri polizza assicurazione decennale (PDF)" title="Apri la polizza - PDF" class="inline-flex items-center gap-2 text-blue-600 underline hover:text-blue-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 11h8M8 15h8M8 19h5"></path></svg>
+                                <span>assicurazione decennale postuma (PDF)</span>
+                            </a></strong>. Se c’è un problema, torniamo, correggiamo e risarciamo il danno a nostre spese. Chiedendovi scusa, senza discussioni e senza margini di interpretazione.
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="relative w-36 h-36 md:w-44 md:h-44 flex items-center justify-center">
+                            <div class="absolute inset-0 border-4 border-dashed border-blue-300 rounded-full"></div>
+                            <div class="relative w-32 h-32 md:w-40 md:h-40 bg-blue-600 rounded-full shadow-lg flex flex-col items-center justify-center text-center border-4 border-white">
+                                <span class="text-white text-3xl md:text-5xl font-bold leading-tight -mt-1 md:-mt-2">10</span>
+                                <span class="text-white text-[10px] md:text-sm font-semibold uppercase tracking-tight mt-0">Anni</span>
+                                <div class="w-10 h-1 bg-white my-1 md:my-2"></div>
+                                <span class="text-white text-[10px] md:text-[11px] font-bold uppercase tracking-tight leading-tight text-center mt-1">Assicurazione<br>Postuma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="team" class="py-20 bg-white px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 italic text-blue-600" id="team-heading">Il Nostro Team</h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/massimo-borgi.jpeg" alt="Massimo Borgi - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Massimo Borgi</h3>
+                    <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile e industriale con oltre 30 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/andrea-nenciarini.jpeg" alt="Andrea Nenciarini - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Andrea Nenciarini</h3>
+                    <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile e industriale con oltre 15 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/francesco-spatola.jpeg" alt="Francesco Spatola - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Francesco Spatola</h3>
+                    <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile con oltre 40 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/filippo-fagotti.jpeg" alt="Filippo Fagotti - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Filippo Fagotti</h3>
+                    <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile con oltre 15 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/gabriele-paperini.jpeg" alt="Gabriele Paperini - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Gabriele Paperini</h3>
+                    <p class="text-blue-600">Apprendista idraulico con 2 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/andrea-arpicelli.jpeg" alt="Andrea Arpicelli - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Andrea Arpicelli</h3>
+                    <p class="text-blue-600">Apprendista idraulico con 2 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/alessio-diodato.jpeg" alt="Alessio Diodato - Fondatore Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Alessio Diodato</h3>
+                    <p class="text-blue-600">Fondatore e artigiano idraulico con oltre 50 anni di esperienza.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/giovanna-farina.jpeg" alt="Giovanna Farina - Fondatrice GIAL SRL Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Giovanna Farina</h3>
+                    <p class="text-blue-600">Fondatrice e amministratrice contabile da oltre 40 anni.</p>
+                </div>
+                <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
+                    <img src="img/team/alessandro-diodato.jpeg" alt="Alessandro Diodato - Ingegnere Robotico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <h3 class="font-bold text-xl">Alessandro Diodato</h3>
+                    <p class="text-blue-600">Ingegnere robotico e attuale amministratore della società.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servizi" class="py-20 bg-gray-50 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 italic text-blue-600" id="servizi-heading">Servizi di termoidraulica a Prato</h2>
+            <div class="w-full mb-10 text-center">
+                <div class="w-full flex justify-center items-center mb-10">
+                    <span class="w-full text-lg md:text-xl text-gray-800 font-medium">
+                        Se il vostro intervento richiede anche opere murarie o elettriche, possiamo pensare a tutto noi. Gestiamo ogni fase coinvolgendo artigiani con cui collaboriamo da anni: <strong>professionisti che hanno lavorato nelle nostre case, prima che nelle vostre.</strong><br>
+                        <br>
+                        Un unico referente, nessuna preoccupazione.
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Pronto Intervento</h3>
+                    <p class="text-gray-600 text-sm">Garantiamo un servizio di reperibilità continua per la risoluzione tempestiva di emergenze idrauliche, ricerca perdite e spurghi urgenti.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Riscaldamento e Caldaie</h3>
+                    <p class="text-gray-600 text-sm">Sostituzione e montaggio di caldaie e pompe di calore. Ci occupiamo anche della posa di sistemi radianti a pavimento.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Climatizzazione</h3>
+                    <p class="text-gray-600 text-sm">Installazione di climatizzatori per abitazioni e sistemi centralizzati per grandi ambienti. Include ricarica gas e sanificazione professionale.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Impianti Gas a Norma</h3>
+                    <p class="text-gray-600 text-sm">Progettazione e collaudo di impianti gas civili e industriali. Rilasciamo la Dichiarazione di Conformità (Di.Co.) prevista dalle normative vigenti.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-700 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Ristrutturazioni Chiavi in Mano</h3>
+                    <p class="text-gray-600 text-sm">Unico referente per la ristrutturazione completa della tua abitazione. Coordiniamo noi ogni fase e artigiano, dalla demolizione alle finiture. </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Rifacimento Bagno</h3>
+                    <p class="text-gray-600 text-sm">Rrifacimento integrale delle tubature. Posa qualificata di sanitari e rubinetteria di alta qualità in tempi rapidi.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Trattamento Acque</h3>
+                    <p class="text-gray-600 text-sm">Installazione di sistemi contro il calcare e impurità. Proteggiamo i tuoi elettrodomestici e le tubature per farli durare molto più a lungo.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <h3 class="font-bold mb-2">Energie Rinnovabili</h3>
+                    <p class="text-gray-600 text-sm">Installazione di pannelli solari per acqua calda sanitaria. Soluzioni ecologiche per tagliare i costi in bolletta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 bg-white px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 italic text-blue-600" id="portfolio-heading">I Nostri Lavori</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- RACCOLTA 1: Good Life Bagno -->
+                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
+                    <img src="img/lavori/studio-medico-bagno.jpg" alt="Studi medici bagno e studio" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="goodlife-bagno" data-index="0" />
+                </div>
+                <!-- RACCOLTA 2: Good Life Studio (solo anteprima visibile) -->
+                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
+                    <img src="img/lavori/villa-prato-bagno-2.jpeg" alt="Studi medici studio" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="villa-prato" data-index="0" />
+                </div>
+                <!-- RACCOLTA 3: Altro (solo anteprima visibile) -->
+                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
+                    <img src="img/lavori/villa-pompa-calore.jpeg" alt="Altro Lavoro 1" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="altro" data-index="0" />
+                </div>
+
+                <!-- Lightbox Modal -->
+                <div id="lightbox-bg" class="lightbox-bg">
+                    <button class="lightbox-arrow left" id="lightbox-prev" aria-label="Immagine precedente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <img id="lightbox-img" class="lightbox-img" src="" alt="Immagine ingrandita portfolio" />
+                    <button class="lightbox-arrow right" id="lightbox-next" aria-label="Immagine successiva">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                    <button class="lightbox-close" id="lightbox-close" aria-label="Chiudi">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <script>
+                // Lightbox JS per raccolte
+                document.addEventListener('DOMContentLoaded', function() {
+                    const images = Array.from(document.querySelectorAll('.portfolio-img'));
+                    const lightboxBg = document.getElementById('lightbox-bg');
+                    const lightboxImg = document.getElementById('lightbox-img');
+                    const btnPrev = document.getElementById('lightbox-prev');
+                    const btnNext = document.getElementById('lightbox-next');
+                    const btnClose = document.getElementById('lightbox-close');
+                    // Definisci le raccolte (gallery)
+                    const galleries = {
+                        'goodlife-bagno': [
+                            {src: 'img/lavori/studio-medico-bagno.jpg', alt: 'Bagno studio medico - ristrutturazione Good Life'},
+                            {src: 'img/lavori/studio-medico-ambulatorio.jpg', alt: 'Ambulatorio medico - progetto Good Life'}
+                        ],
+                        'villa-prato': [
+                            {src: 'img/lavori/villa-prato-bagno-2.jpeg', alt: 'Bagno Villa Prato - ristrutturazione'},
+                            {src: 'img/lavori/villa-prato-bagno-1.jpeg', alt: 'Studio Villa Prato - design d interni'},
+                        ],
+                        'altro': [
+                            {src: 'img/lavori/villa-pompa-calore.jpeg', alt: 'Installazione pompa di calore in villa'},
+                            {src: 'img/lavori/villa-condizionatore.jpeg', alt: 'Installazione condizionatore in villa'},
+                        ]
+                    };
+                    let current = 0;
+                    let currentGallery = [];
+                    function show(idx) {
+                        current = idx;
+                        lightboxImg.src = currentGallery[current].src;
+                        lightboxImg.alt = currentGallery[current].alt;
+                        lightboxBg.classList.add('active');
+                    }
+                    images.forEach((img) => {
+                        img.addEventListener('click', () => {
+                            const galleryName = img.getAttribute('data-gallery');
+                            currentGallery = galleries[galleryName] || [];
+                            show(0);
+                        });
+                    });
+                    btnPrev.addEventListener('click', e => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (!currentGallery.length) return;
+                        show((current - 1 + currentGallery.length) % currentGallery.length);
+                    });
+                    btnNext.addEventListener('click', e => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (!currentGallery.length) return;
+                        show((current + 1) % currentGallery.length);
+                    });
+                    btnClose.addEventListener('click', () => lightboxBg.classList.remove('active'));
+                    lightboxBg.addEventListener('click', e => {
+                        if (e.target === lightboxBg) lightboxBg.classList.remove('active');
+                    });
+                    document.addEventListener('keydown', e => {
+                        if (!lightboxBg.classList.contains('active')) return;
+                        if (e.key === 'Escape') lightboxBg.classList.remove('active');
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            show((current - 1 + currentGallery.length) % currentGallery.length);
+                        }
+                        if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            show((current + 1) % currentGallery.length);
+                        }
+                    });
+                });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-white px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-600 italic uppercase">Domande Frequenti</h2>
+                <p class="mt-4 text-gray-500">Tutto quello che devi sapere prima di affidarci il tuo lavoro</p>
+            </div>
+
+            <div class="space-y-4">
+
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">In quali zone intervenite?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">
+                        Abbiamo la sede a Prato. Effettuiamo riparazioni in tutta la provincia di Prato e nelle province di Pistoia e Firenze. Per interventi di rifacimento completo del bagno e ristrutturazioni, interveniamo anche nelle province limitrofe.
+                </details>
+
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Devo cercare io un muratore o un elettricista per completare i lavori?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">
+                        No. Possiamo offrire un servizio <strong>chiavi in mano</strong>. Collaboriamo con muratori, cartongessisti ed elettricisti di nostra fiducia. Gestiamo noi tutto il coordinamento del cantiere, così tu avrai un solo referente per ogni esigenza.
+                    </p>
+                </details>
+
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Il sopralluogo è gratuito?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">
+                        Sì, per rifacimenti bagni o lavori strutturati effettuiamo un sopralluogo tecnico gratuito per valutare la fattibilità e fornirti un preventivo trasparente e senza sorprese finali.
+                    </p>
+                </details>
+
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Quanto costa la manodopera?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">
+                        Il nostro costo orario di manodopera è di <strong>35 euro</strong> + IVA.
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Recensioni -->
+    <!--
+    <section id="recensioni" class="py-20 bg-gray-50 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 italic text-blue-600" id="recensioni-heading">Cosa dicono di noi</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border flex flex-col items-center" itemscope itemtype="https://schema.org/Review">
+                    <span class="text-yellow-400 text-2xl mb-2" aria-label="5 stelle">★★★★★</span>
+                    <blockquote class="text-gray-700 italic mb-4" itemprop="reviewBody">Intervento rapidissimo e risolutivo! Personale gentile e molto professionale. Consigliatissimi.</blockquote>
+                    <div class="text-sm text-gray-500" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Francesca M.</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border flex flex-col items-center" itemscope itemtype="https://schema.org/Review">
+                    <span class="text-yellow-400 text-2xl mb-2" aria-label="5 stelle">★★★★★</span>
+                    <blockquote class="text-gray-700 italic mb-4" itemprop="reviewBody">Hanno rifatto il bagno in tempi record e con una qualità impeccabile. Li richiamerò sicuramente!</blockquote>
+                    <div class="text-sm text-gray-500" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Lorenzo B.</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border flex flex-col items-center" itemscope itemtype="https://schema.org/Review">
+                    <span class="text-yellow-400 text-2xl mb-2" aria-label="5 stelle">★★★★★</span>
+                    <blockquote class="text-gray-700 italic mb-4" itemprop="reviewBody">Servizio clienti eccellente e prezzi onesti. Mi sono sentita seguita dall'inizio alla fine.</blockquote>
+                    <div class="text-sm text-gray-500" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Giulia R.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="https://www.google.com/search?q=GIAL+SRL+Prato&ludocid=" target="_blank" rel="noopener" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Leggi altre recensioni su Google</a>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <section id="contatti" class="py-20 bg-blue-600 text-white px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8 italic" id="contatti-heading">Contattaci</h2>
+            <p class="mb-8 text-lg text-blue-100 font-semibold flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="inline-block align-middle text-green-400"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                Preferisci una risposta veloce? Scrivici su <a href="https://wa.me/393279371705" class="underline text-green-300 hover:text-green-200 font-bold" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+393279371705" class="underline text-blue-200 hover:text-blue-100 font-bold">chiama</a> direttamente.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12 text-left">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-200 font-bold">Informazioni</h3>
+                    <p class="mb-2">📍 Via Traversa Pistoiese 12/L, Prato</p>
+                    <p class="mb-2">📞 +39 327 937 1705</p>
+                    <p class="mb-2">✉️ gialsrl2018@gmail.com</p>
+                    <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
+                        <iframe src="https://www.google.com/maps?q=Via+Traversa+Pistoiese+12/L,+Prato,+Italia&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa della sede GIAL SRL a Prato"></iframe>
+                    </div>
+                </div>
+                <form class="space-y-4" action="https://formspree.io/f/mvzgnwnp" method="POST" aria-labelledby="contatti-heading" id="contact-form">
+                    <label for="nome" class="sr-only">Nome</label>
+                    <input id="nome" type="text" name="nome" placeholder="Nome" required class="w-full p-3 rounded bg-white text-gray-800 outline-none">
+
+                    <label for="email" class="sr-only">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Email" required class="w-full p-3 rounded bg-white text-gray-800 outline-none">
+
+                    <label for="messaggio" class="sr-only">Messaggio</label>
+                    <textarea id="messaggio" name="messaggio" placeholder="Messaggio" required class="w-full p-3 rounded bg-white text-gray-800 h-64 outline-none"></textarea>
+
+                    <button type="submit" class="w-full bg-gray-800 py-3 rounded font-bold hover:bg-gray-900 transition">Invia Richiesta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="py-8 text-center text-gray-500 text-sm">
+        <div class="mb-4">
+            <a href="/" aria-label="Home GIAL SRL">
+                <img src="img/gial-logo-quadrato-nosfondo.png" alt="" aria-hidden="true" style="height:150px; width:auto;" class="mx-auto mb-2">
+            </a>
+        </div>
+                &copy; 2026 GIAL SRL. P.IVA 02435030974.
+
+        <!-- Modale numero di telefono -->
+        <div id="callModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-lg p-8 max-w-xs w-full text-center">
+                        <h3 class="text-xl font-bold mb-4 text-blue-600">Chiama GIAL SRL</h3>
+                        <p class="mb-4 text-gray-800">Numero di telefono:</p>
+                        <a href="tel:+393279371705" class="text-lg font-bold text-blue-700 underline block mb-4">+39 327 937 1705</a>
+                        <button id="closeModal" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Chiudi</button>
+                </div>
+        </div>
+
+        <script>
+            const callBtn = document.getElementById('callBtn');
+            const callModal = document.getElementById('callModal');
+            const closeModal = document.getElementById('closeModal');
+            if(callBtn && callModal && closeModal) {
+                callBtn.addEventListener('click', function() {
+                    callModal.classList.remove('hidden');
+                });
+                closeModal.addEventListener('click', function() {
+                    callModal.classList.add('hidden');
+                });
+                // Chiudi modale cliccando fuori
+                callModal.addEventListener('click', function(e) {
+                    if(e.target === callModal) callModal.classList.add('hidden');
+                });
+            }
+        </script>
+        <script>
+        (function(){
+            const banner = document.getElementById('cookie-banner');
+            function getCookie(name){const m=document.cookie.split('; ').find(r=>r.startsWith(name+'=')); return m?m.split('=')[1]:null;}
+            if (getCookie('gial_cookie_consent')) { if(banner) banner.classList.add('hidden'); }
+            const accept = document.getElementById('cookie-accept');
+            const decline = document.getElementById('cookie-decline');
+            if (accept) accept.addEventListener('click', function(){ window.GIALCookieConsent?.accept(); });
+            if (decline) decline.addEventListener('click', function(){ window.GIALCookieConsent?.decline(); });
+        })();
+        </script>
+    </footer>
+
+    <a href="https://wa.me/393279371705" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
