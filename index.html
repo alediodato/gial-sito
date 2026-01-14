@@ -191,7 +191,7 @@
                     <a href="#faq" class="hover:text-blue-600 transition" aria-label="Vai alla sezione FAQ">FAQ</a>
                     <a href="#contatti" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Contatti">Contatti</a>
                 </div>
-                <button id="callBtn" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition focus:outline-none" aria-label="Chiama GIAL SRL">Chiama Ora</button>
+                <button id="callBtn" onclick="if(window.gtag){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'}); }, {once:true}); }" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition focus:outline-none" aria-label="Chiama GIAL SRL">Chiama Ora</button>
             </div>
         </div>
     </nav>
@@ -652,13 +652,13 @@
             <h2 class="text-3xl font-bold mb-8 italic" id="contatti-heading">Contattaci</h2>
             <p class="mb-8 text-lg text-blue-100 font-semibold flex items-center justify-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="inline-block align-middle text-green-400"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-                Preferisci una risposta veloce? Scrivici su <a href="https://wa.me/393279371705" class="underline text-green-300 hover:text-green-200 font-bold" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+393279371705" class="underline text-blue-200 hover:text-blue-100 font-bold">chiama</a> direttamente.
+                Preferisci una risposta veloce? Scrivici su <a href="https://wa.me/393279371705" onclick="if(window.gtag) { gtag('event', 'click_whatsapp', {'posizione': 'testo_contatti'}); }" class="underline text-green-300 hover:text-green-200 font-bold" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'testo_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'testo_contatti'}); }, {once:true}); }" class="underline text-blue-200 hover:text-blue-100 font-bold">chiama</a> direttamente.
             </p>
             <div class="grid md:grid-cols-2 gap-12 text-left">
                 <div>
                     <h3 class="text-xl font-semibold mb-4 text-blue-200 font-bold">Informazioni</h3>
                     <p class="mb-2">📍 Via Traversa Pistoiese 12/L, Prato</p>
-                    <p class="mb-2">📞 +39 327 937 1705</p>
+                    <p class="mb-2">📞 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'sezione_contatti'}); }, {once:true}); }" class="underline text-white">+39 327 937 1705</a></p>
                     <p class="mb-2">✉️ gialsrl2018@gmail.com</p>
                     <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
                         <iframe src="https://www.google.com/maps?q=Via+Traversa+Pistoiese+12/L,+Prato,+Italia&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa della sede GIAL SRL a Prato"></iframe>
@@ -674,7 +674,7 @@
                     <label for="messaggio" class="sr-only">Messaggio</label>
                     <textarea id="messaggio" name="messaggio" placeholder="Messaggio" required class="w-full p-3 rounded bg-white text-gray-800 h-64 outline-none"></textarea>
 
-                    <button type="submit" class="w-full bg-gray-800 py-3 rounded font-bold hover:bg-gray-900 transition">Invia Richiesta</button>
+                    <button type="submit" onclick="if(window.gtag){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'}); }, {once:true}); }" class="w-full bg-gray-800 py-3 rounded font-bold hover:bg-gray-900 transition">Send Message</button>
                 </form>
             </div>
         </div>
@@ -695,7 +695,7 @@
                 <div class="bg-white rounded-lg shadow-lg p-8 max-w-xs w-full text-center">
                         <h3 class="text-xl font-bold mb-4 text-blue-600">Chiama GIAL SRL</h3>
                         <p class="mb-4 text-gray-800">Numero di telefono:</p>
-                        <a href="tel:+393279371705" class="text-lg font-bold text-blue-700 underline block mb-4">+39 327 937 1705</a>
+                        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'modale'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'modale'}); }, {once:true}); }" class="text-lg font-bold text-blue-700 underline block mb-4">+39 327 937 1705</a>
                         <button id="closeModal" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Chiudi</button>
                 </div>
         </div>
@@ -730,61 +730,13 @@
         </script>
     </footer>
 
-    <a href="https://wa.me/393279371705" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center" target="_blank">
+    <a href="https://wa.me/393279371705" 
+       onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'}); }, {once:true}); }" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
-        </a>
-
-        <script>
-        (function(){
-            function sendGA(href){
-                if(!window.gtag) return;
-                try{
-                    gtag('event','outbound_click',{event_category:'engagement',event_label:href,transport_type:'beacon'});
-                }catch(e){/* ignore */}
-            }
-            document.addEventListener('click', function(e){
-                var a = e.target.closest && e.target.closest('a[href]');
-                if(!a) return;
-                var href = a.getAttribute('href');
-                if(!href) return;
-                if(href.startsWith('https://wa.me') || href.startsWith('tel:')){
-                    // If gtag not yet loaded (cookie not accepted), defer until it's available
-                    if(window.gtag){ sendGA(href); }
-                    else {
-                        var unbind = function(){ if(window.gtag){ sendGA(href); window.removeEventListener('gtagLoaded', unbind); }};
-                        window.addEventListener('gtagLoaded', unbind);
-                    }
-                }
-            }, true);
-            // If your consent loader sets window.gtagLoaded, dispatch a custom event when ready
-            var checkGtagFlag = setInterval(function(){ if(window.gtagLoaded){ clearInterval(checkGtagFlag); var ev = new Event('gtagLoaded'); window.dispatchEvent(ev); } }, 250);
-        })();
-        </script>
-
-        <script>
-        (function(){
-            var form = document.getElementById('contact-form');
-            function sendFormEvent(){
-                if(!window.gtag) return;
-                try{
-                    gtag('event','contact_form_submit',{event_category:'conversion',event_label:window.location.pathname + '#contact-form',transport_type:'beacon'});
-                }catch(e){}
-            }
-            if(form){
-                form.addEventListener('submit', function(){
-                    if(window.gtag){ sendFormEvent(); }
-                    else {
-                        var onGtag = function(){ sendFormEvent(); window.removeEventListener('gtagLoaded', onGtag); };
-                        window.addEventListener('gtagLoaded', onGtag);
-                        // Also poll briefly in case gtagLoaded was set before listener
-                        var chk = setInterval(function(){ if(window.gtag){ clearInterval(chk); sendFormEvent(); } }, 200);
-                    }
-                });
-            }
-        })();
-        </script>
+    </a>
 
 </body>
 </html>
