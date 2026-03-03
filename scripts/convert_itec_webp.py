@@ -1,8 +1,20 @@
 from PIL import Image
 import sys
+import os
 
-inp = "img/itec.jpeg"
+base = "img/itec"
 out = "img/itec.webp"
+
+inp = None
+for ext in ("jpeg", "jpg", "png"):
+    candidate = f"{base}.{ext}"
+    if os.path.exists(candidate):
+        inp = candidate
+        break
+
+if inp is None:
+    print("Error: source file not found (tried .jpeg .jpg .png)")
+    sys.exit(1)
 
 try:
     im = Image.open(inp)
