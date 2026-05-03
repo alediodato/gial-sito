@@ -2,3 +2,8 @@
 __pycache__/
 *.pyc
 .DS_Store
+node_modules/
+input.css
+package.json
+package-lock.json
+.claude/
