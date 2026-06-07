@@ -949,7 +949,7 @@
             <div class="text-center mb-10">
                 <span class="text-sm font-semibold text-accent uppercase tracking-widest">Strumento gratuito</span>
                 <h2 class="text-3xl font-bold text-blue-600 italic mt-2" id="preventivo-heading">Preventivo Online AI — Bagni, Caldaie, Infissi, Ristrutturazioni</h2>
-                <p class="mt-3 text-gray-500">Descrivi i lavori che vuoi fare e ricevi subito una stima basata sul Prezzario DEI Toscana 2024–2025.</p>
+                <p class="mt-3 text-gray-500">Descrivi i lavori che vuoi fare e ricevi subito una stima basata sul Prezzario DEI Toscana 2026.</p>
             </div>
 
             <div id="preventivo-form" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
@@ -993,7 +993,7 @@
                     </svg>
                     <span id="prev-btn-txt">Calcola Stima AI</span>
                 </button>
-                <p class="text-xs text-gray-400 text-center mt-3">Stima orientativa · Prezzario DEI Toscana 2024–2025 · IVA esclusa</p>
+                <p class="text-xs text-gray-400 text-center mt-3">Stima orientativa · Prezzario DEI Toscana 2026 · IVA esclusa</p>
             </div>
 
             <div id="preventivo-domande" class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-8"></div>
@@ -1211,6 +1211,11 @@
                     <label for="messaggio" class="sr-only">Messaggio</label>
                     <textarea id="messaggio" name="messaggio" placeholder="Messaggio" required class="w-full p-3 rounded bg-white text-gray-800 h-64 outline-none"></textarea>
 
+                    <div class="flex items-start gap-2 text-left">
+                        <input id="privacy-consent" type="checkbox" name="privacy_consent" value="accettato" required class="mt-1 shrink-0">
+                        <label for="privacy-consent" class="text-sm text-blue-100">Ho letto l'<a href="#privacy" class="underline text-white">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta.</label>
+                    </div>
+
                     <button type="submit" onclick="if(window.gtag){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'}); }, {once:true}); }" class="w-full bg-gray-800 py-3 rounded font-bold hover:bg-gray-900 transition">Invia Messaggio</button>
                 </form>
             </div>
@@ -1304,7 +1309,7 @@
         // Vedi cloudflare-worker/DEPLOY.md per le istruzioni di setup.
         var WORKER_URL = 'https://giall-preventivo-ai.gialsrl2018.workers.dev';
 
-        // Tabella prezzi DEI Toscana 2024-2025 (basso/standard/alto)
+        // Tabella prezzi DEI Toscana 2026 (basso/standard/alto)
         var P = {
             finestra: {
                 pvc:   { basso:[380,490], standard:[490,630], alto:[630,800] },
@@ -1716,7 +1721,7 @@
                         '<svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>' +
                         '<span class="font-bold text-gray-900">' + esc(titoli) + '</span>' +
                     '</div>' +
-                    '<p class="text-xs text-gray-400 ml-7">Prezzario DEI Toscana 2024–2025 · IVA esclusa</p>' +
+                    '<p class="text-xs text-gray-400 ml-7">Prezzario DEI Toscana 2026 · IVA esclusa</p>' +
                 '</div>' +
                 (voci.length > 1 ? '<div class="mb-5">' + dettaglio + '</div>' : '') +
                 '<div class="bg-blue-50 rounded-xl p-5 mb-5">' +
@@ -1727,7 +1732,7 @@
                     (voci.length === 1 && voci[0].nota ? '<p class="text-xs text-gray-500 mt-1">' + esc(voci[0].nota) + '</p>' : '') +
                     '<p class="text-xs text-gray-500 mt-1">IVA esclusa · Zona Prato-Firenze-Pistoia</p>' +
                 '</div>' +
-                '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa basata su Prezzario DEI Toscana 2024–2025. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
+                '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa basata su Prezzario DEI Toscana 2026. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
                 '<div class="flex flex-col sm:flex-row gap-3">' +
                     '<a href="https://wa.me/393279371705?text=' + waMsg + '" target="_blank" rel="noopener" ' +
                        'class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition flex items-center justify-center gap-2 text-sm">' +
@@ -1908,7 +1913,7 @@
                         '<svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>' +
                         '<span class="font-bold text-gray-900">Stima AI completata</span>' +
                     '</div>' +
-                    '<p class="text-xs text-gray-400 ml-7">Prezzario DEI Toscana 2024–2025 · IVA esclusa</p>' +
+                    '<p class="text-xs text-gray-400 ml-7">Prezzario DEI Toscana 2026 · IVA esclusa</p>' +
                 '</div>' +
                 incertHtml +
                 '<div class="mb-5">' + dettaglio + '</div>' +
@@ -1921,7 +1926,7 @@
                 '</div>' +
                 fuoriHtml +
                 domandeHtml +
-                '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa generata da Claude AI sulla base del Prezzario DEI Toscana 2024–2025. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
+                '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa generata da Claude AI sulla base del Prezzario DEI Toscana 2026. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
                 '<div class="flex flex-col sm:flex-row gap-3">' +
                     '<a href="https://wa.me/393279371705?text=' + waMsg + '" target="_blank" rel="noopener" ' +
                        'class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition flex items-center justify-center gap-2 text-sm">' +
