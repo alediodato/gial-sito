@@ -412,6 +412,13 @@ export default {
         if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
         if (request.method !== 'POST') return jsonResponse({ error: 'Method not allowed' }, 405, cors);
 
+        // Difesa anti-abuso: rifiuta richieste che non arrivano dal sito o da sviluppo locale.
+        // (L'header Origin è falsificabile via script, ma questo blocca gli abusi più comuni:
+        // curl/bot senza Origin e siti terzi che embeddano l'endpoint. Per una protezione
+        // robusta aggiungere una regola di Rate Limiting nel pannello Cloudflare.)
+        const originAllowed = ALLOWED_ORIGINS.includes(origin) || LOCAL_ORIGIN_RE.test(origin);
+        if (!originAllowed) return jsonResponse({ error: 'Forbidden' }, 403, cors);
+
         let body;
         try { body = await request.json(); }
         catch { return jsonResponse({ error: 'Invalid JSON' }, 400, cors); }

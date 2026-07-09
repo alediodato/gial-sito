@@ -119,6 +119,13 @@
             .text-accent { color: #b07d10; }
             .border-accent { border-color: #d99e2b; }
             .bg-accent { background-color: #d99e2b; }
+
+            /* Rispetto della preferenza utente per animazioni ridotte */
+            @media (prefers-reduced-motion: reduce) {
+                html { scroll-behavior: auto !important; }
+                .animate-\[spin_20s_linear_infinite\] { animation: none !important; }
+                .fade-in { animation: none !important; opacity: 1 !important; }
+            }
         </style>
     <meta name="theme-color" content="#2563eb">
     <meta name="geo.region" content="IT-PO">
@@ -147,14 +154,16 @@
     <meta property="og:description" content="Termoidraulica a Prato: rifacimento bagni, climatizzazione, caldaie, infissi e preventivo AI online gratuito basato su prezzario DEI. Polizza decennale." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gialtermoidraulica.it/" />
-    <meta property="og:image" content="https://gialtermoidraulica.it/img/gial/gial-1.webp" />
-    <meta property="og:image:alt" content="GIAL SRL — Termoidraulica Prato" />
+    <meta property="og:image" content="https://gialtermoidraulica.it/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GIAL SRL — Termoidraulica Prato: bagni, caldaie, climatizzazione, infissi" />
     <meta property="og:site_name" content="GIAL SRL" />
     <meta property="og:locale" content="it_IT" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="GIAL SRL — Termoidraulica Prato | Bagni, Infissi, Preventivo AI" />
     <meta name="twitter:description" content="Termoidraulica a Prato: rifacimento bagni, climatizzazione, caldaie, infissi e preventivo AI online gratuito. Polizza decennale." />
-    <meta name="twitter:image" content="https://gialtermoidraulica.it/img/gial/gial-1.webp" />
+    <meta name="twitter:image" content="https://gialtermoidraulica.it/img/og-image.png" />
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -485,7 +494,6 @@
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div class="text-center md:text-left">
                 <h1 id="valore-garanzia" class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900">Termoidraulica a Prato — Bagni, Caldaie, Climatizzazione, Infissi e Preventivo AI</h1>
-                <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-2">Termoidraulica a Prato.</p>
                 <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Dalla riparazione urgente al rifacimento del bagno fino alla ristrutturazione completa della tua casa.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contatti" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">Richiedi Preventivo</a>
@@ -514,8 +522,9 @@
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="bg-blue-100 h-[28rem] rounded-2xl flex items-center justify-center text-blue-300 overflow-hidden relative">
                 <button id="gial-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine precedente"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7' /></svg></button>
-                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="1128" height="1136" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full rounded-2xl transition duration-500" />
+                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="1128" height="1136" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full rounded-2xl transition duration-500" loading="lazy" />
                 <button id="gial-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine successiva"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' /></svg></button>
+                <button id="gial-pause" class="absolute right-2 bottom-2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Metti in pausa lo slideshow" aria-pressed="false"><svg id="gial-pause-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5'><path d='M6 5h4v14H6zM14 5h4v14h-4z'/></svg><svg id="gial-play-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5 hidden'><path d='M8 5v14l11-7z'/></svg></button>
             </div>
             <div>
                 <h2 class="text-3xl font-bold mb-6 italic text-blue-600">Chi Siamo</h2>
@@ -552,13 +561,40 @@
         gialIndex = (gialIndex - 1 + gialImages.length) % gialImages.length;
         showGialImage(gialIndex);
     }
+    const gialPause = document.getElementById('gial-pause');
+    const gialPauseIcon = document.getElementById('gial-pause-icon');
+    const gialPlayIcon = document.getElementById('gial-play-icon');
+    let gialPaused = false;
     function startGialAutoplay() {
         if (gialTimer) clearInterval(gialTimer);
-        gialTimer = setInterval(nextGialImage, 5000);
+        if (!gialPaused) gialTimer = setInterval(nextGialImage, 5000);
+    }
+    function stopGialAutoplay() {
+        if (gialTimer) { clearInterval(gialTimer); gialTimer = null; }
     }
     if (gialImg && gialPrev && gialNext) {
         gialPrev.onclick = () => { prevGialImage(); startGialAutoplay(); };
         gialNext.onclick = () => { nextGialImage(); startGialAutoplay(); };
+        if (gialPause) {
+            gialPause.onclick = () => {
+                gialPaused = !gialPaused;
+                if (gialPaused) { stopGialAutoplay(); } else { startGialAutoplay(); }
+                gialPause.setAttribute('aria-pressed', String(gialPaused));
+                gialPause.setAttribute('aria-label', gialPaused ? 'Riavvia lo slideshow' : 'Metti in pausa lo slideshow');
+                gialPauseIcon.classList.toggle('hidden', gialPaused);
+                gialPlayIcon.classList.toggle('hidden', !gialPaused);
+            };
+        }
+        // Niente autoplay per chi preferisce ridurre le animazioni
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            gialPaused = true;
+            if (gialPause) {
+                gialPause.setAttribute('aria-pressed', 'true');
+                gialPause.setAttribute('aria-label', 'Riavvia lo slideshow');
+                gialPauseIcon.classList.add('hidden');
+                gialPlayIcon.classList.remove('hidden');
+            }
+        }
         startGialAutoplay();
     }
     </script>
@@ -738,6 +774,7 @@
                     </div>
                     <h3 class="font-bold mb-2">Rifacimento Bagno</h3>
                     <p class="text-gray-600 text-sm">Rifacimento integrale delle tubature. Posa qualificata di sanitari e rubinetteria di alta qualità in tempi rapidi.</p>
+                    <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Prezzi e dettagli →</a>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
                     <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
@@ -1057,7 +1094,7 @@
                         </span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">
-                        Sì, per rifacimenti bagni o lavori strutturati effettuiamo un sopralluogo tecnico gratuito per valutare la fattibilità e fornirti un preventivo trasparente e senza sorprese finali.
+                        Sì, per rifacimenti bagni o lavori strutturati effettuiamo un sopralluogo tecnico gratuito per valutare la fattibilità e fornirti un preventivo trasparente e senza sorprese finali. Scopri prezzi e dettagli sul <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline">rifacimento bagno a Prato</a>.
                     </p>
                 </details>
 
@@ -1190,6 +1227,7 @@
                     <p class="mb-2">📍 Via Traversa Pistoiese 12/L, Prato</p>
                     <p class="mb-2">📞 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'sezione_contatti'}); }, {once:true}); }" class="text-white">+39 327 937 1705</a></p>
                     <p class="mb-2">✉️ info@gialtermoidraulica.it</p>
+                    <p class="mb-2">🕗 Lun–Ven 8:00–19:00</p>
                     <div class="mt-8 rounded-2xl overflow-hidden shadow-lg">
                         <div id="map-placeholder" class="bg-blue-700 text-white flex flex-col items-center justify-center text-center p-6 cursor-pointer hover:bg-blue-800 transition" style="height:300px;" role="button" tabindex="0" aria-label="Carica la mappa di Google Maps con la sede GIAL SRL (verranno caricati contenuti di Google)" onclick="GIALloadMap()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();GIALloadMap();}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
