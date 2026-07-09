@@ -414,10 +414,26 @@ export default {
 
         // Difesa anti-abuso: rifiuta richieste che non arrivano dal sito o da sviluppo locale.
         // (L'header Origin è falsificabile via script, ma questo blocca gli abusi più comuni:
-        // curl/bot senza Origin e siti terzi che embeddano l'endpoint. Per una protezione
-        // robusta aggiungere una regola di Rate Limiting nel pannello Cloudflare.)
+        // curl/bot senza Origin e siti terzi che embeddano l'endpoint.)
         const originAllowed = ALLOWED_ORIGINS.includes(origin) || LOCAL_ORIGIN_RE.test(origin);
         if (!originAllowed) return jsonResponse({ error: 'Forbidden' }, 403, cors);
+
+        // Rate limiting per IP via Cloudflare KV (il dominio non è su Cloudflare, quindi
+        // le regole di Rate Limiting del pannello non sono disponibili: questa è l'alternativa
+        // che funziona a livello di Worker). Fail-open: se KV ha un problema, non blocchiamo
+        // utenti legittimi.
+        const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+        if (env.RATE_LIMIT_KV) {
+            try {
+                const key = `rl:${ip}`;
+                const current = await env.RATE_LIMIT_KV.get(key);
+                const count = current ? parseInt(current, 10) : 0;
+                if (count >= 8) return jsonResponse({ error: 'Troppe richieste, riprova tra un minuto' }, 429, cors);
+                await env.RATE_LIMIT_KV.put(key, String(count + 1), { expirationTtl: 60 });
+            } catch (e) {
+                console.error('Rate limit check failed', e);
+            }
+        }
 
         let body;
         try { body = await request.json(); }

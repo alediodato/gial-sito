@@ -1,0 +1,7 @@
+name = "giall-preventivo-ai"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "69ff7cdf3c7048ea847b302999899d55"
