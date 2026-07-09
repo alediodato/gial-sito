@@ -20,11 +20,11 @@ Usa queste voci per richieste di lavori "tipici" (es: "voglio rifare il bagno", 
 Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + documentazione.
 ═══════════════════════════════════════════════════
 
-## INFISSI (per unità ~120×140 cm)
-- INFISSO PVC doppio vetro:           economico 380-490, standard 490-630, premium 630-800
-- INFISSO Alluminio taglio termico:   economico 600-750, standard 750-950, premium 950-1.200
-- INFISSO Legno/Fibex:                economico 850-1.080, standard 1.080-1.380, premium 1.380-1.700
-- TAPPARELLA motorizzata:             cad 380-650
+## INFISSI (per finestra ~1,4 mq, fornitura+posa, ref. DEI PR.P70.001-004 + 02.E07.005)
+- INFISSO PVC doppio/triplo vetro:    economico 540-790, standard 790-950, premium 950-1.110
+- INFISSO Alluminio taglio termico:   economico 1.220-1.580, standard 1.580-1.760, premium 1.760-1.940
+- INFISSO Legno/Fibex:                economico 1.520-2.180, standard 2.180-2.640, premium 2.640-3.100
+- TAPPARELLA motorizzata:             cad 650-1.000
 - PERSIANA blindata:                  cad 700-1.200
 
 ## RIFACIMENTO BAGNO (totale per bagno: sanitari + tubature + posa + rivestimenti + finiture)
@@ -33,16 +33,16 @@ Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + docu
 - BAGNO Grande (>8mq):   economico 9.500-12.500, standard 12.500-17.000, premium 17.000-23.000
 
 ## CALDAIA A CONDENSAZIONE (sostituzione chiavi in mano, ref. DEI 06.I04P)
-- CALDAIA 19-24 kW (mono/bilocale):       1.940-2.730
-- CALDAIA 24-30 kW (3-4 locali, 90-120mq): 2.440-3.030
-- CALDAIA 30-35 kW (villa, >120mq):       3.030-3.940
-- CALDAIA con rifacimento impianto completo: 5.200-8.000
+- CALDAIA fino 24 kW (mono/bilocale):        1.900-3.000
+- CALDAIA 25-35 kW (3-4 locali, 90-120mq):   2.600-4.400
+- CALDAIA 36-70 kW (villa, >120mq):          3.900-6.900
+- CALDAIA con rifacimento impianto completo: 6.500-11.000
 
 ## CLIMATIZZAZIONE SPLIT (chiavi in mano, ref. DEI 06.I06A)
-- SPLIT Mono (1 ambiente, 9-12k BTU):  1.500-2.100
-- SPLIT Dual (2 ambienti):             2.500-3.700
-- SPLIT Trial (3 ambienti):            3.700-5.500
-- SPLIT Quadri (4+ ambienti):          5.000-7.500
+- SPLIT Mono (1 ambiente):             1.550-3.500
+- SPLIT Dual (2 ambienti):             2.900-3.500
+- SPLIT Trial (3 ambienti):            3.600-4.900
+- SPLIT Quadri (4+ ambienti):          4.900-6.400
 
 ## POMPA DI CALORE ARIA-ACQUA (ref. DEI 06 + PR.P30.200)
 - POMPA piccola (<100mq):
@@ -62,10 +62,10 @@ Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + docu
 - CUCINA Media (10-18mq):  4.000-7.000
 - CUCINA Grande (>18mq):   7.000-12.000
 
-## SCALDABAGNO (sostituzione totale, ref. DEI 06.PR.P30.043)
+## SCALDABAGNO (sostituzione totale, ref. DEI PR.P30.042-043)
 - SCALDABAGNO elettrico:        500-900
 - SCALDABAGNO a gas:            950-1.700
-- SCALDABAGNO pompa di calore:  3.100-3.700
+- SCALDABAGNO pompa di calore:  1.850-3.700
 
 ## TINTEGGIATURA (pareti+soffitti, totale appartamento)
 - TINT Piccolo (~50mq):  600-1.100
@@ -241,7 +241,7 @@ const CATEGORIE_VALIDE = [
 const RANGES_PLAUSIBILI = {
     infissi:        [200,   80000],   // ~50 finestre legno premium
     bagno:          [3000,  120000],  // ~5 bagni grandi premium
-    caldaia:        [1500,  10000],
+    caldaia:        [1500,  12000],
     clima:          [800,   10000],
     pompa:          [5000,  35000],
     fotovoltaico:   [4000,  25000],
