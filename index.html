@@ -126,7 +126,30 @@
                 .animate-\[spin_20s_linear_infinite\] { animation: none !important; }
                 .fade-in { animation: none !important; opacity: 1 !important; }
             }
-        </style>
+        
+        /* Barra fissa chiama/WhatsApp su mobile */
+        .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; }
+        @media (min-width: 768px) { .call-bar { display: none; } }
+        @media (max-width: 767px) {
+            body { padding-bottom: 3.5rem; }
+            #cookie-banner { bottom: 4.5rem; }
+        }
+    
+        /* Menu a tendina "Servizi" */
+        .gial-dd { position: relative; }
+        .gial-dd-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 0.25rem; }
+        .gial-dd-btn:hover { color: #2563eb; }
+        .gial-dd-panel { position: absolute; top: calc(100% + 0.9rem); left: 50%; transform: translateX(-50%);
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 0.75rem;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.13); padding: 0.5rem; min-width: 17.5rem; z-index: 60; }
+        .gial-dd-panel a { display: block; padding: 0.55rem 0.75rem; border-radius: 0.5rem;
+            font-size: 0.9rem; font-weight: 500; color: #374151; white-space: nowrap; }
+        .gial-dd-panel a:hover { background: #eff6ff; color: #2563eb; }
+        .gial-dd-sep { border-top: 1px solid #f3f4f6; margin: 0.35rem 0; }
+        .gial-mob-label { padding: 0.75rem 1rem 0.25rem; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em; color: #9ca3af; }
+    </style>
     <meta name="theme-color" content="#2563eb">
     <meta name="geo.region" content="IT-PO">
     <meta name="geo.placename" content="Prato">
@@ -146,8 +169,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
-    <title>Termoidraulica Prato — GIAL SRL | Bagni, Caldaie, Infissi, Preventivo AI</title>
-    <meta name="description" content="GIAL SRL Prato: rifacimento bagni, climatizzazione, caldaie, pompe di calore, infissi e serramenti (in collaborazione con SAP Sistemi) e preventivo AI online gratuito. Polizza decennale, sopralluogo gratuito." />
+    <title>Termoidraulica e Impianti a Prato — GIAL SRL</title>
+    <meta name="description" content="Impianti termoidraulici, climatizzazione, caldaie, bagni e ristrutturazioni a Prato. Polizza decennale, preventivo AI gratuito, sopralluogo senza impegno." />
     <meta name="author" content="GIAL SRL" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta property="og:title" content="GIAL SRL — Termoidraulica Prato | Bagni, Infissi, Preventivo AI" />
@@ -243,7 +266,7 @@
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Sostituzione sanitari"}},
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Manutenzione ordinaria impianti"}},
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pompa di calore - installazione e configurazione"}},
-                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Impianto fotovoltaico - chiavi in mano"}},
+                    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Impianti termoidraulici per aziende, studi e cantieri, anche in subappalto"}},
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Infissi e serramenti - PVC, alluminio, legno (in collaborazione con SAP Sistemi)"}},
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Facciate continue e ventilate (in collaborazione con SAP Sistemi)"}},
                     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Preventivo orientativo online basato su Prezzario DEI Toscana"}}
@@ -366,10 +389,18 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "Installate pompe di calore e impianti fotovoltaici?",
+                    "name": "Un climatizzatore può anche riscaldare casa?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Sì, installiamo pompe di calore aria-acqua per riscaldamento e raffrescamento, e impianti fotovoltaici chiavi in mano da 3 a 10+ kWp. Gestiamo l'intero processo: sopralluogo, dimensionamento, installazione, configurazione e pratiche tecniche."
+                        "text": "Sì, ed è il modo in cui questi impianti rendono di più. Un climatizzatore moderno è una pompa di calore: d'estate raffresca, d'inverno riscalda, e nelle mezze stagioni è spesso il modo più economico per scaldare casa rispetto alla caldaia a gas. Installiamo climatizzatori, pompe di calore aria-acqua e caldaie a condensazione: al sopralluogo confrontiamo le soluzioni sul tuo immobile e ti diciamo quale conviene davvero, invece di venderti quella che costa di più."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Siete certificati F-GAS per installare i condizionatori?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sì. Siamo azienda certificata F-GAS tramite ITEC: possiamo manipolare legalmente i gas refrigeranti e registriamo ogni intervento nella Banca Dati nazionale, come prevede il DPR 146/2018. Ci occupiamo di installazione, manutenzione e sanificazione dei climatizzatori a Prato, Firenze e Pistoia."
                     }
                 }
             ]
@@ -429,12 +460,24 @@
                 <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
                     <img src="img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" aria-hidden="true" style="height:60px; width:auto;" fetchpriority="high">
                 </a>
-                <div class="hidden md:flex space-x-8 font-medium">
+                <div class="hidden md:flex space-x-8 font-medium items-center">
                     <a href="#chi-siamo" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Chi Siamo">Chi Siamo</a>
-                    <a href="#filosofia" class="hover:text-blue-600 transition" aria-label="Vai alla sezione La Nostra Filosofia">La Nostra Filosofia</a>
-                    <a href="#team" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Team">Team</a>
-                    <a href="#servizi" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Servizi">Servizi</a>
-                    <a href="#infissi" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Infissi">Infissi</a>
+                    <div class="gial-dd">
+                        <button type="button" id="serviziBtn" class="gial-dd-btn" aria-expanded="false" aria-controls="serviziMenu" aria-haspopup="true">Servizi <span aria-hidden="true">&#9662;</span></button>
+                        <div id="serviziMenu" class="gial-dd-panel hidden" role="menu" aria-labelledby="serviziBtn">
+                            <a href="/impianti-termoidraulici-aziende-prato/" role="menuitem">Impianti per aziende e cantieri</a>
+                            <a href="/ristrutturazioni-chiavi-in-mano-prato/" role="menuitem">Ristrutturazioni chiavi in mano</a>
+                            <a href="/pompa-di-calore-prato/" role="menuitem">Pompe di calore</a>
+                            <a href="/installazione-condizionatori-prato/" role="menuitem">Installazione condizionatori</a>
+                            <a href="/sostituzione-caldaia-prato/" role="menuitem">Sostituzione caldaia</a>
+                            <a href="/impianti-gas-prato/" role="menuitem">Impianti gas a norma</a>
+                            <a href="/rifacimento-bagno-prato/" role="menuitem">Rifacimento bagno</a>
+                            <a href="/infissi-serramenti-prato/" role="menuitem">Infissi e serramenti</a>
+                            <a href="/pronto-intervento-idraulico-prato/" role="menuitem">Pronto intervento idraulico</a>
+                            <div class="gial-dd-sep"></div>
+                            <a href="/guide/quanto-costa-ristrutturare-casa-prato/" role="menuitem">Guida ai costi di ristrutturazione</a>
+                        </div>
+                    </div>
                     <a href="#preventivo" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Preventivo AI">Preventivo AI</a>
                     <a href="#faq" class="hover:text-blue-600 transition" aria-label="Vai alla sezione FAQ">FAQ</a>
                     <a href="#contatti" class="hover:text-blue-600 transition" aria-label="Vai alla sezione Contatti">Contatti</a>
@@ -448,16 +491,27 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                    <button id="callBtn" onclick="if(window.gtag){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'}); }, {once:true}); }" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition focus:outline-none" aria-label="Chiama GIAL SRL">Chiama Ora</button>
+                    <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_home'}); }" class="md:hidden bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition" aria-label="Chiama GIAL SRL">Chiama Ora</a>
+                    <button id="callBtn" onclick="if(window.gtag){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'}); }, {once:true}); }" class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition focus:outline-none" aria-label="Mostra il numero di telefono">Chiama Ora</button>
                 </div>
             </div>
             <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2" role="navigation" aria-label="Menu mobile">
                 <div class="flex flex-col">
                     <a href="#chi-siamo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Chi Siamo</a>
+                    <p class="gial-mob-label">I nostri servizi</p>
+                    <a href="/impianti-termoidraulici-aziende-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Impianti per aziende e cantieri</a>
+                    <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Ristrutturazioni chiavi in mano</a>
+                    <a href="/pompa-di-calore-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Pompe di calore</a>
+                    <a href="/installazione-condizionatori-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Installazione condizionatori</a>
+                    <a href="/sostituzione-caldaia-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Sostituzione caldaia</a>
+                    <a href="/impianti-gas-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Impianti gas a norma</a>
+                    <a href="/rifacimento-bagno-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Rifacimento bagno</a>
+                    <a href="/infissi-serramenti-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Infissi e serramenti</a>
+                    <a href="/pronto-intervento-idraulico-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Pronto intervento idraulico</a>
+                    <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Guida ai costi</a>
+                    <p class="gial-mob-label">Azienda</p>
                     <a href="#filosofia" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">La Nostra Filosofia</a>
                     <a href="#team" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Team</a>
-                    <a href="#servizi" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Servizi</a>
-                    <a href="#infissi" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Infissi</a>
                     <a href="#preventivo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Preventivo AI</a>
                     <a href="#faq" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">FAQ</a>
                     <a href="#contatti" class="px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium transition">Contatti</a>
@@ -489,6 +543,28 @@
         });
     })();
     </script>
+    <script>
+    // Tendina "Servizi" del menu desktop
+    (function() {
+        var btn = document.getElementById('serviziBtn');
+        var panel = document.getElementById('serviziMenu');
+        if (!btn || !panel) return;
+        function chiudi() { panel.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); }
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var aperto = !panel.classList.contains('hidden');
+            panel.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!aperto));
+        });
+        document.addEventListener('click', function(e) {
+            if (!panel.classList.contains('hidden') && !panel.contains(e.target)) chiudi();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !panel.classList.contains('hidden')) { chiudi(); btn.focus(); }
+        });
+    })();
+    </script>
+
 
     <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -511,7 +587,7 @@
                 </div>
             </div>
             <div class="rounded-2xl overflow-hidden shadow-2xl h-[28rem]">
-                <img src="img/lavori/studio-medico-bagno.webp" width="1600" height="2399" alt="Rifacimento bagno a Prato — GIAL SRL" class="object-cover w-full h-full" fetchpriority="high">
+                <img src="img/lavori/studio-medico-bagno.webp" width="1400" height="2099" alt="Rifacimento bagno a Prato — GIAL SRL" class="object-cover w-full h-full" fetchpriority="high">
             </div>
         </div>
     </header>
@@ -522,7 +598,7 @@
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div class="bg-blue-100 h-[28rem] rounded-2xl flex items-center justify-center text-blue-300 overflow-hidden relative">
                 <button id="gial-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine precedente"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7' /></svg></button>
-                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="1128" height="1136" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full rounded-2xl transition duration-500" loading="lazy" />
+                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="1000" height="1007" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full rounded-2xl transition duration-500" loading="lazy" />
                 <button id="gial-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine successiva"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' /></svg></button>
                 <button id="gial-pause" class="absolute right-2 bottom-2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Metti in pausa lo slideshow" aria-pressed="false"><svg id="gial-pause-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5'><path d='M6 5h4v14H6zM14 5h4v14h-4z'/></svg><svg id="gial-play-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5 hidden'><path d='M8 5v14l11-7z'/></svg></button>
             </div>
@@ -671,47 +747,47 @@
             <h2 class="text-3xl font-bold text-center mb-12 italic text-blue-600" id="team-heading">Il Nostro Team</h2>
             <div class="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/massimo-borgi.webp" width="1099" height="1199" alt="Massimo Borgi - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/massimo-borgi.webp" width="440" height="480" alt="Massimo Borgi - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Massimo Borgi</h3>
                     <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile e industriale con oltre 30 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/andrea-nenciarini.webp" width="899" height="954" alt="Andrea Nenciarini - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/andrea-nenciarini.webp" width="440" height="467" alt="Andrea Nenciarini - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Andrea Nenciarini</h3>
                     <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile e industriale con oltre 15 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/francesco-spatola.webp" width="1199" height="1696" alt="Francesco Spatola - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/francesco-spatola.webp" width="440" height="622" alt="Francesco Spatola - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Francesco Spatola</h3>
                     <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile con oltre 40 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/filippo-fagotti.webp" width="1084" height="1200" alt="Filippo Fagotti - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/filippo-fagotti.webp" width="440" height="487" alt="Filippo Fagotti - Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Filippo Fagotti</h3>
                     <p class="text-blue-600">Operaio specializzato di impiantistica idraulica civile con oltre 15 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/gabriele-paperini.webp" width="1178" height="1489" alt="Gabriele Paperini - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/gabriele-paperini.webp" width="440" height="556" alt="Gabriele Paperini - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Gabriele Paperini</h3>
                     <p class="text-blue-600">Apprendista idraulico con 2 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/andrea-arpicelli.webp" width="1179" height="1441" alt="Andrea Arpicelli - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/andrea-arpicelli.webp" width="440" height="538" alt="Andrea Arpicelli - Apprendista Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Andrea Arpicelli</h3>
                     <p class="text-blue-600">Apprendista idraulico con 2 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/alessio-diodato.webp" width="1091" height="1203" alt="Alessio Diodato - Fondatore Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/alessio-diodato.webp" width="440" height="485" alt="Alessio Diodato - Fondatore Idraulico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Alessio Diodato</h3>
                     <p class="text-blue-600">Fondatore e artigiano idraulico con oltre 50 anni di esperienza.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/giovanna-farina.webp" width="1042" height="1106" alt="Giovanna Farina - Fondatrice GIAL SRL Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/giovanna-farina.webp" width="440" height="467" alt="Giovanna Farina - Fondatrice GIAL SRL Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Giovanna Farina</h3>
                     <p class="text-blue-600">Fondatrice e amministratrice contabile da oltre 40 anni.</p>
                 </div>
                 <div class="text-center p-6 border rounded-xl hover:shadow-lg transition">
-                    <img src="img/team/alessandro-diodato.webp" width="1020" height="1129" alt="Alessandro Diodato - Ingegnere Robotico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
+                    <img src="img/team/alessandro-diodato.webp" width="440" height="487" alt="Alessandro Diodato - Ingegnere Robotico Prato" class="w-32 h-40 rounded-full mx-auto mb-4 object-cover" loading="lazy" />
                     <h3 class="font-bold text-xl">Alessandro Diodato</h3>
                     <p class="text-blue-600">Ingegnere robotico e attuale amministratore della società.</p>
                 </div>
@@ -735,6 +811,22 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
                     <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9ZM12 3v3m0 0a3 3 0 0 1 3 3M9 6a3 3 0 0 1 3-3"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-2">Impianti per Aziende</h3>
+                    <p class="text-gray-600 text-sm">Impianti idrico-sanitari, termici e gas per studi, uffici, attività e imprese edili. Lavori in subappalto con documentazione di sicurezza sempre pronta.</p>
+                    <a href="/impianti-termoidraulici-aziende-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Per committenti professionali →</a>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18a9 9 0 0 1 9 9 9 9 0 0 1-9 9m0-18a9 9 0 0 0-9 9 9 9 0 0 0 9 9M3.75 9h16.5M3.75 15h16.5"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-2">Pompe di Calore</h3>
+                    <p class="text-gray-600 text-sm">Pompe di calore aria-acqua per riscaldamento, raffrescamento e acqua calda con un solo impianto. Calcolo del carico termico e adeguamento dei terminali.</p>
+                    <a href="/pompa-di-calore-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Prezzi e quando conviene →</a>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
+                    <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
                     </div>
                     <h3 class="font-bold mb-2">Pronto Intervento</h3>
@@ -755,6 +847,7 @@
                     </div>
                     <h3 class="font-bold mb-2">Climatizzazione</h3>
                     <p class="text-gray-600 text-sm">Installazione di climatizzatori per abitazioni e sistemi centralizzati per grandi ambienti. Include ricarica gas e sanificazione professionale.</p>
+                    <a href="/installazione-condizionatori-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Prezzi e installazione →</a>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
                     <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
@@ -762,6 +855,7 @@
                     </div>
                     <h3 class="font-bold mb-2">Impianti Gas a Norma</h3>
                     <p class="text-gray-600 text-sm">Progettazione e collaudo di impianti gas civili e industriali. Rilasciamo la Dichiarazione di Conformità (Di.Co.) prevista dalle normative vigenti.</p>
+                    <a href="/impianti-gas-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Di.Co. e messa a norma →</a>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
                     <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
@@ -769,6 +863,7 @@
                     </div>
                     <h3 class="font-bold mb-2">Ristrutturazioni Chiavi in Mano</h3>
                     <p class="text-gray-600 text-sm">Unico referente per la ristrutturazione completa della tua abitazione. Coordiniamo noi ogni fase e artigiano, dalla demolizione alle finiture. </p>
+                    <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Metodo e prezzi →</a>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
                     <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
@@ -777,20 +872,6 @@
                     <h3 class="font-bold mb-2">Rifacimento Bagno</h3>
                     <p class="text-gray-600 text-sm">Rifacimento integrale delle tubature. Posa qualificata di sanitari e rubinetteria di alta qualità in tempi rapidi.</p>
                     <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline text-sm mt-3 font-semibold">Prezzi e dettagli →</a>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
-                    <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
-                    </div>
-                    <h3 class="font-bold mb-2">Trattamento Acque</h3>
-                    <p class="text-gray-600 text-sm">Installazione di sistemi contro il calcare e impurità. Proteggiamo i tuoi elettrodomestici e le tubature per farli durare molto più a lungo.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border-b-4 border-blue-600 flex flex-col items-center">
-                    <div class="bg-blue-50 text-blue-600 rounded-full p-3 mb-4">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
-                    </div>
-                    <h3 class="font-bold mb-2">Energie Rinnovabili</h3>
-                    <p class="text-gray-600 text-sm">Installazione di pannelli solari per acqua calda sanitaria. Soluzioni ecologiche per tagliare i costi in bolletta.</p>
                 </div>
             </div>
         </div>
@@ -880,15 +961,15 @@
             <div class="grid md:grid-cols-3 gap-4">
                 <!-- RACCOLTA 1: Good Life Bagno -->
                 <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
-                    <img src="img/lavori/studio-medico-bagno.webp" width="1600" height="2399" alt="Rifacimento bagno studio medico a Prato – GIAL SRL" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="goodlife-bagno" data-index="0" />
+                    <img src="img/lavori/studio-medico-bagno.webp" width="1400" height="2099" alt="Rifacimento bagno studio medico a Prato – GIAL SRL" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="goodlife-bagno" data-index="0" />
                 </div>
                 <!-- RACCOLTA 2: Good Life Studio (solo anteprima visibile) -->
                 <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
-                    <img src="img/lavori/villa-prato-bagno-2.webp" width="1370" height="1600" alt="Ristrutturazione bagno villa a Prato – impianti termoidraulici" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="villa-prato" data-index="0" />
+                    <img src="img/lavori/villa-prato-bagno-2.webp" width="1150" height="1343" alt="Ristrutturazione bagno villa a Prato – impianti termoidraulici" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="villa-prato" data-index="0" />
                 </div>
                 <!-- RACCOLTA 3: Altro (solo anteprima visibile) -->
                 <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden flex flex-col items-center justify-center">
-                    <img src="img/lavori/villa-pompa-calore.webp" width="1600" height="1470" alt="Installazione pompa di calore a Prato – termoidraulica GIAL SRL" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="altro" data-index="0" />
+                    <img src="img/lavori/villa-pompa-calore.webp" width="1400" height="1286" alt="Installazione pompa di calore a Prato – termoidraulica GIAL SRL" class="object-cover w-full h-full cursor-zoom-in portfolio-img" loading="lazy" data-gallery="altro" data-index="0" />
                 </div>
 
                 <!-- Lightbox Modal -->
@@ -1005,8 +1086,6 @@
                         class="text-sm bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1.5 hover:bg-blue-100 transition font-medium whitespace-nowrap">Climatizzazione</button>
                     <button type="button" onclick="usaSuggerimento('Sostituzione del riscaldamento esistente con una pompa di calore aria-acqua per una casa di circa 120 mq.')"
                         class="text-sm bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1.5 hover:bg-blue-100 transition font-medium whitespace-nowrap">Pompa di calore</button>
-                    <button type="button" onclick="usaSuggerimento('Installazione impianto fotovoltaico per abitazione privata, consumo annuo circa 3.000 kWh.')"
-                        class="text-sm bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1.5 hover:bg-blue-100 transition font-medium whitespace-nowrap">Fotovoltaico</button>
                     <button type="button" onclick="usaSuggerimento('Rifacimento cucina di circa 12 mq: rifacimento impianto idraulico, predisposizioni elettriche, posa nuovi sanitari e collegamento elettrodomestici.')"
                         class="text-sm bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-3 py-1.5 hover:bg-blue-100 transition font-medium whitespace-nowrap">Cucina</button>
                     <button type="button" onclick="usaSuggerimento('Sostituzione dello scaldabagno elettrico esistente con uno nuovo a pompa di calore.')"
@@ -1171,7 +1250,7 @@
 
                 <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
-                        <h3 class="text-lg font-bold">Installate pompe di calore e impianti fotovoltaici?</h3>
+                        <h3 class="text-lg font-bold">Un climatizzatore può anche riscaldare casa?</h3>
                         <span class="relative h-5 w-5 shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -1182,7 +1261,24 @@
                         </span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">
-                        Sì, installiamo <strong>pompe di calore aria-acqua</strong> per riscaldamento e raffrescamento, e <strong>impianti fotovoltaici chiavi in mano</strong> da 3 a 10+ kWp. Gestiamo l'intero processo: sopralluogo, dimensionamento, installazione, configurazione e pratiche tecniche.
+                        Sì, ed è il modo in cui questi impianti rendono di più. Un climatizzatore moderno <strong>è</strong> una pompa di calore: d'estate raffresca, d'inverno riscalda, e nelle mezze stagioni è spesso il modo più economico per scaldare casa rispetto alla caldaia a gas. Installiamo <strong>climatizzatori, pompe di calore aria-acqua e caldaie a condensazione</strong>: al sopralluogo confrontiamo le soluzioni sul tuo immobile e ti diciamo quale conviene davvero. <a href="/installazione-condizionatori-prato/" class="text-blue-600 underline">Vedi prezzi e dettagli sulla climatizzazione</a>.
+                    </p>
+                </details>
+
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Siete certificati F-GAS per installare i condizionatori?</h3>
+                        <span class="relative h-5 w-5 shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">
+                        Sì. Siamo <strong>azienda certificata F-GAS</strong> tramite ITEC: possiamo manipolare legalmente i gas refrigeranti e registriamo ogni intervento nella <strong>Banca Dati nazionale</strong>, come prevede il DPR 146/2018. Ci occupiamo di installazione, manutenzione e sanificazione dei climatizzatori: <a href="/installazione-condizionatori-prato/" class="text-blue-600 underline">qui trovi prezzi e dettagli sull'installazione dei condizionatori</a>.
                     </p>
                 </details>
             </div>
@@ -1262,6 +1358,14 @@
                     <label for="email" class="sr-only">Email</label>
                     <input id="email" type="email" name="email" placeholder="Email" required class="w-full p-3 rounded bg-white text-gray-800 outline-none">
 
+                    <label for="telefono" class="sr-only">Telefono</label>
+                    <input id="telefono" type="tel" name="telefono" placeholder="Telefono (per risponderti prima)" inputmode="tel" autocomplete="tel" class="w-full p-3 rounded bg-white text-gray-800 outline-none">
+
+                    <div class="flex items-start gap-2 text-left">
+                        <input id="richiamami" type="checkbox" name="preferisce_essere_richiamato" value="sì" class="mt-1 shrink-0">
+                        <label for="richiamami" class="text-sm text-blue-100">Preferisco essere <strong>richiamato</strong> anziché ricevere una email</label>
+                    </div>
+
                     <label for="messaggio" class="sr-only">Messaggio</label>
                     <textarea id="messaggio" name="messaggio" placeholder="Messaggio" required class="w-full p-3 rounded bg-white text-gray-800 h-64 outline-none"></textarea>
 
@@ -1306,6 +1410,7 @@
             <p class="text-gray-600 font-semibold mb-2 text-base">Azienda certificata F-GAS</p>
             <img src="img/itec.webp" width="300" height="auto" alt="Certificazione ITEC F-GAS – GIAL SRL abilitata alla gestione di gas fluorurati" class="rounded-lg shadow-md" style="max-width:200px; height:auto;" loading="lazy">
         </div>
+                <p class="mb-4 px-4"><a href="/impianti-termoidraulici-aziende-prato/" class="underline text-blue-600">Impianti per Aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="underline text-blue-600">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="underline text-blue-600">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="underline text-blue-600">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="underline text-blue-600">Installazione Condizionatori</a> ·<a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="underline text-blue-600">Infissi e Serramenti</a> · <a href="/pronto-intervento-idraulico-prato/" class="underline text-blue-600">Pronto Intervento</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="underline text-blue-600">Guida ai costi</a></p>
                 <p>&copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000</p>
                 <p class="mt-1">PEC: <a href="mailto:gialsrl@pec.cgn.it" class="text-blue-600">gialsrl@pec.cgn.it</a></p>
 
@@ -1351,7 +1456,7 @@
 
     <a href="https://wa.me/393279371705" 
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'}); }, {once:true}); }" 
-       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+       class="hidden md:block fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
@@ -1723,9 +1828,11 @@
         window.inviaCopiaEmail = function(ev) {
             ev.preventDefault();
             var input = document.getElementById('email-copia');
+            var tel = document.getElementById('tel-copia');
             var btn = document.getElementById('email-copia-btn');
             var ok = document.getElementById('email-copia-ok');
             var email = (input.value || '').trim();
+            var telefono = tel ? (tel.value || '').trim() : '';
             if (!email) return false;
             btn.disabled = true; btn.textContent = 'Invio…';
             var u = _stato.ultimo || { voci:[], totMin:0, totMax:0 };
@@ -1737,8 +1844,10 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify({
-                        _subject: 'Richiesta copia preventivo AI — ' + email,
+                        _subject: (telefono ? '[DA RICHIAMARE] ' : '') + 'Richiesta copia preventivo AI — ' + email,
                         email_cliente: email,
+                        telefono_cliente: telefono || 'non fornito',
+                        richiamare: telefono ? 'SI - il cliente ha lasciato il telefono' : 'no',
                         descrizione_lavori: _stato.desc,
                         voci_dettaglio: dettaglio,
                         stima_totale: fmt(u.totMin) + ' – ' + fmt(u.totMax),
@@ -1747,6 +1856,7 @@
                     })
                 }).finally(function() {
                     input.disabled = true;
+                    if (tel) tel.disabled = true;
                     btn.classList.add('hidden');
                     ok.classList.remove('hidden');
                 });
@@ -1800,11 +1910,13 @@
                     '</button>' +
                 '</div>' +
                 '<div id="email-copia-box" class="bg-gray-50 border border-gray-100 rounded-xl p-5 mt-5">' +
-                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo via email?</p>' +
-                    '<p class="text-xs text-gray-500 mb-3">Lasciaci la tua email e ti invieremo una copia dettagliata della stima. Nessuno spam.</p>' +
-                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col sm:flex-row gap-2">' +
+                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo?</p>' +
+                    '<p class="text-xs text-gray-500 mb-3">Ti inviamo una copia dettagliata della stima. Se lasci anche il telefono ti richiamiamo per capire meglio il lavoro, senza impegno.</p>' +
+                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col gap-2">' +
                         '<input type="email" id="email-copia" required placeholder="tua@email.it" ' +
-                            'class="flex-1 border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                        '<input type="tel" id="tel-copia" placeholder="Telefono (facoltativo, per richiamarti)" inputmode="tel" autocomplete="tel" ' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
                         '<button type="submit" id="email-copia-btn" ' +
                             'class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">Invia copia</button>' +
                     '</form>' +
@@ -1994,11 +2106,13 @@
                     '</button>' +
                 '</div>' +
                 '<div id="email-copia-box" class="bg-gray-50 border border-gray-100 rounded-xl p-5 mt-5">' +
-                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo via email?</p>' +
-                    '<p class="text-xs text-gray-500 mb-3">Lasciaci la tua email e ti invieremo una copia dettagliata della stima. Nessuno spam.</p>' +
-                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col sm:flex-row gap-2">' +
+                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo?</p>' +
+                    '<p class="text-xs text-gray-500 mb-3">Ti inviamo una copia dettagliata della stima. Se lasci anche il telefono ti richiamiamo per capire meglio il lavoro, senza impegno.</p>' +
+                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col gap-2">' +
                         '<input type="email" id="email-copia" required placeholder="tua@email.it" ' +
-                            'class="flex-1 border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                        '<input type="tel" id="tel-copia" placeholder="Telefono (facoltativo, per richiamarti)" inputmode="tel" autocomplete="tel" ' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
                         '<button type="submit" id="email-copia-btn" ' +
                             'class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">Invia copia</button>' +
                     '</form>' +
@@ -2125,5 +2239,11 @@
 
     })();
     </script>
+
+    <!-- Barra fissa mobile: chiamata diretta -->
+    <div class="call-bar bg-white border-t border-gray-200 shadow-lg flex">
+        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_home'}); }" class="flex-1 bg-blue-600 text-white py-3 font-bold text-center" aria-label="Chiama GIAL SRL">📞 Chiama ora</a>
+        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_home'}); }" class="flex-1 bg-green-500 text-white py-3 font-bold text-center" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+    </div>
 </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="geo.region" content="IT-PO">
     <meta name="geo.placename" content="Prato">
 
-    <title>Pronto Intervento Idraulico a Prato — Perdite, Spurghi | GIAL SRL</title>
-    <meta name="description" content="Idraulico per emergenze a Prato, Pistoia e Firenze: perdite d'acqua, allagamenti, scarichi otturati, spurghi urgenti, ricerca perdite. Reperibilità continua, manodopera 35 €/h + IVA, costo concordato prima dell'intervento." />
+    <title>Pronto Intervento Idraulico a Prato — GIAL SRL</title>
+    <meta name="description" content="Idraulico per emergenze a Prato, Pistoia e Firenze: perdite, allagamenti, scarichi otturati. Manodopera 35 €/h + IVA, costi concordati prima." />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <link rel="canonical" href="https://gialtermoidraulica.it/pronto-intervento-idraulico-prato/" />
 
@@ -48,6 +48,26 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto !important; }
         }
+    
+        /* Barra fissa chiama/WhatsApp su mobile */
+        .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; }
+        @media (min-width: 768px) { .call-bar { display: none; } }
+        @media (max-width: 767px) {
+            body { padding-bottom: 3.5rem; }
+            #cookie-banner { bottom: 4.5rem; }
+        }
+            .bg-red-50 { background-color: #fef2f2; }
+        .border-red-500 { border-color: #ef4444; }
+        .text-red-700 { color: #b91c1c; }
+        .border-gray-300 { border-color: #d1d5db; }
+        .border-l-4 { border-left-width: 4px; }
+        .list-disc { list-style-type: disc; }
+        .pl-5 { padding-left: 1.25rem; }
+        .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+        .max-w-5xl { max-width: 64rem; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
     </style>
 
     <script type="application/ld+json">
@@ -121,6 +141,30 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Certo: sostituzione di rubinetterie e sanitari, piccole riparazioni, manutenzione ordinaria degli impianti. Per i lavori più grandi, come il rifacimento del bagno, effettuiamo un sopralluogo gratuito."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Come faccio a capire da dove viene la perdita?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Spesso non si vede: l'acqua corre lungo tubi e massetti e spunta a metri di distanza dal punto in cui esce davvero. Per questo facciamo ricerca perdite con strumentazione, invece di demolire per tentativi. Se al telefono ci descrivi dove compare l'acqua e quando — sempre, solo aprendo un rubinetto, solo col riscaldamento acceso — arriviamo già con un'ipotesi."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "La perdita viene dal condominio: chi paga?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Dipende da dove si trova il guasto. Se è su una parte comune, come una colonna montante o di scarico, la spesa segue le regole condominiali; se è nel tratto privato, resta a carico del proprietario. Noi individuiamo e documentiamo il punto esatto con foto e relazione: la ripartizione la definiscono poi amministratore e assicurazioni, ma con un accertamento tecnico in mano è molto più semplice."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Devo avvisare prima l'assicurazione?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In caso di danno da acqua conviene aprire il sinistro il prima possibile, ma non aspettare la compagnia per fermare la perdita: la maggior parte delle polizze chiede anzi di limitare il danno. Fotografa, fai intervenire, conserva fattura e relazione dell'intervento."
                 }
             }
         ]
@@ -261,6 +305,72 @@
         </div>
     </section>
 
+    <section id="prima-di-arrivare" class="py-20 bg-white px-4" aria-labelledby="prima-di-arrivare-heading">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-4">
+                <span class="text-sm font-semibold text-accent uppercase tracking-widest">I primi cinque minuti contano</span>
+            </div>
+            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="prima-di-arrivare-heading">Cosa fare mentre stiamo arrivando</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Quello che fai nei primi minuti spesso determina se il danno resta contenuto o si estende ai piani sottostanti. Ecco cosa puoi fare subito, in sicurezza, prima che arrivi la squadra.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Chiudi il rubinetto generale</h3>
+                    <p class="text-gray-600 text-sm">Di solito è vicino al contatore, sotto il lavello o nel box doccia. Vale la pena sapere dove si trova <strong>prima</strong> di averne bisogno: chiuderlo ferma la perdita in pochi secondi.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Togli la corrente nella zona bagnata</h3>
+                    <p class="text-gray-600 text-sm">Se l'acqua è vicina a prese, elettrodomestici o al quadro, stacca l'interruttore di quella zona. Non toccare nulla di elettrico stando con i piedi nell'acqua.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Non usare gli scarichi</h3>
+                    <p class="text-gray-600 text-sm">Se il problema è nella colonna di scarico, ogni litro che mandi giù torna indietro. Avvisa anche gli altri appartamenti se sospetti che l'ostruzione sia comune.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Contieni e avvisa sotto</h3>
+                    <p class="text-gray-600 text-sm">Straccio, secchi e asciugatura di quello che puoi. Se abiti sopra qualcuno, avvisalo subito: limitare il danno al vicino è la parte più costosa da rimediare dopo.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Fotografa tutto</h3>
+                    <p class="text-gray-600 text-sm">Prima di asciugare, fai qualche foto del punto della perdita e dei danni. Ti serviranno per l'assicurazione o per l'amministratore, e a noi per capire la situazione al telefono.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
+                    <h3 class="font-bold mb-2 text-gray-900">Se senti odore di gas</h3>
+                    <p class="text-gray-600 text-sm">Non toccare interruttori né accendere fiamme. Apri le finestre, chiudi il rubinetto del gas ed esci, poi chiama il <strong>numero di pronto intervento del tuo distributore</strong>, che trovi in bolletta.</p>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-10">
+                <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-6">
+                    <h3 class="font-bold mb-3 text-red-700">Chiamaci subito se…</h3>
+                    <ul class="list-disc pl-5 space-y-3 text-gray-700 text-sm">
+                        <li>l'acqua esce e <strong>non riesci a fermarla</strong> chiudendo il generale;</li>
+                        <li>l'allagamento sta raggiungendo <strong>prese, quadri elettrici</strong> o il piano di sotto;</li>
+                        <li>la colonna di scarico è ostruita e <strong>refluisce nei sanitari</strong>;</li>
+                        <li>sei rimasto <strong>senza acqua</strong> o senza riscaldamento in pieno inverno.</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 border-l-4 border-gray-300 rounded-lg p-6">
+                    <h3 class="font-bold mb-3 text-gray-700">Può aspettare l'appuntamento se…</h3>
+                    <ul class="list-disc pl-5 space-y-3 text-gray-700 text-sm">
+                        <li>è un <strong>rubinetto che gocciola</strong> o una cassetta che perde un filo d'acqua;</li>
+                        <li>uno scarico è <strong>lento ma defluisce</strong>;</li>
+                        <li>vuoi <strong>sostituire sanitari o rubinetterie</strong> senza urgenza;</li>
+                        <li>è una <strong>macchia di umidità</strong> che tieni sotto controllo da tempo.</li>
+                    </ul>
+                    <p class="text-gray-500 text-xs mt-4">In questi casi ti fissiamo un appuntamento: paghi meno e non togli lo slot a chi ha davvero un'emergenza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <section id="zone" class="py-12 bg-gray-50 px-4" aria-labelledby="zone-heading">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4 italic text-blue-600" id="zone-heading">Dove interveniamo</h2>
+            <p class="text-gray-700 mb-2">Interveniamo a <strong>Prato</strong> e in tutta la provincia — Montemurlo, Poggio a Caiano, Carmignano, Vaiano, Vernio, Cantagallo — e nelle province di <strong>Firenze</strong> (Campi Bisenzio, Sesto Fiorentino, Calenzano, Signa) e <strong>Pistoia</strong> (Agliana, Montale, Quarrata, Pistoia città).</p>
+            <p class="text-gray-700 mb-2">Per <strong>lavori di maggiore entità</strong> e commesse strutturate operiamo su tutta la <strong>Toscana</strong>.</p>
+            <p class="text-gray-500 text-sm">Sede operativa in Via Traversa Pistoiese 12/L, Prato.</p>
+        </div>
+    </section>
+
     <section id="faq-urgenze" class="py-20 bg-white px-4">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
@@ -295,6 +405,27 @@
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Certo: sostituzione di rubinetterie e sanitari, piccole riparazioni, manutenzione ordinaria degli impianti. Per i lavori più grandi, come il <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline">rifacimento del bagno</a>, effettuiamo un sopralluogo gratuito.</p>
                 </details>
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Come faccio a capire da dove viene la perdita?</h3>
+                        <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">Spesso non si vede: l'acqua corre lungo tubi e massetti e spunta a metri di distanza dal punto in cui esce davvero. Per questo facciamo <strong>ricerca perdite</strong> con strumentazione, invece di demolire per tentativi. Se al telefono ci descrivi dove compare l'acqua e quando — sempre, solo aprendo un rubinetto, solo col riscaldamento acceso — arriviamo già con un'ipotesi.</p>
+                </details>
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">La perdita viene dal condominio: chi paga?</h3>
+                        <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">Dipende da dove si trova il guasto. Se è su una parte comune, come una colonna montante o di scarico, la spesa segue le regole condominiali; se è nel tratto privato, resta a carico del proprietario. Noi individuiamo e documentiamo il punto esatto con foto e relazione: la ripartizione la definiscono poi amministratore e assicurazioni, ma con un accertamento tecnico in mano è molto più semplice.</p>
+                </details>
+                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                    <summary class="flex items-center justify-between gap-1.5 text-gray-900">
+                        <h3 class="text-lg font-bold">Devo avvisare prima l'assicurazione?</h3>
+                        <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-4 leading-relaxed text-gray-700">In caso di danno da acqua conviene aprire il sinistro il prima possibile, ma non aspettare la compagnia per fermare la perdita: la maggior parte delle polizze chiede anzi di limitare il danno. Fotografa, fai intervenire, conserva fattura e relazione dell'intervento.</p>
+                </details>
             </div>
         </div>
     </section>
@@ -319,16 +450,22 @@
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:80px; width:auto;" class="mx-auto mb-2" loading="lazy">
             </a>
         </div>
-        <p class="mb-2"><a href="/" class="underline text-blue-600">Home</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="underline text-blue-600">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="underline text-blue-600">Guida ai costi</a> · <a href="/#privacy" class="underline text-blue-600">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="underline text-blue-600">Home</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="underline text-blue-600">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="underline text-blue-600">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="underline text-blue-600">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="underline text-blue-600">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="underline text-blue-600">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="underline text-blue-600">Condizionatori</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="underline text-blue-600">Guida ai costi</a> · <a href="/#privacy" class="underline text-blue-600">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
     <a href="https://wa.me/393279371705"
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_pronto'}); }"
-       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 flex items-center justify-center" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+       class="hidden md:block fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
+
+    <!-- Barra fissa mobile: chiamata diretta -->
+    <div class="call-bar bg-white border-t border-gray-200 shadow-lg flex">
+        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 bg-blue-600 text-white py-3 font-bold text-center" aria-label="Chiama GIAL SRL">📞 Chiama ora</a>
+        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 bg-green-500 text-white py-3 font-bold text-center" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+    </div>
 </body>
 </html>
