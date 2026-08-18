@@ -64,6 +64,7 @@
           .md\:justify-start { justify-content: flex-start; }
         }
         .text-accent { color: #b07d10; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
         .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; }
         @media (min-width: 768px) { .call-bar { display: none; } }
         @media (max-width: 767px) {
@@ -346,8 +347,16 @@
                     <li>A fine lavori: <strong>Di.Co.</strong> con allegati obbligatori e schemi dell'impianto</li>
                 </ul>
             </div>
-            <div class="bg-white border-l-4 border-blue-600 rounded-lg p-5 shadow-sm">
-                <p class="text-gray-700 text-sm"><strong>Inviateci l'elenco dei documenti richiesti</strong>: vi risponderemo indicando i tempi di consegna della documentazione completa. Qualora alcune voci non rientrino fra i requisiti che possiamo soddisfare, lo segnaliamo in fase di riscontro, prima dell'affidamento.</p>
+            <div class="mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
+                <div class="bg-blue-600 px-6 py-4">
+                    <h3 class="font-bold text-white text-lg">Come procedere</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 text-sm"><strong>Inviateci l'elenco dei documenti richiesti</strong>: vi risponderemo indicando i tempi di consegna della documentazione completa.</p>
+                </div>
+                <div class="bg-gray-50 border-t px-6 py-4">
+                    <p class="text-gray-600 text-sm">Qualora alcune voci non rientrino fra i requisiti che possiamo soddisfare, lo segnaliamo in fase di riscontro, prima dell'affidamento.</p>
+                </div>
             </div>
             <div class="text-center mt-10">
                 <a href="mailto:info@gialtermoidraulica.it?subject=Elenco%20documenti%20per%20qualifica%20fornitore" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'sezione_subappalto'}); }" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">Invia l'elenco documenti</a>

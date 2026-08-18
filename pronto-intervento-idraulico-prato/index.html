@@ -68,6 +68,8 @@
         .text-xs { font-size: 0.75rem; line-height: 1rem; }
         .mt-4 { margin-top: 1rem; }
         .mb-3 { margin-bottom: 0.75rem; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
     </style>
 
     <script type="application/ld+json">
@@ -238,7 +240,7 @@
         <div class="max-w-4xl mx-auto">
             <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-4">Reperibilità continua · Prato, Pistoia, Firenze</p>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900">Pronto Intervento Idraulico a Prato</h1>
-            <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Perdita d'acqua, allagamento, scarico otturato? Chiamaci: ti diciamo subito <strong>costi e tempi</strong>, prima di partire.</p>
+            <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Perdita d'acqua, allagamento, scarico otturato? Chiamaci: tariffe e tempi di arrivo te li diciamo al telefono, il costo del lavoro dopo la diagnosi — <strong>sempre prima di iniziare</strong>.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
                 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_pronto'}); }" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-md">📞 Chiama ora: 327 937 1705</a>
                 <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_pronto'}); }" class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-md">Scrivici su WhatsApp</a>
@@ -294,7 +296,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
                     <p class="text-2xl font-extrabold text-blue-600 mb-2">2</p>
                     <h3 class="font-bold mb-2 text-gray-900">Concordiamo costi e tempi</h3>
-                    <p class="text-gray-600 text-sm">Uscita <strong>50 € + IVA</strong>, manodopera <strong>35 €/h + IVA</strong>, materiali a parte: ti diamo un'indicazione chiara prima di partire.</p>
+                    <p class="text-gray-600 text-sm">Uscita <strong>50 € + IVA</strong>, manodopera <strong>35 €/h + IVA</strong>, materiali a parte: tutto concordato prima di iniziare il lavoro.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
                     <p class="text-2xl font-extrabold text-blue-600 mb-2">3</p>
@@ -302,10 +304,23 @@
                     <p class="text-gray-600 text-sm">Risolviamo il problema. Ogni intervento è coperto da <a href="/doc/polizza-gial.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">assicurazione decennale</a>.</p>
                 </div>
             </div>
-            <div class="max-w-4xl mx-auto bg-white border-l-4 border-blue-600 rounded-lg p-5 shadow-sm mt-10">
-                <h3 class="font-bold mb-2 text-gray-900">Come funziona l'uscita da 50 €</h3>
-                <p class="text-gray-700 text-sm">Per le <strong>riparazioni</strong> l'uscita costa <strong>50 € + IVA</strong>: copre il viaggio, la diagnosi del guasto e la valutazione dell'intervento. Se poi il lavoro lo esegui con noi, <strong>i 50 € vengono scalati dal conto finale</strong>: in pratica non li paghi. Li paghi solo se, dopo la valutazione, decidi di non procedere — e in quel caso ti resta comunque una diagnosi precisa del problema.</p>
-                <p class="text-gray-500 text-sm mt-3">Sui <strong>lavori strutturati</strong> — rifacimento bagno, sostituzione caldaia, climatizzazione, ristrutturazioni — il sopralluogo resta <strong>gratuito</strong>.</p>
+            <div class="max-w-4xl mx-auto mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
+                <div class="bg-blue-600 px-6 py-4">
+                    <h3 class="font-bold text-white text-lg">Come funziona l'uscita da 50 €</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 p-6">
+                    <div>
+                        <p class="font-bold text-gray-900 mb-1">Cosa comprende</p>
+                        <p class="text-gray-600 text-sm">Per le <strong>riparazioni</strong> l'uscita costa <strong>50 € + IVA</strong> e copre il viaggio, la diagnosi del guasto e la valutazione dell'intervento.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-900 mb-1">Quando non la paghi</p>
+                        <p class="text-gray-600 text-sm">Se il lavoro lo esegui con noi, <strong>i 50 € vengono scalati dal conto finale</strong>. Li paghi solo se decidi di non procedere — e in quel caso ti resta comunque una diagnosi precisa del problema.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 border-t px-6 py-4">
+                    <p class="text-gray-600 text-sm">Sui <strong>lavori strutturati</strong> — rifacimento bagno, sostituzione caldaia, climatizzazione, ristrutturazioni — il sopralluogo resta <strong>gratuito</strong>.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -320,7 +335,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
                     <h3 class="font-bold mb-2 text-gray-900">Chiudi il rubinetto generale</h3>
-                    <p class="text-gray-600 text-sm">Di solito è vicino al contatore, sotto il lavello o nel box doccia. Vale la pena sapere dove si trova <strong>prima</strong> di averne bisogno: chiuderlo ferma la perdita in pochi secondi.</p>
+                    <p class="text-gray-600 text-sm">Di solito è vicino al contatore, sotto il lavello o nello sportello di ispezione in bagno. Vale la pena sapere dove si trova <strong>prima</strong> di averne bisogno: chiuderlo ferma la perdita in pochi secondi.</p>
                 </div>
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
                     <h3 class="font-bold mb-2 text-gray-900">Togli la corrente nella zona bagnata</h3>
@@ -354,7 +369,7 @@
                     </ul>
                 </div>
                 <div class="bg-gray-50 border-l-4 border-gray-300 rounded-lg p-6">
-                    <h3 class="font-bold mb-3 text-gray-700">Può aspettare l'appuntamento se…</h3>
+                    <h3 class="font-bold mb-3 text-gray-700">Puoi aspettare se…</h3>
                     <ul class="list-disc pl-5 space-y-3 text-gray-700 text-sm">
                         <li>è un <strong>rubinetto che gocciola</strong> o una cassetta che perde un filo d'acqua;</li>
                         <li>uno scarico è <strong>lento ma defluisce</strong>;</li>
