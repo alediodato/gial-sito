@@ -35,7 +35,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/gial-studio.css">
 
@@ -222,7 +222,8 @@
     </div>
 
     <nav class="g-nav fixed w-full z-50" aria-label="Menu principale">
-        <div class="g-wrap pt-2 flex justify-between items-center pb-2">
+        <div class="g-wrap pt-2 flex flex-col">
+            <div class="w-full flex justify-between items-center pb-2">
             <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:52px; width:auto;" fetchpriority="high">
             </a>
@@ -233,9 +234,68 @@
                 <a href="#faq-bagno" class="g-nav-link">FAQ</a>
                 <a href="/#preventivo" class="g-nav-link">Preventivo AI</a>
             </div>
+            <div class="flex items-center gap-2">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 transition focus:outline-none" style="border-radius:4px" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="closeMenuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_bagno'}); }" class="g-nav-phone" aria-label="Chiama GIAL SRL">Chiama ora</a>
+            </div>
+        </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
+                <div class="flex flex-col">
+                    <a href="/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Home</a>
+                    <a href="#prezzi" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Prezzi</a>
+                    <a href="#cosa-comprende" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Cosa comprende</a>
+                    <a href="#faq-bagno" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">FAQ</a>
+                    <a href="/#preventivo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Preventivo AI</a>
+                    <p class="gial-mob-label">Tutti i servizi</p>
+                    <a href="/impianti-termoidraulici-aziende-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Impianti per aziende e cantieri</a>
+                    <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Ristrutturazioni chiavi in mano</a>
+                    <a href="/pompa-di-calore-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Pompe di calore</a>
+                    <a href="/installazione-condizionatori-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Installazione condizionatori</a>
+                    <a href="/sostituzione-caldaia-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Sostituzione caldaia</a>
+                    <a href="/impianti-gas-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Impianti gas a norma</a>
+                    <a href="/infissi-serramenti-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Infissi e serramenti</a>
+                    <a href="/pronto-intervento-idraulico-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Pronto intervento idraulico</a>
+                    <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Guida ai costi</a>
+                    <p class="gial-mob-label">Azienda</p>
+                    <a href="/#chi-siamo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Chi siamo</a>
+                    <a href="/#contatti" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Contatti</a>
+                </div>
+            </div>
         </div>
     </nav>
+    <script>
+    // Menu mobile: stesso comportamento della home
+    (function() {
+        var btn = document.getElementById('mobileMenuBtn');
+        var menu = document.getElementById('mobileMenu');
+        var hamburger = document.getElementById('hamburgerIcon');
+        var closeIcon = document.getElementById('closeMenuIcon');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            hamburger.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.add('hidden');
+                hamburger.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+    </script>
+
 
     <header class="g-hero">
         <div class="g-wrap">

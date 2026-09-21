@@ -231,7 +231,7 @@ strong, b { font-weight: 600; color: var(--g-ink); }
     color: var(--g-navy);
     border-bottom: 1px solid var(--g-gold);
     padding: 0 0 3px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 0;
 }
 
@@ -275,7 +275,7 @@ strong, b { font-weight: 600; color: var(--g-ink); }
     display: block;
     font-family: var(--g-serif);
     font-size: 1.05rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--g-navy);
     margin-bottom: 0.3rem;
 }
@@ -355,7 +355,7 @@ strong, b { font-weight: 600; color: var(--g-ink); }
 .g-card h3 {
     font-family: var(--g-serif);
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--g-navy);
     margin: 0 0 0.6rem;
 }
@@ -371,7 +371,7 @@ strong, b { font-weight: 600; color: var(--g-ink); }
 .g-card-link {
     align-self: flex-start;
     font-size: 0.82rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--g-navy);
     border-bottom: 1px solid var(--g-gold);
     padding-bottom: 2px;
@@ -545,7 +545,7 @@ strong, b { font-weight: 600; color: var(--g-ink); }
 }
 
 .g-contact-list li:first-child { border-top: 1px solid rgba(255, 255, 255, .14); }
-.g-contact-list b { color: #fff; font-weight: 500; min-width: 6.5rem; flex-shrink: 0; }
+.g-contact-list b { color: #fff; font-weight: 600; min-width: 6.5rem; flex-shrink: 0; }
 
 .g-field {
     width: 100%;
@@ -633,7 +633,7 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 #faq summary h3 {
     font-family: var(--g-serif);
     font-size: 1.12rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--g-navy);
     margin: 0;
     line-height: 1.4;
@@ -675,7 +675,7 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .g-price h3 {
     font-family: var(--g-serif);
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--g-navy);
     margin: 0 0 0.2rem;
 }
@@ -727,7 +727,7 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .g-panel-head h3 {
     font-family: var(--g-serif);
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
     color: #fff;
     margin: 0;
 }
@@ -789,7 +789,7 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .g-faq summary h3 {
     font-family: var(--g-serif);
     font-size: 1.12rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--g-navy);
     margin: 0;
     line-height: 1.4;
@@ -830,7 +830,7 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .g-callout h3 {
     font-family: var(--g-serif);
     font-size: 1.15rem;
-    font-weight: 500;
+    font-weight: 400;
     margin: 0 0 1rem;
     color: var(--g-navy);
 }
@@ -885,3 +885,20 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .bg-green-500 { background-color: #128C7E !important; }
 .hover\:bg-green-600:hover { background-color: #0F7468 !important; }
 .text-green-600 { color: #128C7E !important; }
+
+/* ---------- Menu mobile ----------
+   L'etichetta di gruppo era definita solo nel <style> della home:
+   ora che il menu c'e' anche sulle pagine interne sta qui. */
+
+.gial-mob-label {
+    padding: 0.9rem 1rem 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--g-gold-text);
+    margin: 0;
+}
+
+#mobileMenu { max-height: calc(100vh - 8rem); overflow-y: auto; }
+#mobileMenu a { border-radius: 3px; }

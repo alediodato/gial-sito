@@ -33,7 +33,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/gial-studio.css">
 
@@ -159,7 +159,8 @@
     </div>
 
     <nav class="g-nav fixed w-full z-50" aria-label="Menu principale">
-        <div class="g-wrap pt-2 flex justify-between items-center pb-2">
+        <div class="g-wrap pt-2 flex flex-col">
+            <div class="w-full flex justify-between items-center pb-2">
             <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:52px; width:auto;" fetchpriority="high">
             </a>
@@ -169,9 +170,67 @@
                 <a href="#esempio" class="g-nav-link">Esempio 80 mq</a>
                 <a href="/#preventivo" class="g-nav-link">Preventivo AI</a>
             </div>
+            <div class="flex items-center gap-2">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-600 hover:bg-gray-100 transition focus:outline-none" style="border-radius:4px" aria-label="Apri menu di navigazione" aria-expanded="false" aria-controls="mobileMenu">
+                    <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="closeMenuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_guida'}); }" class="g-nav-phone" aria-label="Chiama GIAL SRL">Chiama ora</a>
+            </div>
+        </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
+                <div class="flex flex-col">
+                    <a href="/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Home</a>
+                    <a href="#costi-voce" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Costi per intervento</a>
+                    <a href="#esempio" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Esempio 80 mq</a>
+                    <a href="/#preventivo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Preventivo AI</a>
+                    <p class="gial-mob-label">Tutti i servizi</p>
+                    <a href="/impianti-termoidraulici-aziende-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Impianti per aziende e cantieri</a>
+                    <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Ristrutturazioni chiavi in mano</a>
+                    <a href="/pompa-di-calore-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Pompe di calore</a>
+                    <a href="/installazione-condizionatori-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Installazione condizionatori</a>
+                    <a href="/sostituzione-caldaia-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Sostituzione caldaia</a>
+                    <a href="/impianti-gas-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Impianti gas a norma</a>
+                    <a href="/rifacimento-bagno-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Rifacimento bagno</a>
+                    <a href="/infissi-serramenti-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Infissi e serramenti</a>
+                    <a href="/pronto-intervento-idraulico-prato/" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Pronto intervento idraulico</a>
+                    <p class="gial-mob-label">Azienda</p>
+                    <a href="/#chi-siamo" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Chi siamo</a>
+                    <a href="/#contatti" class="px-4 py-3 text-gray-700 hover:bg-gray-50 font-medium transition">Contatti</a>
+                </div>
+            </div>
         </div>
     </nav>
+    <script>
+    // Menu mobile: stesso comportamento della home
+    (function() {
+        var btn = document.getElementById('mobileMenuBtn');
+        var menu = document.getElementById('mobileMenu');
+        var hamburger = document.getElementById('hamburgerIcon');
+        var closeIcon = document.getElementById('closeMenuIcon');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+            var isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden');
+            hamburger.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.add('hidden');
+                hamburger.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+    </script>
+
 
     <main id="main-content">
 
@@ -190,7 +249,7 @@
 
             <h2 id="costi-voce" class="g-h2">I costi, intervento per intervento</h2>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Rifacimento bagno</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Rifacimento bagno</h3>
             <p class="text-gray-700 leading-relaxed mb-4">È l'intervento più richiesto e quello che incide di più: comprende demolizione, nuove tubature e scarichi, sanitari, rivestimenti e coordinamento degli artigiani.</p>
             <div class="table-wrap mb-4"><table class="price-table">
                 <tr><th>Dimensione</th><th>Range indicativo</th></tr>
@@ -200,7 +259,7 @@
             </table></div>
             <p class="text-gray-600 mb-10">→ Approfondisci: <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline">rifacimento bagno a Prato: prezzi e cosa comprende</a></p>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Caldaia e riscaldamento</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Caldaia e riscaldamento</h3>
             <p class="text-gray-700 leading-relaxed mb-4">Sostituzione con caldaia a condensazione, chiavi in mano con Dichiarazione di Conformità (Di.Co.).</p>
             <div class="table-wrap mb-4"><table class="price-table">
                 <tr><th>Intervento</th><th>Range indicativo</th></tr>
@@ -212,7 +271,7 @@
             </table></div>
             <p class="text-gray-600 mb-10">→ Approfondisci: <a href="/sostituzione-caldaia-prato/" class="text-blue-600 underline">sostituzione caldaia a Prato: prezzi e dettagli</a></p>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Climatizzazione</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Climatizzazione</h3>
             <div class="table-wrap mb-10"><table class="price-table">
                 <tr><th>Configurazione</th><th>Range indicativo</th></tr>
                 <tr><td>Monosplit (1 ambiente)</td><td>1.550 – 3.500 €</td></tr>
@@ -222,7 +281,7 @@
             </table></div>
             <p class="text-gray-600 mb-10">→ Approfondisci: <a href="/installazione-condizionatori-prato/" class="text-blue-600 underline">installazione condizionatori a Prato: prezzi, cosa comprende e manutenzione</a></p>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Infissi e serramenti</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Infissi e serramenti</h3>
             <p class="text-gray-700 leading-relaxed mb-4">Prezzi <strong>a finestra</strong> (~1,4 mq), fornitura e posa, a seconda del materiale e del livello di finitura.</p>
             <div class="table-wrap mb-4"><table class="price-table">
                 <tr><th>Materiale</th><th>Range indicativo (a finestra)</th></tr>
@@ -232,7 +291,7 @@
             </table></div>
             <p class="text-gray-600 mb-10">→ Approfondisci: <a href="/infissi-serramenti-prato/" class="text-blue-600 underline">infissi e serramenti a Prato</a></p>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Pavimenti, tinteggiatura e impianto elettrico</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Pavimenti, tinteggiatura e impianto elettrico</h3>
             <div class="table-wrap mb-10"><table class="price-table">
                 <tr><th>Intervento</th><th>Range indicativo</th></tr>
                 <tr><td>Pavimenti in gres (~50 mq)</td><td>4.000 – 6.500 €</td></tr>
@@ -246,7 +305,7 @@
                 <tr><td>Impianto elettrico (oltre 110 mq)</td><td>8.500 – 13.000 €</td></tr>
             </table></div>
 
-            <h3 style="font-size:1.25rem;font-weight:500;margin:2.5rem 0 .9rem">Altri interventi frequenti</h3>
+            <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Altri interventi frequenti</h3>
             <div class="table-wrap mb-10"><table class="price-table">
                 <tr><th>Intervento</th><th>Range indicativo</th></tr>
                 <tr><td>Impianti cucina (idraulica + predisposizioni)</td><td>2.500 – 12.000 €</td></tr>
