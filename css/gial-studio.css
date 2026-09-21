@@ -1,0 +1,657 @@
+/* ============================================================
+   GIAL SRL — Design system "Studio"
+   Palette estratta dal logo aziendale:
+     navy  #173D6C  (lettere GIAL)
+     rosso #D3201F  (riga rossa)
+     oro   #F0B00C  (riga gialla)
+
+   Questo file si carica DOPO css/style.css (Tailwind precompilato).
+   Fa due cose:
+   1) definisce i token e i componenti della home (classi .g-*);
+   2) rimappa le poche utility Tailwind rimaste in pagina
+      (.text-blue-600, .bg-blue-600, ...) sui colori del marchio,
+      così anche l'HTML generato a runtime dal preventivo AI
+      esce coerente senza dover toccare le stringhe nel JS.
+   Riguarda solo la home: le landing non caricano questo file.
+   ============================================================ */
+
+:root {
+    /* Marchio */
+    --g-navy: #173D6C;
+    --g-navy-deep: #122E52;
+    --g-navy-soft: #E7EDF5;
+    --g-gold: #A87C22;
+    --g-gold-text: #8F6A1C;   /* variante con contrasto AA sul testo piccolo */
+    --g-gold-bright: #F0B00C; /* solo su fondo navy o come dettaglio grafico */
+    --g-red: #A81B1A;         /* urgenze e pronto intervento */
+
+    /* Superfici e testo */
+    --g-paper: #FBFAF7;
+    --g-paper-alt: #F4F1EA;
+    --g-ink: #333B45;
+    --g-ink-soft: #5A6675;
+    --g-line: #E3DED4;
+    --g-line-strong: #D3CBBC;
+
+    /* Tipografia */
+    --g-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --g-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    /* Ritmo verticale unico: niente più py-16/py-20 a caso */
+    --g-section: 6.5rem;
+    --g-radius: 4px;
+}
+
+@media (max-width: 767px) {
+    :root { --g-section: 4rem; }
+}
+
+/* ---------- Base ---------- */
+
+body {
+    font-family: var(--g-sans);
+    background: var(--g-paper);
+    color: var(--g-ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .g-serif {
+    font-family: var(--g-serif);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--g-navy);
+}
+
+/* Nessun titolo in corsivo: era il tic più riconoscibile del vecchio tema */
+h1, h2, h3 { font-style: normal; }
+
+strong, b { font-weight: 600; color: var(--g-ink); }
+
+::selection { background: var(--g-navy); color: #fff; }
+
+/* ---------- Rimappatura utility Tailwind sul marchio ---------- */
+
+.text-blue-600, .text-blue-700, .text-blue-800 { color: var(--g-navy) !important; }
+.bg-blue-600 { background-color: var(--g-navy) !important; }
+.bg-blue-700, .bg-blue-800 { background-color: var(--g-navy-deep) !important; }
+.hover\:bg-blue-700:hover, .hover\:bg-blue-800:hover { background-color: var(--g-navy-deep) !important; }
+.hover\:text-blue-600:hover, .hover\:text-blue-700:hover { color: var(--g-navy) !important; }
+.bg-blue-50, .hover\:bg-blue-50:hover { background-color: var(--g-navy-soft) !important; }
+.bg-blue-100, .hover\:bg-blue-100:hover { background-color: #DCE5F0 !important; }
+.text-blue-100, .text-blue-200 { color: #C9D4E4 !important; }
+.border-blue-100, .border-blue-200 { border-color: #CBD7E6 !important; }
+.hover\:border-blue-400:hover, .hover\:border-blue-600:hover { border-color: var(--g-navy) !important; }
+.ring-blue-500 { --tw-ring-color: var(--g-navy) !important; }
+.focus\:ring-blue-500:focus { --tw-ring-color: var(--g-navy) !important; }
+.text-accent { color: var(--g-gold-text) !important; }
+.border-accent { border-color: var(--g-gold) !important; }
+.bg-accent { background-color: var(--g-gold) !important; }
+.text-yellow-400 { color: var(--g-gold-bright) !important; }
+.bg-gray-50 { background-color: var(--g-paper-alt) !important; }
+.bg-gray-100 { background-color: var(--g-paper-alt) !important; }
+.border-gray-100, .border-gray-200 { border-color: var(--g-line) !important; }
+.text-gray-500, .text-gray-600 { color: var(--g-ink-soft) !important; }
+.text-gray-700, .text-gray-800, .text-gray-900 { color: var(--g-ink) !important; }
+
+:focus-visible { outline: 3px solid var(--g-gold); outline-offset: 2px; }
+
+/* Questo foglio viene dopo Tailwind, quindi un componente .g-* che dichiara
+   `display` vincerebbe su .hidden e gli elementi che il JS nasconde
+   resterebbero visibili. Ridichiariamo qui le utility di display che la home
+   usa davvero, nello stesso ordine di Tailwind: prima la base, poi le
+   varianti md: — così a >=768px il menu desktop torna a vincere su .hidden. */
+.hidden { display: none !important; }
+
+@media (min-width: 768px) {
+    .md\:hidden { display: none !important; }
+    .md\:block { display: block !important; }
+    .md\:flex { display: flex !important; }
+}
+
+/* ---------- Contenitore ---------- */
+
+.g-wrap { max-width: 1180px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.g-wrap-narrow { max-width: 820px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+
+@media (max-width: 767px) {
+    .g-wrap, .g-wrap-narrow { padding-left: 20px; padding-right: 20px; }
+}
+
+/* ---------- Barra di navigazione ---------- */
+
+.g-nav {
+    background: rgba(251, 250, 247, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--g-line);
+    box-shadow: none;
+}
+
+.g-nav-link {
+    font-size: 0.9rem;
+    color: var(--g-ink-soft);
+    transition: color .18s;
+}
+
+.g-nav-link:hover { color: var(--g-navy); }
+
+.g-nav-phone {
+    border: 1px solid var(--g-navy);
+    color: var(--g-navy);
+    padding: 0.6rem 1.15rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: var(--g-radius);
+    transition: background .18s, color .18s;
+}
+
+.g-nav-phone:hover { background: var(--g-navy); color: #fff; }
+
+/* ---------- Occhielli, titoli di sezione ---------- */
+
+.g-eyebrow {
+    font-family: var(--g-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--g-gold-text);
+    margin: 0 0 1.25rem;
+}
+
+.g-h1 {
+    font-family: var(--g-serif);
+    font-size: clamp(2.35rem, 5.2vw, 3.6rem);
+    line-height: 1.08;
+    font-weight: 400;
+    color: var(--g-navy);
+    margin: 0 0 1.5rem;
+}
+
+.g-h1 em { font-style: italic; color: var(--g-gold-text); }
+
+.g-h2 {
+    font-family: var(--g-serif);
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    line-height: 1.15;
+    font-weight: 400;
+    color: var(--g-navy);
+    margin: 0 0 0.75rem;
+}
+
+.g-h2-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--g-ink-soft);
+    max-width: 62ch;
+    margin: 0;
+}
+
+.g-section-head { margin-bottom: 3.25rem; }
+
+.g-section-head--split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.g-lead {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--g-ink-soft);
+    max-width: 46ch;
+}
+
+/* ---------- Pulsanti ---------- */
+
+.g-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--g-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 1rem 1.9rem;
+    border-radius: var(--g-radius);
+    transition: background .18s, color .18s, border-color .18s;
+    text-align: center;
+}
+
+.g-btn-primary { background: var(--g-navy); color: #fff; border: 1px solid var(--g-navy); }
+.g-btn-primary:hover { background: var(--g-navy-deep); border-color: var(--g-navy-deep); color: #fff; }
+
+.g-btn-outline { background: transparent; color: var(--g-navy); border: 1px solid var(--g-line-strong); }
+.g-btn-outline:hover { border-color: var(--g-navy); }
+
+.g-btn-quiet {
+    color: var(--g-navy);
+    border-bottom: 1px solid var(--g-gold);
+    padding: 0 0 3px;
+    font-weight: 500;
+    border-radius: 0;
+}
+
+.g-btn-quiet:hover { border-bottom-color: var(--g-navy); }
+
+/* ---------- Hero ---------- */
+
+.g-hero { padding-top: 9.5rem; padding-bottom: var(--g-section); background: var(--g-paper); }
+
+.g-hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 4.5rem;
+    align-items: center;
+}
+
+.g-hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 2.25rem 0 2.75rem; }
+
+.g-hero-shot { position: relative; }
+
+.g-hero-shot img {
+    width: 100%;
+    height: 33rem;
+    object-fit: cover;
+    border-radius: var(--g-radius);
+}
+
+.g-seal {
+    display: block; /* è un <a>: senza questo, da statico non forma un box */
+    position: absolute;
+    left: -2rem;
+    bottom: 2.5rem;
+    max-width: 15rem;
+    background: var(--g-paper);
+    border: 1px solid var(--g-line);
+    border-left: 3px solid var(--g-gold);
+    padding: 1.15rem 1.5rem;
+}
+
+.g-seal strong {
+    display: block;
+    font-family: var(--g-serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    margin-bottom: 0.3rem;
+}
+
+.g-seal span { font-size: 0.8rem; line-height: 1.55; color: var(--g-ink-soft); }
+
+/* ---------- Fascia numeri ---------- */
+
+.g-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    border-top: 1px solid var(--g-line);
+    padding-top: 1.75rem;
+}
+
+.g-stat b {
+    display: block;
+    font-family: var(--g-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--g-navy);
+    margin-bottom: 0.4rem;
+}
+
+.g-stat span {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--g-ink-soft);
+}
+
+/* ---------- Sezioni ---------- */
+
+.g-section { padding-top: var(--g-section); padding-bottom: var(--g-section); }
+.g-section--alt { background: var(--g-paper-alt); border-top: 1px solid var(--g-line); border-bottom: 1px solid var(--g-line); }
+.g-section--line { border-top: 1px solid var(--g-line); }
+
+/* ---------- Schede ---------- */
+
+/* Griglia a filo unico: le schede sono separate da linee, non da ombre */
+.g-grid-hair {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--g-line);
+    border: 1px solid var(--g-line);
+}
+
+.g-grid-hair--3 { grid-template-columns: repeat(3, 1fr); }
+
+.g-card {
+    background: var(--g-paper);
+    padding: 2.25rem 1.9rem 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: background .2s;
+}
+
+.g-section--alt .g-card { background: var(--g-paper-alt); }
+.g-card:hover { background: #fff; }
+.g-section--alt .g-card:hover { background: var(--g-paper); }
+
+.g-card-num {
+    font-family: var(--g-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--g-gold-text);
+    margin-bottom: 1.35rem;
+}
+
+.g-card-num--urgent { color: var(--g-red); }
+
+.g-card h3 {
+    font-family: var(--g-serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    margin: 0 0 0.6rem;
+}
+
+.g-card p {
+    font-size: 0.9rem;
+    line-height: 1.68;
+    color: var(--g-ink-soft);
+    margin: 0 0 1.25rem;
+    flex: 1;
+}
+
+.g-card-link {
+    align-self: flex-start;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    border-bottom: 1px solid var(--g-gold);
+    padding-bottom: 2px;
+    transition: border-color .18s;
+}
+
+.g-card-link:hover { border-bottom-color: var(--g-navy); }
+
+/* ---------- Manifesto (ex "Diamo valore") ---------- */
+
+.g-manifesto { background: var(--g-navy); color: #fff; }
+
+.g-manifesto .g-eyebrow { color: var(--g-gold-bright); }
+
+.g-manifesto-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4.5rem;
+    align-items: start;
+}
+
+.g-manifesto h2 {
+    font-family: var(--g-serif);
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 1.14;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    text-transform: none;
+}
+
+.g-manifesto p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: #C9D4E4;
+    margin: 0 0 1.35rem;
+}
+
+.g-manifesto p:last-child { margin-bottom: 0; }
+
+.g-manifesto strong { color: #fff; font-weight: 600; }
+.g-manifesto em { font-style: normal; color: var(--g-gold-bright); }
+
+.g-manifesto a { color: #fff; border-bottom: 1px solid var(--g-gold-bright); }
+.g-manifesto a:hover { border-bottom-width: 2px; }
+
+.g-manifesto-aside {
+    border-left: 2px solid rgba(240, 176, 12, .45);
+    padding-left: 1.75rem;
+    margin-top: 2.5rem;
+}
+
+.g-manifesto-aside b {
+    display: block;
+    font-family: var(--g-serif);
+    font-size: 3.4rem;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--g-gold-bright);
+}
+
+.g-manifesto-aside span {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C9D4E4;
+    margin-top: 0.5rem;
+}
+
+/* ---------- Team ---------- */
+
+.g-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--g-line);
+    border: 1px solid var(--g-line);
+}
+
+.g-person {
+    background: var(--g-paper);
+    padding: 2rem 1.75rem;
+    display: flex;
+    gap: 1.15rem;
+    align-items: flex-start;
+}
+
+.g-person img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.04);
+    flex-shrink: 0;
+}
+
+.g-person h3 {
+    font-family: var(--g-sans);
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--g-navy);
+    margin: 0 0 0.25rem;
+    letter-spacing: 0;
+}
+
+.g-person p { font-size: 0.83rem; line-height: 1.6; color: var(--g-ink-soft); margin: 0; }
+
+/* ---------- Portfolio ---------- */
+
+.g-portfolio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+.g-portfolio figure { margin: 0; overflow: hidden; border-radius: var(--g-radius); }
+
+.g-portfolio img {
+    width: 100%;
+    height: 19rem;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform .5s ease;
+}
+
+.g-portfolio figure:hover img { transform: scale(1.035); }
+
+.g-portfolio figcaption {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--g-ink-soft);
+    margin-top: 0.75rem;
+}
+
+/* ---------- Recensioni ---------- */
+
+.g-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+
+.g-quote { display: flex; flex-direction: column; border-top: 2px solid var(--g-navy); padding-top: 1.5rem; }
+
+.g-quote blockquote {
+    font-family: var(--g-serif);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--g-ink);
+    margin: 0 0 1.25rem;
+    flex: 1;
+}
+
+.g-quote cite { font-style: normal; font-size: 0.82rem; color: var(--g-ink-soft); }
+.g-quote cite strong { display: block; color: var(--g-navy); font-weight: 600; margin-bottom: 0.1rem; }
+.g-quote .g-stars { color: var(--g-gold-bright); font-size: 0.95rem; letter-spacing: 0.15em; margin-bottom: 0.9rem; }
+
+/* ---------- Contatti ---------- */
+
+.g-contact { background: var(--g-navy); color: #fff; }
+.g-contact h2, .g-contact h3 { color: #fff; }
+.g-contact .g-eyebrow { color: var(--g-gold-bright); }
+.g-contact a { color: #fff; }
+
+.g-contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: start; }
+
+.g-contact-list { list-style: none; margin: 0 0 2.25rem; padding: 0; }
+
+.g-contact-list li {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .14);
+    font-size: 0.95rem;
+    color: #C9D4E4;
+}
+
+.g-contact-list li:first-child { border-top: 1px solid rgba(255, 255, 255, .14); }
+.g-contact-list b { color: #fff; font-weight: 500; min-width: 6.5rem; flex-shrink: 0; }
+
+.g-field {
+    width: 100%;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: var(--g-radius);
+    padding: 0.9rem 1rem;
+    color: #fff;
+    font-family: var(--g-sans);
+    font-size: 0.95rem;
+    transition: border-color .18s, background .18s;
+}
+
+.g-field::placeholder { color: rgba(255, 255, 255, .55); }
+.g-field:focus { outline: none; border-color: var(--g-gold-bright); background: rgba(255, 255, 255, .1); }
+textarea.g-field { min-height: 11rem; resize: vertical; }
+
+.g-btn-gold { background: var(--g-gold-bright); color: var(--g-navy-deep); border: 1px solid var(--g-gold-bright); }
+.g-btn-gold:hover { background: #ffc22e; border-color: #ffc22e; color: var(--g-navy-deep); }
+
+/* ---------- Footer ---------- */
+
+.g-footer { background: var(--g-paper-alt); border-top: 1px solid var(--g-line); padding: 3.5rem 0 2.5rem; }
+.g-footer-links { display: flex; flex-wrap: wrap; gap: 0.35rem 1.5rem; justify-content: center; }
+
+.g-footer-links a {
+    font-size: 0.85rem;
+    color: var(--g-ink-soft);
+    border-bottom: 1px solid transparent;
+    transition: color .18s, border-color .18s;
+}
+
+.g-footer-links a:hover { color: var(--g-navy); border-bottom-color: var(--g-gold); }
+.g-footer-meta { font-size: 0.78rem; color: var(--g-ink-soft); text-align: center; line-height: 1.8; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+    .g-grid-hair { grid-template-columns: repeat(2, 1fr); }
+    .g-team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .g-hero-grid,
+    .g-manifesto-grid,
+    .g-contact-grid { grid-template-columns: 1fr; gap: 2.75rem; }
+
+    .g-hero { padding-top: 7.5rem; }
+    .g-hero-shot img { height: 22rem; }
+    /* Sotto i 900px il bollino esce dalla foto e diventa un blocco a sé */
+    .g-seal {
+        position: static;
+        max-width: none;
+        margin-top: 1rem;
+        border-top: 1px solid var(--g-line);
+    }
+    .g-portfolio { grid-template-columns: 1fr; }
+    .g-quotes { grid-template-columns: 1fr; gap: 2rem; }
+    .g-manifesto-aside { margin-top: 1.5rem; }
+}
+
+@media (max-width: 639px) {
+    .g-grid-hair, .g-grid-hair--3, .g-team-grid { grid-template-columns: 1fr; }
+    .g-stats { gap: 1.75rem 2.5rem; }
+    .g-hero-actions { flex-direction: column; align-items: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .g-portfolio figure:hover img { transform: none; }
+}
+
+/* ---------- FAQ ---------- */
+/* Le utility py-5 / space-y-4 non esistono nel Tailwind precompilato:
+   la spaziatura delle schede FAQ la governiamo qui. */
+
+#faq details {
+    border-bottom: 1px solid var(--g-line);
+    padding: 1.35rem 0;
+}
+
+#faq details:first-of-type { border-top: 1px solid var(--g-line); }
+
+#faq summary { gap: 1.5rem; }
+
+#faq summary h3 {
+    font-family: var(--g-serif);
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    margin: 0;
+    line-height: 1.4;
+}
+
+#faq details[open] summary h3 { color: var(--g-gold-text); }
+
+#faq summary span { color: var(--g-gold); }
+
+#faq details p {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--g-ink-soft);
+    max-width: 68ch;
+}
+
+#faq details a { color: var(--g-navy); }
+
+.g-btn:disabled { opacity: .55; cursor: not-allowed; }
+.g-btn:disabled:hover { background: var(--g-navy); border-color: var(--g-navy); }
