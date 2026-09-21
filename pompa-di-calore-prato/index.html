@@ -67,6 +67,7 @@
           .md\:justify-start { justify-content: flex-start; }
         }
         .text-accent { color: #b07d10; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
         .call-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; }
         @media (min-width: 768px) { .call-bar { display: none; } }
         @media (max-width: 767px) {
@@ -278,8 +279,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="bg-white border-l-4 border-blue-600 rounded-lg p-5 shadow-sm">
-                <p class="text-gray-700 text-sm">Preferiamo perdere un lavoro che consegnarti un impianto che ti farà arrabbiare per dieci anni. <strong>Se al sopralluogo risulta che nel tuo caso non conviene, te lo diciamo</strong> e ti proponiamo l'alternativa migliore — anche quando vale meno per noi.</p>
+            <div class="mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
+                <div class="bg-blue-600 px-6 py-4">
+                    <h3 class="font-bold text-white text-lg">Se non conviene, te lo diciamo</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 text-sm">Preferiamo perdere un lavoro che consegnarti un impianto che ti farà arrabbiare per dieci anni. <strong>Se al sopralluogo risulta che nel tuo caso la pompa di calore non conviene</strong>, te lo diciamo e ti proponiamo l'alternativa migliore — anche quando vale meno per noi.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -317,8 +323,25 @@
                     </ul>
                 </div>
             </div>
-            <div class="max-w-4xl mx-auto bg-gray-50 border-l-4 border-blue-600 rounded-lg p-5">
-                <p class="text-gray-700 text-sm"><strong>Prima di guardare gli incentivi, guarda questi numeri.</strong> La sostituzione dell'impianto di climatizzazione invernale con una pompa di calore rientra tipicamente fra gli interventi agevolati, per detrazione fiscale o tramite <strong>Conto Termico</strong> (GSE), che funziona a rimborso diretto anziché in dichiarazione. Massimali e requisiti cambiano ogni anno: al sopralluogo verifichiamo quale strada conviene nel tuo caso.</p>
+            <div class="max-w-4xl mx-auto mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
+                <div class="bg-blue-600 px-6 py-4">
+                    <h3 class="font-bold text-white text-lg">Prima di guardare gli incentivi, guarda questi numeri</h3>
+                </div>
+                <div class="p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="font-bold text-gray-900 mb-1">Detrazione fiscale</p>
+                            <p class="text-gray-600 text-sm">La sostituzione dell'impianto di climatizzazione invernale con una pompa di calore rientra tipicamente fra gli interventi agevolati, recuperati in dichiarazione.</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 mb-1">Conto Termico (GSE)</p>
+                            <p class="text-gray-600 text-sm">La strada alternativa: funziona a rimborso diretto anziché in dichiarazione, quindi i soldi rientrano molto prima.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 border-t px-6 py-4">
+                    <p class="text-gray-600 text-sm">Massimali e requisiti cambiano ogni anno: al sopralluogo verifichiamo quale strada conviene nel tuo caso.</p>
+                </div>
             </div>
             <div class="text-center mt-10">
                 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_prezzi_pdc'}); }" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">📞 Chiedi una valutazione al telefono</a>
