@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#173D6C">
     <meta name="geo.region" content="IT-PO">
     <meta name="geo.placename" content="Prato">
 
@@ -12,11 +12,18 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <link rel="canonical" href="https://gialtermoidraulica.it/impianti-termoidraulici-aziende-prato/" />
 
-    <meta property="og:title" content="Impianti Termoidraulici per Aziende e Cantieri a Prato | GIAL SRL" />
+    <meta property="og:title" content="Impianti Termoidraulici per Aziende a Prato | GIAL SRL" />
     <meta property="og:description" content="Impianti idrico-sanitari, termici, gas e di climatizzazione per aziende, studi professionali e imprese edili. Subappalti con documentazione completa, a Prato e in Toscana." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gialtermoidraulica.it/impianti-termoidraulici-aziende-prato/" />
     <meta property="og:image" content="https://gialtermoidraulica.it/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GIAL SRL — termoidraulica e impianti a Prato" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Impianti Termoidraulici per Aziende a Prato | GIAL SRL" />
+    <meta name="twitter:description" content="Impiantistica termoidraulica per aziende, studi e imprese edili a Prato e in Toscana. Subappalti con documentazione completa e polizza decennale." />
+    <meta name="twitter:image" content="https://gialtermoidraulica.it/img/og-image.png" />
     <meta property="og:site_name" content="GIAL SRL" />
     <meta property="og:locale" content="it_IT" />
 
@@ -28,8 +35,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gial-studio.css">
 
     <style>
         /* Utility non presenti nel CSS precompilato (stesso approccio delle altre landing) */
@@ -225,36 +233,37 @@
 
     <!-- Banner consenso cookie -->
     <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-lg bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex items-center gap-4 z-50 hidden">
-        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="underline text-blue-600">Leggi la privacy</a></div>
+        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="">Leggi la privacy</a></div>
         <div class="flex gap-2">
-            <button onclick="GIALCookieConsent.accept()" class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Accetta</button>
-            <button onclick="GIALCookieConsent.decline()" class="bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 focus:outline-none">Rifiuta</button>
+            <button onclick="GIALCookieConsent.accept()" class="g-btn g-btn-primary" style="padding:.55rem 1rem;font-size:.85rem">Accetta</button>
+            <button onclick="GIALCookieConsent.decline()" class="g-btn g-btn-outline" style="padding:.55rem 1rem;font-size:.85rem">Rifiuta</button>
         </div>
     </div>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" aria-label="Menu principale">
-        <div class="max-w-7xl mx-auto px-4 pt-2 flex justify-between items-center pb-2">
+    <nav class="g-nav fixed w-full z-50" aria-label="Menu principale">
+        <div class="g-wrap pt-2 flex justify-between items-center pb-2">
             <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
-                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:60px; width:auto;" fetchpriority="high">
+                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:52px; width:auto;" fetchpriority="high">
             </a>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="/" class="hover:text-blue-600 transition">Home</a>
-                <a href="#cosa-facciamo" class="hover:text-blue-600 transition">Cosa realizziamo</a>
-                <a href="#subappalto" class="hover:text-blue-600 transition">Subappalti</a>
-                <a href="#cantiere" class="hover:text-blue-600 transition">In cantiere</a>
-                <a href="#faq-aziende" class="hover:text-blue-600 transition">FAQ</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/" class="g-nav-link">Home</a>
+                <a href="#cosa-facciamo" class="g-nav-link">Cosa realizziamo</a>
+                <a href="#subappalto" class="g-nav-link">Subappalti</a>
+                <a href="#cantiere" class="g-nav-link">In cantiere</a>
+                <a href="#faq-aziende" class="g-nav-link">FAQ</a>
             </div>
-            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_aziende'}); }" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition" aria-label="Chiama GIAL SRL">Chiama Ora</a>
+            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_aziende'}); }" class="g-nav-phone" aria-label="Chiama GIAL SRL">Chiama ora</a>
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-4">Impresa esecutrice per committenti professionali · Prato e Toscana</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900">Impianti Termoidraulici per Aziende e Cantieri</h1>
-            <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Impianti idrico-sanitari, termici, gas e di climatizzazione per <strong>studi professionali, uffici, attività commerciali e imprese edili</strong>. Nove addetti in organico, documentazione di sicurezza aggiornata, Dichiarazione di Conformità e <strong>polizza postuma decennale</strong>.</p>
+    <header class="g-hero g-hero--center g-hero--crumbed">
+        <div class="g-wrap-narrow">
+            <nav class="g-crumbs" aria-label="Percorso di navigazione"><a href="/">Home</a> <span>/</span> Impianti per aziende</nav>
+            <p class="g-eyebrow">Prato e Toscana &middot; committenti professionali</p>
+            <h1 class="g-h1">Impianti termoidraulici per aziende, con i documenti gi&agrave; pronti</h1>
+            <p class="g-lead">Impianti idrico-sanitari, termici, gas e di climatizzazione per <strong>studi professionali, uffici, attività commerciali e imprese edili</strong>. Nove addetti in organico, documentazione di sicurezza aggiornata, Dichiarazione di Conformità e <strong>polizza postuma decennale</strong>.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_aziende'}); }" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-md">📞 327 937 1705</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_aziende'}); }" class="g-btn g-btn-primary">📞 327 937 1705</a>
                 <a href="mailto:info@gialtermoidraulica.it?subject=Richiesta%20impianti%20-%20committente%20professionale" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'hero_aziende'}); }" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-50 transition">Invia il capitolato</a>
             </div>
             <p class="text-sm text-gray-500">Per le procedure di qualifica fornitore, inviateci l'elenco dei documenti richiesti: riceverete un riscontro sui tempi di consegna.</p>
@@ -263,80 +272,80 @@
 
     <main id="main-content">
 
-    <section id="chi-ci-chiama" class="py-20 bg-gray-50 px-4" aria-labelledby="chi-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="chi-heading">I nostri committenti</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Da un'attività artigianale avviata oltre cinquant'anni fa, e come GIAL SRL dal 2018, operiamo per committenti che richiedono continuità di presenza, documentazione conforme e rispetto dei tempi concordati.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Imprese edili e general contractor</h3>
+    <section id="chi-ci-chiama" class="g-section g-section--alt" aria-labelledby="chi-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="chi-heading">I nostri committenti</h2>
+            <p class="g-h2-sub g-head-end">Da un'attività artigianale avviata nel 1980, e come GIAL SRL dal 2018, operiamo per committenti che richiedono continuità di presenza, documentazione conforme e rispetto dei tempi concordati.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Imprese edili e general contractor</h3>
                     <p class="text-gray-600 text-sm">Operiamo come impresa esecutrice per la parte termoidraulica, con documentazione conforme alle procedure di cantiere e rispetto del cronoprogramma concordato con la direzione lavori.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Studi medici e ambulatori</h3>
+                <div class="g-card">
+                    <h3 class="">Studi medici e ambulatori</h3>
                     <p class="text-gray-600 text-sm">Impianti idrici e di climatizzazione per strutture sanitarie, con particolare attenzione a igiene, silenziosità e continuità del servizio. Disponiamo di referenze verificabili nel settore.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Enti e gestori immobiliari</h3>
+                <div class="g-card">
+                    <h3 class="">Enti e gestori immobiliari</h3>
                     <p class="text-gray-600 text-sm">Abbiamo operato per committenti strutturati quali <strong>Ferrovie dello Stato</strong> e <strong>CASA S.p.A.</strong>, con le procedure di qualifica e i controlli che tali rapporti comportano.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Uffici, negozi e attività</h3>
+                <div class="g-card">
+                    <h3 class="">Uffici, negozi e attività</h3>
                     <p class="text-gray-600 text-sm">Nuovi allestimenti e rifacimenti in locali commerciali e direzionali, con lavorazioni articolate per fasi o in orari concordati, per limitare l'interferenza con l'attività.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Amministratori di condominio</h3>
+                <div class="g-card">
+                    <h3 class="">Amministratori di condominio</h3>
                     <p class="text-gray-600 text-sm">Rifacimento di colonne montanti e di scarico, centrali termiche, reti di distribuzione. Preventivi leggibili in assemblea e un referente unico per tutta la durata dei lavori.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Progettisti e studi tecnici</h3>
+                <div class="g-card">
+                    <h3 class="">Progettisti e studi tecnici</h3>
                     <p class="text-gray-600 text-sm">Esecuzione conforme al progetto, con segnalazione delle criticità realizzative già in fase di offerta, così da contenere le varianti in corso d'opera.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="cosa-facciamo" class="py-20 bg-white px-4" aria-labelledby="cosa-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="cosa-heading">Cosa realizziamo</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Tutta la parte impiantistica, dall'opera nuova al rifacimento su edificio esistente.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Impianti idrico-sanitari</h3>
+    <section id="cosa-facciamo" class="g-section g-section--line" aria-labelledby="cosa-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="cosa-heading">Che impianti realizziamo per le imprese</h2>
+            <p class="g-h2-sub g-head-end">Tutta la parte impiantistica, dall'opera nuova al rifacimento su edificio esistente.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Impianti idrico-sanitari</h3>
                     <p class="text-gray-600 text-sm">Reti di adduzione e scarico, colonne montanti, servizi igienici per uffici e strutture aperte al pubblico, locali tecnici e contabilizzazione.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Impianti termici e centrali</h3>
+                <div class="g-card">
+                    <h3 class="">Impianti termici e centrali</h3>
                     <p class="text-gray-600 text-sm">Centrali termiche, reti di distribuzione, impianti a zone, sistemi radianti a pavimento, sostituzione di generatori su edifici in esercizio.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Impianti gas a norma</h3>
+                <div class="g-card">
+                    <h3 class="">Impianti gas a norma</h3>
                     <p class="text-gray-600 text-sm">Impianti gas <strong>civili e industriali</strong>, collaudi e <strong>Dichiarazione di Conformità</strong> secondo il DM 37/2008, con allegati obbligatori e schemi.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Climatizzazione</h3>
+                <div class="g-card">
+                    <h3 class="">Climatizzazione</h3>
                     <p class="text-gray-600 text-sm">Impianti multisplit e sistemi per grandi ambienti, con registrazione degli interventi in <strong>Banca Dati F-GAS</strong>. <a href="/installazione-condizionatori-prato/" class="text-blue-600 underline">Vedi la pagina climatizzazione</a>.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Pompe di calore e rinnovamento energetico</h3>
+                <div class="g-card">
+                    <h3 class="">Pompe di calore e rinnovamento energetico</h3>
                     <p class="text-gray-600 text-sm">Sostituzione di impianti a gas con <a href="/pompa-di-calore-prato/" class="text-blue-600 underline">pompe di calore aria-acqua</a>, adeguamento dei terminali e riqualificazione delle centrali esistenti.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Coordinamento delle altre opere</h3>
+                <div class="g-card">
+                    <h3 class="">Coordinamento delle altre opere</h3>
                     <p class="text-gray-600 text-sm">Ove necessarie opere murarie, cartongesso o impianti elettrici, ne curiamo il coordinamento con artigiani di consolidata collaborazione: il committente mantiene <strong>un solo referente</strong>.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="subappalto" class="py-20 bg-gray-50 px-4" aria-labelledby="subappalto-heading">
-        <div class="max-w-5xl mx-auto">
+    <section id="subappalto" class="g-section g-section--alt" aria-labelledby="subappalto-heading">
+        <div class="g-wrap">
             <div class="text-center mb-4">
                 <span class="text-sm font-semibold text-accent uppercase tracking-widest">Qualifica fornitore e sicurezza</span>
             </div>
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="subappalto-heading">Documentazione per la qualifica e la sicurezza</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Nei cantieri con coordinatore per la sicurezza, i tempi di apertura dipendono anche dalla completezza documentale delle imprese esecutrici. <strong>Manteniamo la nostra documentazione costantemente aggiornata</strong>, così da rispondere alle richieste di qualifica in tempi contenuti.</p>
-            <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-6 mb-10">
+            <h2 class="g-h2" id="subappalto-heading">Documentazione per la qualifica e la sicurezza</h2>
+            <p class="g-h2-sub g-head-end">Nei cantieri con coordinatore per la sicurezza, i tempi di apertura dipendono anche dalla completezza documentale delle imprese esecutrici. <strong>Manteniamo la nostra documentazione costantemente aggiornata</strong>, così da rispondere alle richieste di qualifica in tempi contenuti.</p>
+            <div class="g-callout g-callout--si" style="margin-bottom:2.5rem">
                 <h3 class="font-bold mb-3 text-green-700">Documentazione fornita per la qualifica</h3>
                 <ul class="list-disc pl-5 space-y-3 text-gray-700 text-sm">
                     <li><strong>POS</strong> specifico per il cantiere e <strong>accettazione del PSC</strong></li>
@@ -347,28 +356,28 @@
                     <li>A fine lavori: <strong>Di.Co.</strong> con allegati obbligatori e schemi dell'impianto</li>
                 </ul>
             </div>
-            <div class="mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
-                <div class="bg-blue-600 px-6 py-4">
+            <div class="g-panel">
+                <div class="g-panel-head">
                     <h3 class="font-bold text-white text-lg">Come procedere</h3>
                 </div>
-                <div class="p-6">
+                <div class="g-panel-body">
                     <p class="text-gray-700 text-sm"><strong>Inviateci l'elenco dei documenti richiesti</strong>: vi risponderemo indicando i tempi di consegna della documentazione completa.</p>
                 </div>
-                <div class="bg-gray-50 border-t px-6 py-4">
+                <div class="g-panel-foot">
                     <p class="text-gray-600 text-sm">Qualora alcune voci non rientrino fra i requisiti che possiamo soddisfare, lo segnaliamo in fase di riscontro, prima dell'affidamento.</p>
                 </div>
             </div>
             <div class="text-center mt-10">
-                <a href="mailto:info@gialtermoidraulica.it?subject=Elenco%20documenti%20per%20qualifica%20fornitore" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'sezione_subappalto'}); }" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">Invia l'elenco documenti</a>
+                <a href="mailto:info@gialtermoidraulica.it?subject=Elenco%20documenti%20per%20qualifica%20fornitore" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'sezione_subappalto'}); }" class="g-btn g-btn-primary">Invia l'elenco documenti</a>
             </div>
         </div>
     </section>
 
-    <section id="cantiere" class="py-20 bg-white px-4" aria-labelledby="cantiere-heading">
-        <div class="max-w-7xl mx-auto">
+    <section id="cantiere" class="g-section g-section--line" aria-labelledby="cantiere-heading">
+        <div class="g-wrap">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold mb-4 italic text-blue-600" id="cantiere-heading">Come lavoriamo in cantiere</h2>
+                    <h2 class="g-h2" id="cantiere-heading">Come lavoriamo in cantiere</h2>
                     <ul class="list-disc pl-5 space-y-3 text-gray-700 mb-6">
                         <li><strong>Nove addetti in organico</strong>, che consentono di seguire più cantieri contemporaneamente garantendo continuità di presenza.</li>
                         <li><strong>Un referente unico</strong> per tutta la durata dei lavori, come interlocutore stabile per direzione lavori e coordinatore per la sicurezza.</li>
@@ -379,63 +388,63 @@
                     </ul>
                     <p class="text-gray-500 text-sm">Costo orario manodopera <strong>35 € + IVA</strong>, materiali a parte. Per opere a corpo, preventivo dettagliato dopo il sopralluogo con voci riconducibili al Prezzario DEI Toscana.</p>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg">
+                <div style="border-radius:4px;overflow:hidden">
                     <img src="/img/lavori/studio-medico-ambulatorio.webp" width="1400" height="933" alt="Impianti realizzati da GIAL SRL in un ambulatorio a Prato" class="object-cover w-full h-full" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="zone" class="py-12 bg-gray-50 px-4" aria-labelledby="zone-heading">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4 italic text-blue-600" id="zone-heading">Dove operiamo</h2>
+    <section id="zone" class="g-section g-section--alt" aria-labelledby="zone-heading">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" id="zone-heading">Dove operiamo</h2>
             <p class="text-gray-700 mb-2">Cantieri in tutta la provincia di <strong>Prato</strong> e nelle province di <strong>Firenze</strong> e <strong>Pistoia</strong>. Per commesse strutturate e lavori continuativi valutiamo l'intera <strong>Toscana</strong>.</p>
             <p class="text-gray-500 text-sm">Sede operativa in Via Traversa Pistoiese 12/L, Prato.</p>
         </div>
     </section>
 
-    <section id="faq-aziende" class="py-20 bg-white px-4">
-        <div class="max-w-4xl mx-auto">
+    <section id="faq-aziende" class="g-section g-section--line">
+        <div class="g-wrap-narrow">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-blue-600 italic uppercase">Domande dei committenti</h2>
+                <h2 class="g-h2">Domande dei committenti</h2>
             </div>
             <div class="space-y-4">
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Lavorate in subappalto per imprese edili e general contractor?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì, è una parte importante della nostra attività. Abbiamo operato come impresa esecutrice per committenti strutturati, fra cui <strong>Ferrovie dello Stato</strong> e <strong>CASA S.p.A.</strong> Operiamo secondo le procedure dei cantieri con coordinatore per la sicurezza e forniamo POS, accettazione del PSC, DURC in corso di validità, visura camerale, elenco dei lavoratori con formazione e idoneità sanitarie, nomine di preposto e addetti antincendio e primo soccorso, oltre alla modulistica specifica del committente.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">In quanto tempo consegnate la documentazione?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">In tempi contenuti, poiché <strong>manteniamo la documentazione costantemente aggiornata</strong> anziché predisporla alla richiesta. Questo evita che la procedura di qualifica si sospenda in attesa di un DURC in scadenza o di una nomina mancante. Inviateci l'elenco dei documenti richiesti e vi indicheremo i tempi di consegna.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Intervenite su edifici in esercizio?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì, è una parte consistente della nostra attività. Abbiamo realizzato gli impianti di <strong>studi medici e ambulatori</strong>, contesti in cui pulizia del cantiere, interruzioni programmate dei servizi e rispetto degli orari di apertura rilevano quanto la qualità dell'impianto. Su richiesta operiamo <strong>per fasi o in orari concordati</strong>, per non sospendere l'attività del committente.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Rilasciate le Dichiarazioni di Conformità?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì. Siamo abilitati per <strong>impianti gas civili e industriali</strong> e rilasciamo la <strong>Di.Co.</strong> prevista dal DM 37/2008 con i relativi allegati obbligatori. Siamo inoltre azienda certificata <strong>F-GAS</strong> tramite ITEC per gli impianti di climatizzazione, con registrazione degli interventi in Banca Dati nazionale.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Fate manutenzione programmata per le aziende?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">La svolgiamo per i <strong>committenti con cui abbiamo un rapporto continuativo</strong>, tipicamente su impianti di nostra realizzazione. Non effettuiamo interventi di manutenzione occasionali su impianti di cui non conosciamo la storia: preferiamo poter rispondere pienamente di ciò su cui interveniamo.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Qual è il costo della manodopera?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
@@ -446,13 +455,13 @@
         </div>
     </section>
 
-    <section id="contatti-aziende" class="py-20 bg-blue-600 text-white px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6 italic">Parliamo della vostra commessa</h2>
+    <section id="contatti-aziende" class="g-section g-contact">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" style="color:#fff">Parliamo della vostra commessa</h2>
             <p class="mb-8 text-lg text-blue-100">Inviateci capitolato, computo metrico o una descrizione dell'intervento. Valutiamo la fattibilità e vi rispondiamo con un riscontro puntuale sui tempi e sulle modalità di esecuzione.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_finale_aziende'}); }" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-md">📞 +39 327 937 1705</a>
-                <a href="mailto:info@gialtermoidraulica.it?subject=Richiesta%20impianti%20-%20committente%20professionale" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'cta_finale_aziende'}); }" class="bg-gray-800 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-900 transition shadow-md">Scrivici via email</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_finale_aziende'}); }" class="g-btn g-btn-gold">📞 +39 327 937 1705</a>
+                <a href="mailto:info@gialtermoidraulica.it?subject=Richiesta%20impianti%20-%20committente%20professionale" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'cta_finale_aziende'}); }" class="g-btn g-btn-primary">Scrivici via email</a>
             </div>
             <p class="text-blue-100 mb-2">PEC: <a href="mailto:gialsrl@pec.cgn.it" class="underline text-white">gialsrl@pec.cgn.it</a> · P.IVA 02435030974 · REA PO-535347</p>
             <p class="text-blue-100">Via Traversa Pistoiese 12/L, Prato · Lun–Ven 8:00–19:00</p>
@@ -461,7 +470,7 @@
 
     </main>
 
-    <footer class="py-8 text-center text-gray-500 text-sm bg-white">
+    <footer class="g-footer">
         <div class="mb-4">
             <a href="/" aria-label="Home GIAL SRL">
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:80px; width:auto;" class="mx-auto mb-2" loading="lazy">
@@ -469,14 +478,14 @@
         </div>
         <div class="mb-6 flex flex-col items-center">
             <p class="text-gray-600 font-semibold mb-2 text-base">Azienda certificata F-GAS</p>
-            <img src="/img/itec.webp" width="600" height="190" alt="Certificazione ITEC F-GAS – GIAL SRL abilitata alla gestione di gas fluorurati" class="rounded-lg shadow-md" style="max-width:200px; height:auto;" loading="lazy">
+            <img src="/img/itec.webp" width="600" height="190" alt="Certificazione ITEC F-GAS – GIAL SRL abilitata alla gestione di gas fluorurati" style="border-radius:4px" style="max-width:200px; height:auto;" loading="lazy">
         </div>
-        <p class="mb-2"><a href="/" class="underline text-blue-600">Home</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="underline text-blue-600">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="underline text-blue-600">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="underline text-blue-600">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="underline text-blue-600">Condizionatori</a> · <a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="underline text-blue-600">Infissi</a> · <a href="/#privacy" class="underline text-blue-600">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="">Home</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="">Condizionatori</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/#privacy" class="">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
-    <div class="call-bar bg-white border-t border-gray-200 shadow-lg flex">
-        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_aziende'}); }" class="flex-1 bg-blue-600 text-white py-3 font-bold text-center" aria-label="Chiama GIAL SRL">📞 Chiama ora</a>
+    <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
+        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_aziende'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama GIAL SRL">Chiama ora</a>
         <a href="mailto:info@gialtermoidraulica.it?subject=Richiesta%20impianti%20-%20committente%20professionale" onclick="if(window.gtag){ gtag('event','click_email',{'posizione':'barra_fissa_mobile_aziende'}); }" class="flex-1 bg-gray-800 text-white py-3 font-bold text-center" aria-label="Scrivici una mail">✉️ Scrivici</a>
     </div>
 </body>

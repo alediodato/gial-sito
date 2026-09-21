@@ -655,3 +655,233 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 
 .g-btn:disabled { opacity: .55; cursor: not-allowed; }
 .g-btn:disabled:hover { background: var(--g-navy); border-color: var(--g-navy); }
+
+/* ============================================================
+   Pattern che esistono solo sulle pagine interne
+   ============================================================ */
+
+/* ---------- Hero centrato delle landing ---------- */
+
+.g-hero--center { text-align: center; }
+.g-hero--center .g-lead { max-width: 60ch; margin-left: auto; margin-right: auto; }
+.g-hero--center .g-hero-actions { justify-content: center; }
+.g-hero--center .g-stats { justify-content: center; }
+.g-hero--center .g-eyebrow { margin-bottom: 1.5rem; }
+
+/* ---------- Schede prezzo ---------- */
+
+.g-price { text-align: left; }
+
+.g-price h3 {
+    font-family: var(--g-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    margin: 0 0 0.2rem;
+}
+
+.g-price .g-price-note {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--g-ink-soft);
+    margin: 0 0 1.35rem;
+}
+
+.g-price .g-price-val {
+    font-family: var(--g-serif);
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--g-navy);
+    margin: 0 0 0.7rem;
+    letter-spacing: -0.02em;
+}
+
+.g-price p:last-child {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--g-ink-soft);
+    margin: 0;
+}
+
+/* ---------- Riquadro nota / chiarimento ---------- */
+
+.g-note {
+    border-left: 3px solid var(--g-gold);
+    background: var(--g-paper-alt);
+    padding: 1.5rem 1.75rem;
+    margin: 2.5rem 0 0;
+}
+
+.g-note p { font-size: 0.95rem; line-height: 1.75; color: var(--g-ink-soft); margin: 0; }
+.g-note p + p { margin-top: 0.9rem; }
+.g-note strong { color: var(--g-ink); }
+.g-note a { color: var(--g-navy); border-bottom: 1px solid var(--g-gold); }
+
+/* ---------- Pannello con testata ---------- */
+
+.g-panel { border: 1px solid var(--g-line); margin-top: 2.5rem; background: var(--g-paper); }
+.g-panel-head { background: var(--g-navy); padding: 1rem 1.5rem; }
+
+.g-panel-head h3 {
+    font-family: var(--g-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0;
+}
+
+.g-panel-body { padding: 1.5rem; }
+.g-panel-body p { font-size: 0.95rem; line-height: 1.75; color: var(--g-ink-soft); margin: 0; }
+.g-panel-foot { background: var(--g-paper-alt); border-top: 1px solid var(--g-line); padding: 1.1rem 1.5rem; }
+.g-panel-foot p { font-size: 0.88rem; line-height: 1.7; color: var(--g-ink-soft); margin: 0; }
+
+/* ---------- Elenchi puntati nel corpo ---------- */
+
+.g-list { list-style: none; margin: 0; padding: 0; }
+
+.g-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--g-ink-soft);
+}
+
+.g-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 7px;
+    height: 1px;
+    background: var(--g-gold);
+}
+
+.g-list strong { color: var(--g-ink); }
+
+/* ---------- Briciole di pane ---------- */
+
+/* Le briciole stanno dentro l'hero, come primo elemento del contenitore. */
+.g-crumbs {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--g-ink-soft);
+    margin-bottom: 2.25rem;
+}
+
+.g-crumbs a { color: var(--g-ink-soft); border-bottom: 1px solid transparent; }
+.g-crumbs a:hover { color: var(--g-navy); border-bottom-color: var(--g-gold); }
+.g-crumbs span { color: var(--g-gold-text); padding: 0 .45rem; }
+
+@media (max-width: 900px) {
+    .g-crumbs { margin-bottom: 1.5rem; }
+}
+
+/* ---------- FAQ sulle landing (stessa resa della home) ---------- */
+
+.g-faq details { border-bottom: 1px solid var(--g-line); padding: 1.35rem 0; }
+.g-faq details:first-of-type { border-top: 1px solid var(--g-line); }
+.g-faq summary { gap: 1.5rem; }
+
+.g-faq summary h3 {
+    font-family: var(--g-serif);
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--g-navy);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.g-faq details[open] summary h3 { color: var(--g-gold-text); }
+.g-faq summary span { color: var(--g-gold); }
+
+.g-faq details p {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--g-ink-soft);
+    max-width: 68ch;
+}
+
+.g-faq details a { color: var(--g-navy); }
+
+/* Chiude la testata di sezione quando h2 e sottotitolo non sono
+   avvolti in .g-section-head (è il caso delle pagine interne). */
+.g-head-end { margin-bottom: 3.25rem !important; }
+
+@media (max-width: 767px) {
+    .g-head-end { margin-bottom: 2.25rem !important; }
+}
+
+.g-grid-hair--2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 639px) { .g-grid-hair--2 { grid-template-columns: 1fr; } }
+
+/* ---------- Riquadri "conviene / non conviene" ----------
+   Sulle landing questi blocchi portano un significato (verde = sì,
+   ambra = dipende, rosso = attenzione): teniamo la distinzione ma
+   la riportiamo su tonalità coerenti con il marchio. */
+
+.g-callout { border-left: 3px solid var(--g-line-strong); background: var(--g-paper); padding: 1.6rem 1.75rem; }
+.g-section--alt .g-callout { background: var(--g-paper); }
+
+.g-callout h3 {
+    font-family: var(--g-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    color: var(--g-navy);
+}
+
+.g-callout ul { list-style: none; margin: 0; padding: 0; }
+
+.g-callout li {
+    position: relative;
+    padding-left: 1.35rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--g-ink-soft);
+}
+
+.g-callout li:last-child { margin-bottom: 0; }
+
+.g-callout li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 7px;
+    height: 1px;
+    background: currentColor;
+    opacity: .55;
+}
+
+.g-callout strong { color: var(--g-ink); }
+.g-callout a { color: var(--g-navy); border-bottom: 1px solid var(--g-gold); }
+
+.g-callout--si { border-left-color: #2F6B4F; }
+.g-callout--si h3 { color: #275B43; }
+.g-callout--si li::before { background: #2F6B4F; }
+
+.g-callout--forse { border-left-color: var(--g-gold); }
+.g-callout--forse h3 { color: var(--g-gold-text); }
+.g-callout--forse li::before { background: var(--g-gold); }
+
+.g-callout--no { border-left-color: var(--g-red); }
+.g-callout--no h3 { color: var(--g-red); }
+.g-callout--no li::before { background: var(--g-red); }
+
+/* ---------- Normalizzazione degli angoli ----------
+   Il preventivo AI costruisce il proprio HTML da stringhe dentro il JS:
+   invece di modificare quelle stringhe, riportiamo qui i raggi al valore
+   del design system. .rounded-full resta intatto (pulsanti circolari). */
+
+.rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded { border-radius: var(--g-radius) !important; }
+
+/* Verde WhatsApp coerente con quello dei pulsanti fissi */
+.bg-green-500 { background-color: #128C7E !important; }
+.hover\:bg-green-600:hover { background-color: #0F7468 !important; }
+.text-green-600 { color: #128C7E !important; }

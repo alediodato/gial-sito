@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#173D6C">
     <meta name="geo.region" content="IT-PO">
     <meta name="geo.placename" content="Prato">
 
@@ -12,11 +12,18 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <link rel="canonical" href="https://gialtermoidraulica.it/pronto-intervento-idraulico-prato/" />
 
-    <meta property="og:title" content="Pronto Intervento Idraulico a Prato | GIAL SRL" />
+    <meta property="og:title" content="Pronto Intervento Idraulico a Prato — GIAL SRL" />
     <meta property="og:description" content="Perdite, allagamenti, scarichi otturati: reperibilità continua a Prato e provincia. Costo concordato prima dell'intervento." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gialtermoidraulica.it/pronto-intervento-idraulico-prato/" />
     <meta property="og:image" content="https://gialtermoidraulica.it/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GIAL SRL — termoidraulica e impianti a Prato" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pronto Intervento Idraulico a Prato — GIAL SRL" />
+    <meta name="twitter:description" content="Idraulico per emergenze a Prato, Pistoia e Firenze: perdite, allagamenti, scarichi otturati. Uscita 50 € + IVA, scalati se esegui il lavoro." />
+    <meta name="twitter:image" content="https://gialtermoidraulica.it/img/og-image.png" />
     <meta property="og:site_name" content="GIAL SRL" />
     <meta property="og:locale" content="it_IT" />
 
@@ -28,8 +35,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gial-studio.css">
 
     <style>
         /* Utility non presenti nel CSS precompilato (come nel blocco patch della home) */
@@ -214,36 +222,37 @@
 
     <!-- Banner consenso cookie -->
     <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-lg bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex items-center gap-4 z-50 hidden">
-        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="underline text-blue-600">Leggi la privacy</a></div>
+        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="">Leggi la privacy</a></div>
         <div class="flex gap-2">
-            <button onclick="GIALCookieConsent.accept()" class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Accetta</button>
-            <button onclick="GIALCookieConsent.decline()" class="bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 focus:outline-none">Rifiuta</button>
+            <button onclick="GIALCookieConsent.accept()" class="g-btn g-btn-primary" style="padding:.55rem 1rem;font-size:.85rem">Accetta</button>
+            <button onclick="GIALCookieConsent.decline()" class="g-btn g-btn-outline" style="padding:.55rem 1rem;font-size:.85rem">Rifiuta</button>
         </div>
     </div>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" aria-label="Menu principale">
-        <div class="max-w-7xl mx-auto px-4 pt-2 flex justify-between items-center pb-2">
+    <nav class="g-nav fixed w-full z-50" aria-label="Menu principale">
+        <div class="g-wrap pt-2 flex justify-between items-center pb-2">
             <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
-                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:60px; width:auto;" fetchpriority="high">
+                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:52px; width:auto;" fetchpriority="high">
             </a>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="/" class="hover:text-blue-600 transition">Home</a>
-                <a href="#interventi" class="hover:text-blue-600 transition">Interventi</a>
-                <a href="#costi" class="hover:text-blue-600 transition">Costi</a>
-                <a href="#faq-urgenze" class="hover:text-blue-600 transition">FAQ</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/" class="g-nav-link">Home</a>
+                <a href="#interventi" class="g-nav-link">Interventi</a>
+                <a href="#costi" class="g-nav-link">Costi</a>
+                <a href="#faq-urgenze" class="g-nav-link">FAQ</a>
             </div>
-            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_pronto'}); }" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition" aria-label="Chiama GIAL SRL">Chiama Ora</a>
+            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_pronto'}); }" class="g-nav-phone" aria-label="Chiama GIAL SRL">Chiama ora</a>
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-4">Reperibilità continua · Prato, Pistoia, Firenze</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900">Pronto Intervento Idraulico a Prato</h1>
-            <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Perdita d'acqua, allagamento, scarico otturato? Chiamaci: tariffe e tempi di arrivo te li diciamo al telefono, il costo del lavoro dopo la diagnosi — <strong>sempre prima di iniziare</strong>.</p>
+    <header class="g-hero g-hero--center g-hero--crumbed">
+        <div class="g-wrap-narrow">
+            <nav class="g-crumbs" aria-label="Percorso di navigazione"><a href="/">Home</a> <span>/</span> Pronto intervento</nav>
+            <p class="g-eyebrow">Prato, Pistoia, Firenze &middot; reperibilit&agrave; continua</p>
+            <h1 class="g-h1">Pronto intervento idraulico: il prezzo lo sapete prima che arriviamo</h1>
+            <p class="g-lead">Perdita d'acqua, allagamento, scarico otturato? Chiamaci: tariffe e tempi di arrivo te li diciamo al telefono, il costo del lavoro dopo la diagnosi — <strong>sempre prima di iniziare</strong>.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_pronto'}); }" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-md">📞 Chiama ora: 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_pronto'}); }" class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-md">Scrivici su WhatsApp</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_pronto'}); }" class="g-btn g-btn-primary">📞 Chiama ora: 327 937 1705</a>
+                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_pronto'}); }" class="g-btn" style="background:#128C7E;color:#fff;border:1px solid #128C7E">Scrivici su WhatsApp</a>
             </div>
             <p class="text-sm text-gray-500">Uscita <strong>50 € + IVA</strong>, scalati dal conto se esegui il lavoro · manodopera <strong>35 €/h + IVA</strong> · costi concordati prima dell'intervento</p>
         </div>
@@ -251,64 +260,64 @@
 
     <main id="main-content">
 
-    <section id="interventi" class="py-20 bg-white px-4" aria-labelledby="interventi-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="interventi-heading">Emergenze che risolviamo</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Servizio di <strong>reperibilità continua</strong> per la risoluzione tempestiva delle emergenze idrauliche a Prato e provincia, Pistoia e Firenze.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Perdite d'acqua e allagamenti</h3>
+    <section id="interventi" class="g-section g-section--line" aria-labelledby="interventi-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="interventi-heading">Emergenze che risolviamo</h2>
+            <p class="g-h2-sub g-head-end">Servizio di <strong>reperibilità continua</strong> per la risoluzione tempestiva delle emergenze idrauliche a Prato e provincia, Pistoia e Firenze.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Perdite d'acqua e allagamenti</h3>
                     <p class="text-gray-600 text-sm">Chiusura della perdita, messa in sicurezza e riparazione di tubazioni danneggiate.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Ricerca perdite</h3>
+                <div class="g-card">
+                    <h3 class="">Ricerca perdite</h3>
                     <p class="text-gray-600 text-sm">Individuazione delle perdite anche non visibili, per intervenire dove serve senza demolizioni inutili.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Spurghi urgenti</h3>
+                <div class="g-card">
+                    <h3 class="">Spurghi urgenti</h3>
                     <p class="text-gray-600 text-sm">Disostruzione di colonne di scarico e fognature con interventi rapidi.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Scarichi e WC otturati</h3>
+                <div class="g-card">
+                    <h3 class="">Scarichi e WC otturati</h3>
                     <p class="text-gray-600 text-sm">Sblocco di lavandini, docce e sanitari otturati, con verifica dello stato degli scarichi.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Guasti a rubinetterie e sanitari</h3>
+                <div class="g-card">
+                    <h3 class="">Guasti a rubinetterie e sanitari</h3>
                     <p class="text-gray-600 text-sm">Riparazione o sostituzione di rubinetti, miscelatori, cassette e sanitari danneggiati.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Scaldabagno e caldaia in blocco</h3>
+                <div class="g-card">
+                    <h3 class="">Scaldabagno e caldaia in blocco</h3>
                     <p class="text-gray-600 text-sm">Diagnosi del guasto e ripristino; se la caldaia è da sostituire, <a href="/sostituzione-caldaia-prato/" class="text-blue-600 underline">ecco prezzi e dettagli</a>.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="costi" class="py-20 bg-gray-50 px-4" aria-labelledby="costi-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="costi-heading">Costi chiari, concordati prima</h2>
-            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
-                    <p class="text-2xl font-extrabold text-blue-600 mb-2">1</p>
-                    <h3 class="font-bold mb-2 text-gray-900">Chiamaci</h3>
+    <section id="costi" class="g-section g-section--alt" aria-labelledby="costi-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="costi-heading">Costi chiari, concordati prima</h2>
+            <div class="g-grid-hair g-grid-hair--3" style="max-width:56rem;margin-left:auto;margin-right:auto">
+                <div class="g-card">
+                    <p class="g-price-val">1</p>
+                    <h3 class="">Chiamaci</h3>
                     <p class="text-gray-600 text-sm">Descrivici il problema al telefono o su WhatsApp (anche con una foto).</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
-                    <p class="text-2xl font-extrabold text-blue-600 mb-2">2</p>
-                    <h3 class="font-bold mb-2 text-gray-900">Concordiamo costi e tempi</h3>
+                <div class="g-card">
+                    <p class="g-price-val">2</p>
+                    <h3 class="">Concordiamo costi e tempi</h3>
                     <p class="text-gray-600 text-sm">Uscita <strong>50 € + IVA</strong>, manodopera <strong>35 €/h + IVA</strong>, materiali a parte: tutto concordato prima di iniziare il lavoro.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border text-center">
-                    <p class="text-2xl font-extrabold text-blue-600 mb-2">3</p>
-                    <h3 class="font-bold mb-2 text-gray-900">Interveniamo</h3>
+                <div class="g-card">
+                    <p class="g-price-val">3</p>
+                    <h3 class="">Interveniamo</h3>
                     <p class="text-gray-600 text-sm">Risolviamo il problema. Ogni intervento è coperto da <a href="/doc/polizza-gial.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">assicurazione decennale</a>.</p>
                 </div>
             </div>
-            <div class="max-w-4xl mx-auto mt-12 bg-white rounded-2xl shadow-md border overflow-hidden">
-                <div class="bg-blue-600 px-6 py-4">
+            <div class="g-panel">
+                <div class="g-panel-head">
                     <h3 class="font-bold text-white text-lg">Come funziona l'uscita da 50 €</h3>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6 p-6">
+                <div class="g-grid-hair g-grid-hair--2" style="padding:1.5rem">
                     <div>
                         <p class="font-bold text-gray-900 mb-1">Cosa comprende</p>
                         <p class="text-gray-600 text-sm">Per le <strong>riparazioni</strong> l'uscita costa <strong>50 € + IVA</strong> e copre il viaggio, la diagnosi del guasto e la valutazione dell'intervento.</p>
@@ -318,48 +327,48 @@
                         <p class="text-gray-600 text-sm">Se il lavoro lo esegui con noi, <strong>i 50 € vengono scalati dal conto finale</strong>. Li paghi solo se decidi di non procedere — e in quel caso ti resta comunque una diagnosi precisa del problema.</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 border-t px-6 py-4">
+                <div class="g-panel-foot">
                     <p class="text-gray-600 text-sm">Sui <strong>lavori strutturati</strong> — rifacimento bagno, sostituzione caldaia, climatizzazione, ristrutturazioni — il sopralluogo resta <strong>gratuito</strong>.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="prima-di-arrivare" class="py-20 bg-white px-4" aria-labelledby="prima-di-arrivare-heading">
-        <div class="max-w-7xl mx-auto">
+    <section id="prima-di-arrivare" class="g-section g-section--line" aria-labelledby="prima-di-arrivare-heading">
+        <div class="g-wrap">
             <div class="text-center mb-4">
                 <span class="text-sm font-semibold text-accent uppercase tracking-widest">I primi cinque minuti contano</span>
             </div>
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="prima-di-arrivare-heading">Cosa fare mentre stiamo arrivando</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Quello che fai nei primi minuti spesso determina se il danno resta contenuto o si estende ai piani sottostanti. Ecco cosa puoi fare subito, in sicurezza, prima che arrivi la squadra.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Chiudi il rubinetto generale</h3>
+            <h2 class="g-h2" id="prima-di-arrivare-heading">Cosa fare mentre stiamo arrivando</h2>
+            <p class="g-h2-sub g-head-end">Quello che fai nei primi minuti spesso determina se il danno resta contenuto o si estende ai piani sottostanti. Ecco cosa puoi fare subito, in sicurezza, prima che arrivi la squadra.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Chiudi il rubinetto generale</h3>
                     <p class="text-gray-600 text-sm">Di solito è vicino al contatore, sotto il lavello o nello sportello di ispezione in bagno. Vale la pena sapere dove si trova <strong>prima</strong> di averne bisogno: chiuderlo ferma la perdita in pochi secondi.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Togli la corrente nella zona bagnata</h3>
+                <div class="g-card">
+                    <h3 class="">Togli la corrente nella zona bagnata</h3>
                     <p class="text-gray-600 text-sm">Se l'acqua è vicina a prese, elettrodomestici o al quadro, stacca l'interruttore di quella zona. Non toccare nulla di elettrico stando con i piedi nell'acqua.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Non usare gli scarichi</h3>
+                <div class="g-card">
+                    <h3 class="">Non usare gli scarichi</h3>
                     <p class="text-gray-600 text-sm">Se il problema è nella colonna di scarico, ogni litro che mandi giù torna indietro. Avvisa anche gli altri appartamenti se sospetti che l'ostruzione sia comune.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Contieni e avvisa sotto</h3>
+                <div class="g-card">
+                    <h3 class="">Contieni e avvisa sotto</h3>
                     <p class="text-gray-600 text-sm">Straccio, secchi e asciugatura di quello che puoi. Se abiti sopra qualcuno, avvisalo subito: limitare il danno al vicino è la parte più costosa da rimediare dopo.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Fotografa tutto</h3>
+                <div class="g-card">
+                    <h3 class="">Fotografa tutto</h3>
                     <p class="text-gray-600 text-sm">Prima di asciugare, fai qualche foto del punto della perdita e dei danni. Ti serviranno per l'assicurazione o per l'amministratore, e a noi per capire la situazione al telefono.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Se senti odore di gas</h3>
+                <div class="g-card">
+                    <h3 class="">Se senti odore di gas</h3>
                     <p class="text-gray-600 text-sm">Non toccare interruttori né accendere fiamme. Apri le finestre, chiudi il rubinetto del gas ed esci, poi chiama il <strong>numero di pronto intervento del tuo distributore</strong>, che trovi in bolletta.</p>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-10">
-                <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-6">
+            <div class="g-grid-hair g-grid-hair--2" style="max-width:64rem;margin-left:auto;margin-right:auto;margin-top:2.5rem">
+                <div class="g-callout g-callout--no">
                     <h3 class="font-bold mb-3 text-red-700">Chiamaci subito se…</h3>
                     <ul class="list-disc pl-5 space-y-3 text-gray-700 text-sm">
                         <li>l'acqua esce e <strong>non riesci a fermarla</strong> chiudendo il generale;</li>
@@ -382,64 +391,64 @@
         </div>
     </section>
 
-            <section id="zone" class="py-12 bg-gray-50 px-4" aria-labelledby="zone-heading">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4 italic text-blue-600" id="zone-heading">Dove interveniamo</h2>
+            <section id="zone" class="g-section g-section--alt" aria-labelledby="zone-heading">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" id="zone-heading">Dove arriviamo in emergenza</h2>
             <p class="text-gray-700 mb-2">Interveniamo a <strong>Prato</strong> e in tutta la provincia — Montemurlo, Poggio a Caiano, Carmignano, Vaiano, Vernio, Cantagallo — e nelle province di <strong>Firenze</strong> (Campi Bisenzio, Sesto Fiorentino, Calenzano, Signa) e <strong>Pistoia</strong> (Agliana, Montale, Quarrata, Pistoia città).</p>
             <p class="text-gray-700 mb-2">Per <strong>lavori di maggiore entità</strong> e commesse strutturate operiamo su tutta la <strong>Toscana</strong>.</p>
             <p class="text-gray-500 text-sm">Sede operativa in Via Traversa Pistoiese 12/L, Prato.</p>
         </div>
     </section>
 
-    <section id="faq-urgenze" class="py-20 bg-white px-4">
-        <div class="max-w-4xl mx-auto">
+    <section id="faq-urgenze" class="g-section g-section--line">
+        <div class="g-wrap-narrow">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-blue-600 italic uppercase">Domande frequenti sulle urgenze</h2>
+                <h2 class="g-h2">Domande frequenti sulle urgenze</h2>
             </div>
             <div class="space-y-4">
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Quanto costa un intervento urgente?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">L'uscita costa <strong>50 € + IVA</strong> e comprende viaggio, diagnosi e valutazione dell'intervento; se poi esegui il lavoro con noi, <strong>i 50 € vengono scalati dal conto finale</strong>. La manodopera è di <strong>35 €/h + IVA</strong>, i materiali a parte. Al telefono ti diamo un'indicazione realistica e concordiamo tutto <strong>prima</strong> dell'intervento, senza sorprese finali. Sui lavori strutturati, come il <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline">rifacimento del bagno</a> o la <a href="/sostituzione-caldaia-prato/" class="text-blue-600 underline">sostituzione della caldaia</a>, il sopralluogo resta gratuito.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">In quanto tempo arrivate?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Dipende dalla zona e dalla disponibilità delle squadre in quel momento. Garantiamo un servizio di <strong>reperibilità continua</strong>: chiamaci e ti diciamo subito, con onestà, quando possiamo essere da te.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">In quali zone fate pronto intervento?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Effettuiamo riparazioni in tutta la <strong>provincia di Prato</strong> e nelle province di <strong>Pistoia</strong> e <strong>Firenze</strong>.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Fate anche riparazioni non urgenti?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Certo: sostituzione di rubinetterie e sanitari, piccole riparazioni, manutenzione ordinaria degli impianti. Per i lavori più grandi, come il <a href="/rifacimento-bagno-prato/" class="text-blue-600 underline">rifacimento del bagno</a>, effettuiamo un sopralluogo gratuito.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Come faccio a capire da dove viene la perdita?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Spesso non si vede: l'acqua corre lungo tubi e massetti e spunta a metri di distanza dal punto in cui esce davvero. Per questo facciamo <strong>ricerca perdite</strong> con strumentazione, invece di demolire per tentativi. Se al telefono ci descrivi dove compare l'acqua e quando — sempre, solo aprendo un rubinetto, solo col riscaldamento acceso — arriviamo già con un'ipotesi.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">La perdita viene dal condominio: chi paga?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Dipende da dove si trova il guasto. Se è su una parte comune, come una colonna montante o di scarico, la spesa segue le regole condominiali; se è nel tratto privato, resta a carico del proprietario. Noi individuiamo e documentiamo il punto esatto con foto e relazione: la ripartizione la definiscono poi amministratore e assicurazioni, ma con un accertamento tecnico in mano è molto più semplice.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-gray-50 hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Devo avvisare prima l'assicurazione?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
@@ -450,13 +459,13 @@
         </div>
     </section>
 
-    <section class="py-20 bg-blue-600 text-white px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6 italic">Hai un'emergenza adesso?</h2>
+    <section class="g-section g-contact">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" style="color:#fff">Hai un'emergenza adesso?</h2>
             <p class="mb-8 text-lg text-blue-100">Non aspettare che il danno peggiori: chiamaci e ti diciamo subito come intervenire.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_pronto'}); }" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-md">📞 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_pronto'}); }" class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-md">Scrivici su WhatsApp</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_pronto'}); }" class="g-btn g-btn-gold">📞 327 937 1705</a>
+                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_pronto'}); }" class="g-btn" style="background:#128C7E;color:#fff;border:1px solid #128C7E">Scrivici su WhatsApp</a>
             </div>
             <p class="text-blue-100">Via Traversa Pistoiese 12/L, Prato · Lun–Ven 8:00–19:00 · reperibilità continua per emergenze</p>
         </div>
@@ -464,28 +473,28 @@
 
     </main>
 
-    <footer class="py-8 text-center text-gray-500 text-sm bg-white">
+    <footer class="g-footer">
         <div class="mb-4">
             <a href="/" aria-label="Home GIAL SRL">
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:80px; width:auto;" class="mx-auto mb-2" loading="lazy">
             </a>
         </div>
-        <p class="mb-2"><a href="/" class="underline text-blue-600">Home</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="underline text-blue-600">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="underline text-blue-600">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="underline text-blue-600">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="underline text-blue-600">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="underline text-blue-600">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="underline text-blue-600">Condizionatori</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="underline text-blue-600">Guida ai costi</a> · <a href="/#privacy" class="underline text-blue-600">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="">Home</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="">Condizionatori</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="">Guida ai costi</a> · <a href="/#privacy" class="">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
     <a href="https://wa.me/393279371705"
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_pronto'}); }"
-       class="hidden md:block fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+       class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#128C7E;box-shadow:0 6px 20px rgba(18,140,126,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
 
     <!-- Barra fissa mobile: chiamata diretta -->
-    <div class="call-bar bg-white border-t border-gray-200 shadow-lg flex">
-        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 bg-blue-600 text-white py-3 font-bold text-center" aria-label="Chiama GIAL SRL">📞 Chiama ora</a>
-        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 bg-green-500 text-white py-3 font-bold text-center" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+    <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
+        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama GIAL SRL">Chiama ora</a>
+        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#128C7E" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
 </body>
 </html>

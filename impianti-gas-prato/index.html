@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#173D6C">
     <meta name="geo.region" content="IT-PO">
     <meta name="geo.placename" content="Prato">
 
@@ -12,11 +12,18 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
     <link rel="canonical" href="https://gialtermoidraulica.it/impianti-gas-prato/" />
 
-    <meta property="og:title" content="Impianti Gas a Norma a Prato — Dichiarazione di Conformità | GIAL SRL" />
+    <meta property="og:title" content="Impianti Gas a Norma a Prato — Di.Co. | GIAL SRL" />
     <meta property="og:description" content="Realizzazione, adeguamento e collaudo di impianti gas civili e industriali con Di.Co. secondo DM 37/2008. Imprese abilitate, a Prato, Firenze e Pistoia." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gialtermoidraulica.it/impianti-gas-prato/" />
     <meta property="og:image" content="https://gialtermoidraulica.it/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="GIAL SRL — termoidraulica e impianti a Prato" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Impianti Gas a Norma a Prato — Di.Co. | GIAL SRL" />
+    <meta name="twitter:description" content="Impianti gas civili e industriali a Prato: realizzazione, adeguamento, collaudo e Dichiarazione di Conformità DM 37/2008 con allegati." />
+    <meta name="twitter:image" content="https://gialtermoidraulica.it/img/og-image.png" />
     <meta property="og:site_name" content="GIAL SRL" />
     <meta property="og:locale" content="it_IT" />
 
@@ -28,8 +35,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gial-studio.css">
 
     <style>
         /* Utility non presenti nel CSS precompilato (stesso approccio delle altre landing) */
@@ -221,36 +229,37 @@
 
     <!-- Banner consenso cookie -->
     <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-lg bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex items-center gap-4 z-50 hidden">
-        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="underline text-blue-600">Leggi la privacy</a></div>
+        <div class="flex-1 text-sm text-gray-700">Usiamo cookie per analisi e per migliorare l'esperienza. Puoi <strong>accettare</strong> i cookie per abilitare Google Analytics o <strong>rifiutarli</strong>. <a href="/#privacy" class="">Leggi la privacy</a></div>
         <div class="flex gap-2">
-            <button onclick="GIALCookieConsent.accept()" class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Accetta</button>
-            <button onclick="GIALCookieConsent.decline()" class="bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 focus:outline-none">Rifiuta</button>
+            <button onclick="GIALCookieConsent.accept()" class="g-btn g-btn-primary" style="padding:.55rem 1rem;font-size:.85rem">Accetta</button>
+            <button onclick="GIALCookieConsent.decline()" class="g-btn g-btn-outline" style="padding:.55rem 1rem;font-size:.85rem">Rifiuta</button>
         </div>
     </div>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm" aria-label="Menu principale">
-        <div class="max-w-7xl mx-auto px-4 pt-2 flex justify-between items-center pb-2">
+    <nav class="g-nav fixed w-full z-50" aria-label="Menu principale">
+        <div class="g-wrap pt-2 flex justify-between items-center pb-2">
             <a href="/" class="inline-block align-middle" aria-label="Homepage GIAL SRL">
-                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:60px; width:auto;" fetchpriority="high">
+                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:52px; width:auto;" fetchpriority="high">
             </a>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="/" class="hover:text-blue-600 transition">Home</a>
-                <a href="#interventi" class="hover:text-blue-600 transition">Interventi</a>
-                <a href="#certificazioni" class="hover:text-blue-600 transition">Di.Co. e Di.Ri.</a>
-                <a href="#faq-gas" class="hover:text-blue-600 transition">FAQ</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/" class="g-nav-link">Home</a>
+                <a href="#interventi" class="g-nav-link">Interventi</a>
+                <a href="#certificazioni" class="g-nav-link">Di.Co. e Di.Ri.</a>
+                <a href="#faq-gas" class="g-nav-link">FAQ</a>
             </div>
-            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_gas'}); }" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition" aria-label="Chiama GIAL SRL">Chiama Ora</a>
+            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_gas'}); }" class="g-nav-phone" aria-label="Chiama GIAL SRL">Chiama ora</a>
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 px-4 bg-gradient-to-b from-blue-50 to-white text-center">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-sm font-semibold text-accent uppercase tracking-widest mb-4">Impresa abilitata · Impianti civili e industriali</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 text-gray-900">Impianti Gas a Norma a Prato</h1>
-            <p class="text-xl md:text-2xl text-gray-700 font-normal leading-relaxed mb-8">Realizzazione, adeguamento e collaudo di impianti gas, con rilascio della <strong>Dichiarazione di Conformità</strong> prevista dal DM 37/2008 e dei relativi allegati obbligatori.</p>
+    <header class="g-hero g-hero--center g-hero--crumbed">
+        <div class="g-wrap-narrow">
+            <nav class="g-crumbs" aria-label="Percorso di navigazione"><a href="/">Home</a> <span>/</span> Impianti gas</nav>
+            <p class="g-eyebrow">Prato &middot; impianti gas civili e industriali</p>
+            <h1 class="g-h1">Impianti gas a norma, con la Di.Co. in mano a fine lavori</h1>
+            <p class="g-lead">Realizzazione, adeguamento e collaudo di impianti gas, con rilascio della <strong>Dichiarazione di Conformità</strong> prevista dal DM 37/2008 e dei relativi allegati obbligatori.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_gas'}); }" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition shadow-md">📞 Chiama ora: 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_gas'}); }" class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-md">Scrivici su WhatsApp</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_gas'}); }" class="g-btn g-btn-primary">📞 Chiama ora: 327 937 1705</a>
+                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_gas'}); }" class="g-btn" style="background:#128C7E;color:#fff;border:1px solid #128C7E">Scrivici su WhatsApp</a>
             </div>
             <p class="text-sm text-gray-500">Il distributore non ti attiva il gas? Descrivici la contestazione ricevuta: al telefono capiamo già di cosa si tratta.</p>
         </div>
@@ -258,152 +267,152 @@
 
     <main id="main-content">
 
-    <section id="interventi" class="py-20 bg-gray-50 px-4" aria-labelledby="interventi-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="interventi-heading">Cosa realizziamo</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Impianti gas per abitazioni, condomini e attività, dalla realizzazione ex novo alla messa a norma di impianti esistenti.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Nuovi impianti gas</h3>
+    <section id="interventi" class="g-section g-section--alt" aria-labelledby="interventi-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="interventi-heading">Che impianti gas realizziamo</h2>
+            <p class="g-h2-sub g-head-end">Impianti gas per abitazioni, condomini e attività, dalla realizzazione ex novo alla messa a norma di impianti esistenti.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Nuovi impianti gas</h3>
                     <p class="text-gray-600 text-sm">Realizzazione completa della rete di adduzione, dal contatore ai punti di utilizzo: caldaia, piano cottura, scaldabagno, con le prescrizioni previste per ciascun apparecchio.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Adeguamento a norma</h3>
+                <div class="g-card">
+                    <h3 class="">Adeguamento a norma</h3>
                     <p class="text-gray-600 text-sm">Messa a norma di impianti datati o non conformi: sostituzione di tubazioni, rubinetti di intercettazione, prese d'aria e scarichi dei prodotti della combustione.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Spostamenti e modifiche</h3>
+                <div class="g-card">
+                    <h3 class="">Spostamenti e modifiche</h3>
                     <p class="text-gray-600 text-sm">Spostamento del punto gas per una nuova cucina, aggiunta di un'utenza, modifica del percorso in occasione di una ristrutturazione, con aggiornamento della documentazione.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Prova di tenuta e collaudo</h3>
+                <div class="g-card">
+                    <h3 class="">Prova di tenuta e collaudo</h3>
                     <p class="text-gray-600 text-sm">Prova di tenuta della rete, verifica della ventilazione dei locali e dello scarico fumi. Sono le voci più spesso non conformi negli impianti realizzati molti anni fa.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Impianti industriali e commerciali</h3>
+                <div class="g-card">
+                    <h3 class="">Impianti industriali e commerciali</h3>
                     <p class="text-gray-600 text-sm">Impianti per cucine professionali, attività commerciali e ambienti produttivi, con la documentazione tecnica richiesta. Vedi anche <a href="/impianti-termoidraulici-aziende-prato/" class="text-blue-600 underline">impiantistica per aziende</a>.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border">
-                    <h3 class="font-bold mb-2 text-gray-900">Collegamento apparecchi</h3>
+                <div class="g-card">
+                    <h3 class="">Collegamento apparecchi</h3>
                     <p class="text-gray-600 text-sm">Allacciamento di caldaie, scaldabagni e piani cottura all'impianto esistente. Se la <a href="/sostituzione-caldaia-prato/" class="text-blue-600 underline">caldaia è da sostituire</a>, la Di.Co. è compresa nell'intervento.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="certificazioni" class="py-20 bg-white px-4" aria-labelledby="cert-heading">
-        <div class="max-w-5xl mx-auto">
+    <section id="certificazioni" class="g-section g-section--line" aria-labelledby="cert-heading">
+        <div class="g-wrap">
             <div class="text-center mb-4">
                 <span class="text-sm font-semibold text-accent uppercase tracking-widest">DM 37/2008</span>
             </div>
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="cert-heading">Di.Co. e Di.Ri.: quale serve nel tuo caso</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Sono due documenti diversi e spesso vengono confusi. Quale dei due ti occorre dipende da una cosa sola: se l'impianto viene realizzato o modificato adesso, oppure se esiste già.</p>
-            <div class="grid md:grid-cols-2 gap-6 mb-10">
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
+            <h2 class="g-h2" id="cert-heading">Di.Co. e Di.Ri.: quale serve nel tuo caso</h2>
+            <p class="g-h2-sub g-head-end">Sono due documenti diversi e spesso vengono confusi. Quale dei due ti occorre dipende da una cosa sola: se l'impianto viene realizzato o modificato adesso, oppure se esiste già.</p>
+            <div class="g-grid-hair g-grid-hair--2" style="margin-bottom:2.5rem">
+                <div class="g-card">
                     <h3 class="font-bold mb-3 text-gray-900">Dichiarazione di Conformità (Di.Co.)</h3>
                     <p class="text-gray-600 text-sm mb-3">La rilascia l'impresa abilitata al termine di una <strong>nuova installazione, modifica o adeguamento</strong>. Attesta che l'impianto è stato realizzato a regola d'arte.</p>
                     <p class="text-gray-600 text-sm">Viene richiesta dal distributore per l'attivazione della fornitura, nelle compravendite e locazioni, e nelle pratiche edilizie. La consegniamo completa degli <strong>allegati obbligatori</strong>: relazione dei materiali, schema dell'impianto e documentazione dell'impresa.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
+                <div class="g-card">
                     <h3 class="font-bold mb-3 text-gray-900">Dichiarazione di Rispondenza (Di.Ri.)</h3>
                     <p class="text-gray-600 text-sm mb-3">Serve quando l'impianto <strong>esiste già</strong> ma la documentazione originale manca, perché è andata perduta o perché l'impianto è precedente all'obbligo di rilascio.</p>
                     <p class="text-gray-600 text-sm">Può essere emessa da un tecnico abilitato dopo la verifica dell'impianto esistente. Facciamo il sopralluogo e ti diciamo se è rilasciabile così com'è o se prima servono interventi di adeguamento.</p>
                 </div>
             </div>
-            <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
+            <div class="g-callout g-callout--si">
                 <h3 class="font-bold mb-3 text-green-700">Il caso più frequente: il gas che non viene attivato</h3>
                 <p class="text-gray-700 text-sm">Capita spesso in occasione di un trasloco, di un rogito o di una verifica periodica: il distributore rileva una non conformità e sospende o non attiva la fornitura. In quel caso portaci la <strong>contestazione ricevuta</strong> — anche fotografata — ed è già sufficiente per orientarci: facciamo il sopralluogo, eseguiamo l'adeguamento e rilasciamo la documentazione che consente la riattivazione.</p>
             </div>
             <div class="text-center mt-10">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_certificazioni'}); }" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">📞 Spiegaci il tuo caso al telefono</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_certificazioni'}); }" class="g-btn g-btn-primary">📞 Spiegaci il tuo caso al telefono</a>
             </div>
         </div>
     </section>
 
-    <section id="perche" class="py-20 bg-gray-50 px-4" aria-labelledby="perche-heading">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-4 italic text-blue-600" id="perche-heading">Perché rivolgersi a un'impresa abilitata</h2>
-            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Sugli impianti gas la differenza fra un lavoro fatto bene e uno fatto male non si vede: si sente, quando è troppo tardi. Per questo la legge chiede requisiti precisi a chi li realizza.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Abilitazione civile e industriale</h3>
+    <section id="perche" class="g-section g-section--alt" aria-labelledby="perche-heading">
+        <div class="g-wrap">
+            <h2 class="g-h2" id="perche-heading">Perché rivolgersi a un'impresa abilitata</h2>
+            <p class="g-h2-sub g-head-end">Sugli impianti gas la differenza fra un lavoro fatto bene e uno fatto male non si vede: si sente, quando è troppo tardi. Per questo la legge chiede requisiti precisi a chi li realizza.</p>
+            <div class="g-grid-hair g-grid-hair--3">
+                <div class="g-card">
+                    <h3 class="">Abilitazione civile e industriale</h3>
                     <p class="text-gray-600 text-sm">Siamo abilitati per impianti gas <strong>civili e industriali</strong>, requisito indispensabile per realizzare l'impianto e per poterne rilasciare la certificazione.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Documentazione completa</h3>
+                <div class="g-card">
+                    <h3 class="">Documentazione completa</h3>
                     <p class="text-gray-600 text-sm">Di.Co. con allegati obbligatori, distinta dei materiali e schema dell'impianto. Documenti che ti verranno richiesti anni dopo, quando venderai o affitterai l'immobile.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Polizza postuma decennale</h3>
+                <div class="g-card">
+                    <h3 class="">Polizza postuma decennale</h3>
                     <p class="text-gray-600 text-sm">Ogni impianto che realizziamo è coperto da <a href="/doc/polizza-gial.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">assicurazione postuma decennale</a>, consultabile prima di affidarci il lavoro.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Un solo referente</h3>
+                <div class="g-card">
+                    <h3 class="">Un solo referente</h3>
                     <p class="text-gray-600 text-sm">Se l'intervento richiede opere murarie o il ripristino delle finiture, coordiniamo noi gli artigiani: non devi cercare altre figure né gestire i tempi fra loro.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Costi dichiarati prima</h3>
+                <div class="g-card">
+                    <h3 class="">Costi dichiarati prima</h3>
                     <p class="text-gray-600 text-sm">Manodopera <strong>35 € + IVA</strong> all'ora, materiali a parte. Per interventi definiti formuliamo un preventivo a corpo dopo il sopralluogo.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-600">
-                    <h3 class="font-bold mb-2 text-gray-900">Cinquant'anni sugli impianti</h3>
-                    <p class="text-gray-600 text-sm">L'attività artigianale da cui nasce GIAL SRL è iniziata oltre cinquant'anni fa. Sugli impianti gas l'esperienza conta più di qualunque altra cosa.</p>
+                <div class="g-card">
+                    <h3 class="">Cinquant'anni sugli impianti</h3>
+                    <p class="text-gray-600 text-sm">L'attività artigianale da cui nasce GIAL SRL è iniziata nel 1980. Sugli impianti gas l'esperienza conta più di qualunque altra cosa.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="zone" class="py-12 bg-white px-4" aria-labelledby="zone-heading">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4 italic text-blue-600" id="zone-heading">Dove interveniamo</h2>
+    <section id="zone" class="g-section g-section--line" aria-labelledby="zone-heading">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" id="zone-heading">Dove realizziamo impianti gas</h2>
             <p class="text-gray-700 mb-2">Impianti gas a <strong>Prato</strong> e in tutta la provincia — Montemurlo, Poggio a Caiano, Carmignano, Vaiano — e nelle province di <strong>Firenze</strong> (Campi Bisenzio, Sesto Fiorentino, Calenzano, Signa) e <strong>Pistoia</strong> (Agliana, Montale, Quarrata).</p>
-            <p class="text-gray-700 mb-2">Per <strong>lavori di maggiore entità</strong> e commesse strutturate operiamo su tutta la <strong>Toscana</strong>.</p>
+            <p class="text-gray-700 mb-2">Per <strong>impianti industriali</strong> e commesse strutturate operiamo su tutta la <strong>Toscana</strong>.</p>
             <p class="text-gray-500 text-sm">Sede operativa in Via Traversa Pistoiese 12/L, Prato.</p>
         </div>
     </section>
 
-    <section id="faq-gas" class="py-20 bg-gray-50 px-4">
-        <div class="max-w-4xl mx-auto">
+    <section id="faq-gas" class="g-section g-section--alt">
+        <div class="g-wrap-narrow">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-blue-600 italic uppercase">Domande frequenti sugli impianti gas</h2>
+                <h2 class="g-h2">Domande frequenti sugli impianti gas</h2>
             </div>
             <div class="space-y-4">
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Che cos'è la Dichiarazione di Conformità e quando serve?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">È il documento previsto dal <strong>DM 37/2008</strong> con cui l'impresa abilitata attesta che l'impianto è stato realizzato a regola d'arte. Serve al termine di ogni <strong>nuova installazione, modifica o adeguamento</strong>, e viene richiesto dal distributore per l'attivazione della fornitura, in compravendita o locazione dell'immobile e nelle pratiche edilizie. La rilasciamo completa dei relativi <strong>allegati obbligatori</strong>.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Non trovo la documentazione del mio impianto: cosa posso fare?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Per gli impianti realizzati prima dell'obbligo, o quando la documentazione originale è andata perduta, è prevista la <strong>Dichiarazione di Rispondenza (Di.Ri.)</strong>, che un tecnico abilitato può rilasciare dopo aver verificato l'impianto esistente. Facciamo il sopralluogo, verifichiamo lo stato dell'impianto e ti diciamo se è rilasciabile così com'è o se prima servono interventi di adeguamento.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Il gas non viene attivato perché l'impianto non è a norma: intervenite?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì, è una richiesta frequente. Quando il distributore rileva una non conformità in fase di attivazione o di verifica periodica, facciamo il sopralluogo, individuiamo gli interventi necessari, eseguiamo l'adeguamento e rilasciamo la documentazione che consente la <strong>riattivazione della fornitura</strong>. Se ci mandi la contestazione ricevuta, anche fotografata, capiamo già molto prima di venire.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Realizzate impianti anche per attività commerciali e industriali?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì. Siamo abilitati per impianti gas <strong>civili e industriali</strong> e realizziamo impianti per abitazioni, condomini, attività commerciali, cucine professionali e ambienti produttivi, con la relativa documentazione tecnica. Per i lavori di cantiere e i rapporti con committenti strutturati, vedi la pagina <a href="/impianti-termoidraulici-aziende-prato/" class="text-blue-600 underline">impianti per aziende</a>.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Fate la prova di tenuta dell'impianto?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
                     <p class="mt-4 leading-relaxed text-gray-700">Sì. La <strong>prova di tenuta</strong> è parte del collaudo di ogni impianto nuovo o modificato, e può essere eseguita anche separatamente quando si sospetta una perdita o si deve documentare lo stato dell'impianto. Verifichiamo inoltre <strong>ventilazione dei locali e scarico dei fumi</strong>, che sono le voci più frequentemente non conformi negli impianti datati.</p>
                 </details>
-                <details class="group border border-gray-200 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer bg-white hover:bg-white transition">
+                <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
                         <h3 class="text-lg font-bold">Quanto costa mettere a norma un impianto gas?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
@@ -414,13 +423,13 @@
         </div>
     </section>
 
-    <section id="contatti-gas" class="py-20 bg-blue-600 text-white px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6 italic">Parlaci del tuo impianto</h2>
+    <section id="contatti-gas" class="g-section g-contact">
+        <div class="g-wrap-narrow text-center">
+            <h2 class="g-h2" style="color:#fff">Parlaci del tuo impianto</h2>
             <p class="mb-8 text-lg text-blue-100">Nuovo impianto, adeguamento o certificazione mancante: descrivici la situazione al telefono e ti diciamo subito che documento serve e come si procede.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_finale_gas'}); }" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-md">📞 +39 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_finale_gas'}); }" class="bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-md">Scrivici su WhatsApp</a>
+                <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_finale_gas'}); }" class="g-btn g-btn-gold">📞 +39 327 937 1705</a>
+                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_finale_gas'}); }" class="g-btn" style="background:#128C7E;color:#fff;border:1px solid #128C7E">Scrivici su WhatsApp</a>
             </div>
             <p class="text-blue-100">Oppure scrivici a <a href="mailto:info@gialtermoidraulica.it" class="underline text-white">info@gialtermoidraulica.it</a> · Via Traversa Pistoiese 12/L, Prato · Lun–Ven 8:00–19:00</p>
         </div>
@@ -428,25 +437,25 @@
 
     </main>
 
-    <footer class="py-8 text-center text-gray-500 text-sm bg-white">
+    <footer class="g-footer">
         <div class="mb-4">
             <a href="/" aria-label="Home GIAL SRL">
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:80px; width:auto;" class="mx-auto mb-2" loading="lazy">
             </a>
         </div>
-        <p class="mb-2"><a href="/" class="underline text-blue-600">Home</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="underline text-blue-600">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="underline text-blue-600">Ristrutturazioni</a> · <a href="/pompa-di-calore-prato/" class="underline text-blue-600">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="underline text-blue-600">Condizionatori</a> · <a href="/sostituzione-caldaia-prato/" class="underline text-blue-600">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="underline text-blue-600">Rifacimento Bagno</a> · <a href="/#privacy" class="underline text-blue-600">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="">Home</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/installazione-condizionatori-prato/" class="">Condizionatori</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/#privacy" class="">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
-    <div class="call-bar bg-white border-t border-gray-200 shadow-lg flex">
-        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_gas'}); }" class="flex-1 bg-blue-600 text-white py-3 font-bold text-center" aria-label="Chiama GIAL SRL">📞 Chiama ora</a>
-        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_gas'}); }" class="flex-1 bg-green-500 text-white py-3 font-bold text-center" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+    <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
+        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_gas'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama GIAL SRL">Chiama ora</a>
+        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_gas'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#128C7E" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
 
     <a href="https://wa.me/393279371705"
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_gas'}); }"
-       class="hidden md:block fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+       class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#128C7E;box-shadow:0 6px 20px rgba(18,140,126,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
