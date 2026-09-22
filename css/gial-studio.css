@@ -60,6 +60,10 @@ h1, h2, h3, .g-serif {
     font-weight: 400;
     letter-spacing: -0.015em;
     color: var(--g-navy);
+    /* Fraunces ha due assi che lo rendono "ballerino": WONK accende le lettere
+       bizzarre (la f con lo svolazzo) e opsz alto esaspera il contrasto delle
+       aste. Li teniamo bassi: stesso carattere, disegno regolare. */
+    font-variation-settings: "opsz" 20, "SOFT" 0, "WONK" 0;
 }
 
 /* Nessun titolo in corsivo: era il tic più riconoscibile del vecchio tema */
@@ -902,3 +906,17 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 
 #mobileMenu { max-height: calc(100vh - 8rem); overflow-y: auto; }
 #mobileMenu a { border-radius: 3px; }
+
+/* ---------- Ancore interne sotto la barra fissa ----------
+   La nav e' fixed: senza questo, ogni link a #qualcosa porta il titolo
+   sotto la barra o a meta' sezione. Vale per tutte le ancore del sito. */
+
+[id] { scroll-margin-top: 6.5rem; }
+
+/* Le ancore "vuote" davanti a una sezione devono essere blocchi,
+   altrimenti lo scroll-margin non viene applicato in modo affidabile. */
+span[id][aria-hidden] { display: block; height: 0; }
+
+@media (max-width: 767px) {
+    [id] { scroll-margin-top: 5.5rem; }
+}
