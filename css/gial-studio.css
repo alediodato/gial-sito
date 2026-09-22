@@ -34,7 +34,7 @@
     --g-line-strong: #D3CBBC;
 
     /* Tipografia */
-    --g-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --g-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     --g-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
     /* Ritmo verticale unico: niente più py-16/py-20 a caso */
@@ -60,10 +60,10 @@ h1, h2, h3, .g-serif {
     font-weight: 400;
     letter-spacing: -0.015em;
     color: var(--g-navy);
-    /* Fraunces ha due assi che lo rendono "ballerino": WONK accende le lettere
-       bizzarre (la f con lo svolazzo) e opsz alto esaspera il contrasto delle
-       aste. Li teniamo bassi: stesso carattere, disegno regolare. */
-    font-variation-settings: "opsz" 20, "SOFT" 0, "WONK" 0;
+    /* Source Serif 4 ha un asse ottico: alziamolo sui titoli, cosi' il
+       disegno e' quello pensato per i corpi grandi. Nessuna lettera
+       alternativa, nessuno svolazzo: il carattere e' fatto per leggere. */
+    font-variation-settings: "opsz" 40;
 }
 
 /* Nessun titolo in corsivo: era il tic più riconoscibile del vecchio tema */
@@ -919,4 +919,12 @@ span[id][aria-hidden] { display: block; height: 0; }
 
 @media (max-width: 767px) {
     [id] { scroll-margin-top: 5.5rem; }
+}
+
+/* Le griglie a filo disegnano le linee con lo sfondo del contenitore: se il
+   numero di schede e' dispari, l'ultima riga resta mezza vuota e si vede il
+   colore della linea. L'ultima scheda dispari occupa tutta la riga. */
+
+@media (max-width: 1023px) {
+    .g-grid-hair > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
