@@ -23,7 +23,8 @@ Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + docu
 ## INFISSI (per finestra ~1,4 mq, fornitura+posa, ref. DEI PR.P70.001-004 + 02.E07.005)
 - INFISSO PVC doppio/triplo vetro:    economico 540-790, standard 790-950, premium 950-1.110
 - INFISSO Alluminio taglio termico:   economico 1.220-1.580, standard 1.580-1.760, premium 1.760-1.940
-- INFISSO Legno/Fibex:                economico 1.520-2.180, standard 2.180-2.640, premium 2.640-3.100
+- INFISSO Legno:                      economico 1.520-2.180, standard 2.180-2.640, premium 2.640-3.100
+- INFISSO Legno-alluminio (Fibex):    economico 2.080-2.650, standard 2.650-3.200, premium 3.200-3.780
 - TAPPARELLA motorizzata:             cad 650-1.000
 - PERSIANA blindata:                  cad 700-1.200
 

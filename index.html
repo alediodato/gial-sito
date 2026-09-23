@@ -169,7 +169,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <title>Termoidraulica e Impianti a Prato — GIAL SRL</title>
+    <title>Idraulico e Termoidraulica a Prato — GIAL SRL</title>
     <meta name="description" content="Impianti termoidraulici, climatizzazione, caldaie, bagni e ristrutturazioni a Prato. Polizza decennale, preventivo AI gratuito, sopralluogo senza impegno." />
     <meta name="author" content="GIAL SRL" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -1474,10 +1474,11 @@
 
         // Tabella prezzi DEI Toscana 2026 (basso/standard/alto)
         var P = {
-            finestra: {
+            infissi: {
                 pvc:   { basso:[540,790],   standard:[790,950],   alto:[950,1110] },
                 alu:   { basso:[1220,1580], standard:[1580,1760], alto:[1760,1940] },
-                legno: { basso:[1520,2180], standard:[2180,2640], alto:[2640,3100] }
+                legno: { basso:[1520,2180], standard:[2180,2640], alto:[2640,3100] },
+                legnoalu: { basso:[2080,2650], standard:[2650,3200], alto:[3200,3780] }
             },
             bagno: {
                 piccolo:{ basso:[4800,6200], standard:[6200,8500],  alto:[8500,12000] },
@@ -1543,7 +1544,7 @@
                 { id:'n', testo:'Quante aperture vuoi sostituire?',
                   opts:[{l:'1–3',v:'2'},{l:'4–6',v:'5'},{l:'7–10',v:'8'},{l:'10 o più',v:'12'}] },
                 { id:'mat', testo:'Materiale preferito?',
-                  opts:[{l:'PVC',v:'pvc'},{l:'Alluminio taglio termico',v:'alu'},{l:'Legno / Fibex',v:'legno'},{l:'Non so ancora',v:'pvc'}] }
+                  opts:[{l:'PVC',v:'pvc'},{l:'Alluminio taglio termico',v:'alu'},{l:'Legno',v:'legno'},{l:'Legno-alluminio',v:'legnoalu'},{l:'Non so ancora',v:'pvc'}] }
             ],
             bagno: [
                 { id:'qta', testo:'Quanti bagni?',
@@ -1655,7 +1656,7 @@
                 var row = tbl[mat] || tbl.pvc;
                 var range = row.standard;
                 return { min: range[0]*n, max: range[1]*n,
-                         nota: n + ' aperture in ' + mat.toUpperCase() };
+                         nota: n + ' aperture in ' + ({pvc:'PVC', alu:'alluminio', legno:'legno', legnoalu:'legno-alluminio'}[mat] || mat) };
             }
             if (tipo === 'bagno') {
                 var dim = r.dim || 'medio';
