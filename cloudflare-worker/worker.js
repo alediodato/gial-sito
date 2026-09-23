@@ -68,9 +68,9 @@ Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + docu
 - SCALDABAGNO pompa di calore:  1.850-3.700
 
 ## TINTEGGIATURA (pareti+soffitti, totale appartamento)
-- TINT Piccolo (~50mq):  600-1.100
-- TINT Medio (~80mq):    1.000-1.800
-- TINT Grande (120+mq):  1.500-2.700
+- TINT Piccolo (~50mq):  1.300-2.400
+- TINT Medio (~80mq):    2.000-3.800
+- TINT Grande (120+mq):  3.000-5.800
 
 ## POSA PAVIMENTI chiavi in mano (gres/parquet/ceramica, posa+materiale standard)
 - PAV Piccolo (~50mq):    4.000-6.500
@@ -247,7 +247,7 @@ const RANGES_PLAUSIBILI = {
     fotovoltaico:   [4000,  25000],
     cucina:         [2000,  15000],
     scaldabagno:    [400,   4500],
-    tinteggiatura:  [400,   3500],
+    tinteggiatura:  [400,   7000],
     pavimenti:      [1000,  20000],
     elettrico:      [500,   15000],
     terrazzo:       [1500,  15000],
