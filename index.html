@@ -1467,72 +1467,25 @@
         // Vedi cloudflare-worker/DEPLOY.md per le istruzioni di setup.
         var WORKER_URL = 'https://giall-preventivo-ai.gialsrl2018.workers.dev';
 
-        // Tabella prezzi DEI Toscana 2026 (basso/standard/alto)
-        var P = {
-            infissi: {
-                pvc:   { basso:[540,790],   standard:[790,950],   alto:[950,1110] },
-                alu:   { basso:[1220,1580], standard:[1580,1760], alto:[1760,1940] },
-                legno: { basso:[1520,2180], standard:[2180,2640], alto:[2640,3100] },
-                legnoalu: { basso:[2080,2650], standard:[2650,3200], alto:[3200,3780] }
-            },
-            bagno: {
-                piccolo:{ basso:[4800,6200], standard:[6200,8500],  alto:[8500,12000] },
-                medio:  { basso:[6800,8800], standard:[8800,12500], alto:[12500,17000] },
-                grande: { basso:[9500,12500],standard:[12500,17000],alto:[17000,23000] }
-            },
-            caldaia: {
-                piccola: { standard:[1900,3000] },
-                media:   { standard:[2600,4400] },
-                grande:  { standard:[3900,6900] },
-                con_imp: { standard:[6500,11000] }
-            },
-            clima: {
-                mono:  { standard:[1550,3500] },
-                dual:  { standard:[2900,3500] },
-                trial: { standard:[3600,4900] },
-                quad:  { standard:[4900,6400] }
-            },
-            pompa: {
-                piccola: { basso:[7000,9500],  standard:[9500,13000], alto:[13000,18000] },
-                media:   { basso:[9000,12000], standard:[12000,16000],alto:[16000,22000] },
-                grande:  { basso:[12000,16000],standard:[16000,22000],alto:[22000,30000] }
-            },
-            fotovoltaico: {
-                kw3: { standard:[5500,8000]  },
-                kw6: { standard:[9500,14000] },
-                kw10:{ standard:[15000,22000]}
-            },
-            cucina: {
-                piccola: { standard:[2500,4000]  },
-                media:   { standard:[4000,7000]  },
-                grande:  { standard:[7000,12000] }
-            },
-            scaldabagno: {
-                elettrico:    { standard:[500,900]   },
-                gas:          { standard:[950,1700]  },
-                pompa_calore: { standard:[1850,3700] }
-            },
-            tinteggiatura: {
-                piccolo: { standard:[1300,2400] },
-                medio:   { standard:[2000,3800] },
-                grande:  { standard:[3000,5800] }
-            },
-            pavimenti: {
-                piccolo: { standard:[4000,6500]   },
-                medio:   { standard:[6500,10500]  },
-                grande:  { standard:[10000,16000] }
-            },
-            elettrico: {
-                piccolo: { standard:[3500,5500]  },
-                medio:   { standard:[5500,8500]  },
-                grande:  { standard:[8500,13000] }
-            },
-            terrazzo: {
-                piccolo: { standard:[2200,3500]  },
-                medio:   { standard:[3500,6500]  },
-                grande:  { standard:[6500,12000] }
+        // Prezzi DEI Toscana 2026 (basso/standard/alto): fonte unica in /data/prezzi.json,
+        // la stessa che il worker incorpora nel prompt. Servono solo al calcolo di riserva.
+        var P = null;
+        var _prezziPromise = null;
+        function caricaPrezzi() {
+            if (!_prezziPromise) {
+                _prezziPromise = fetch('/data/prezzi.json')
+                    .then(function(r) { return r.ok ? r.json() : null; })
+                    .then(function(j) { if (j) P = j; return P; })
+                    .catch(function() { _prezziPromise = null; return P; });
             }
-        };
+            return _prezziPromise;
+        }
+
+        // Eventi GA4 (partono solo se il visitatore ha accettato i cookie e gtag è caricato)
+        function traccia(evento, params) {
+            try { if (window.gtag) window.gtag('event', evento, params || {}); } catch(e) { /* silent */ }
+        }
+        window.gialTraccia = traccia;
 
         var DOMANDE = {
             infissi: [
@@ -1619,7 +1572,7 @@
         function rilevaTipi(d) {
             d = d.toLowerCase();
             var tipi = [];
-            if (/finestra|infisso|serramento|persian|tapparell|avvolgibil/.test(d)) tipi.push('infissi');
+            if (/finestr|infiss|serrament|persian|tapparell|avvolgibil/.test(d)) tipi.push('infissi');
             if (/bagn[oi]|sanitari?|doccia|vasca/.test(d)) tipi.push('bagno');
             if (/caldaia/.test(d)) tipi.push('caldaia');
             if (/climatizzator|condizionator|\bsplit\b|aria condizionata/.test(d)) tipi.push('clima');
@@ -1643,7 +1596,7 @@
         }
 
         function calcolaAffinata(tipo, r) {
-            var tbl = P[tipo];
+            var tbl = P && P[tipo];
             if (!tbl) return null;
             if (tipo === 'infissi') {
                 var mat = r.mat || 'pvc';
@@ -1659,7 +1612,7 @@
                 var qta = parseInt(r.qta || '1', 10);
                 var range = (tbl[dim] || tbl.medio)[fin] || tbl.medio.standard;
                 return { min: range[0]*qta, max: range[1]*qta,
-                         nota: qta + (qta>1?' bagni ':' bagno ') + dim + ', finitura ' + fin };
+                         nota: qta + (qta>1?' bagni ':' bagno ') + dim + ', finitura ' + ({basso:'economica', standard:'standard', alto:'premium'}[fin] || fin) };
             }
             if (tipo === 'caldaia') {
                 var pot = r.pot || 'media';
@@ -1725,8 +1678,66 @@
                      opere_edili:'Opere Edili', tubazioni:'Tubazioni', altro:'Altri Lavori' }[tipo] || 'Lavori Termoidraulici';
         }
 
-        function fmt(n) { return new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n); }
+        function fmt(n) { return new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0,useGrouping:'always'}).format(n); }
         function esc(s) { return s ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+
+        // Stima con IVA agevolata 10% (manutenzioni e ristrutturazioni su abitazioni), arrotondata alla decina
+        function conIva(n) { return Math.round(n * 1.1 / 10) * 10; }
+        function htmlIva(min, max) {
+            return '<p class="text-xs text-gray-500 mt-1">IVA esclusa · Circa ' + fmt(conIva(min)) + ' – ' + fmt(conIva(max)) +
+                   ' con IVA al 10%, l\'aliquota agevolata per i lavori sulla casa (aziende: 22%)</p>' +
+                   '<p class="text-xs text-gray-500 mt-1">Zona Prato-Firenze-Pistoia</p>';
+        }
+
+        // Link WhatsApp con descrizione e stima già scritte, così la richiesta arriva completa
+        function linkWhatsApp() {
+            var u = _stato.ultimo;
+            var desc = (_stato.desc || '').trim();
+            if (desc.length > 500) desc = desc.slice(0, 500) + '…';
+            var testo = 'Ciao, ho usato il preventivo AI sul vostro sito.';
+            if (desc) testo += '\n\nLavori: ' + desc;
+            if (u && u.voci && u.voci.length) {
+                testo += '\n\nStima ricevuta:\n' + u.voci.map(function(v) {
+                    return '• ' + (v.titolo || titoloTipo(v.tipo)) + ': ' + fmt(v.min) + ' – ' + fmt(v.max);
+                }).join('\n');
+                testo += '\nTotale: ' + fmt(u.totMin) + ' – ' + fmt(u.totMax) + ' (IVA esclusa)';
+            }
+            testo += '\n\nVorrei un sopralluogo gratuito per un preventivo preciso.';
+            return 'https://wa.me/393279371705?text=' + encodeURIComponent(testo);
+        }
+
+        var WA_ICON = '<svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>';
+
+        // Bottoni finali + richiesta copia via email, uguali per stima AI e stima di riserva
+        function htmlAzioniFinali(avviso) {
+            return '<div class="flex flex-col sm:flex-row gap-3">' +
+                    '<a href="' + esc(linkWhatsApp()) + '" target="_blank" rel="noopener" onclick="gialTraccia(\'preventivo_whatsapp\')" ' +
+                       'class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition flex items-center justify-center gap-2 text-sm">' +
+                        WA_ICON + 'Sopralluogo Gratuito (WhatsApp)' +
+                    '</a>' +
+                    '<button onclick="resetPreventivo()" ' +
+                        'class="flex-1 border-2 border-gray-200 text-gray-600 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition text-sm text-center">' +
+                        '↩ Nuova Stima' +
+                    '</button>' +
+                '</div>' +
+                '<div id="email-copia-box" class="bg-gray-50 border border-gray-100 rounded-xl p-5 mt-5">' +
+                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo?</p>' +
+                    '<p class="text-xs text-gray-500 mb-3">Ti inviamo una copia dettagliata della stima. Se lasci anche il telefono ti richiamiamo per capire meglio il lavoro, senza impegno.</p>' +
+                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col gap-2">' +
+                        '<input type="email" id="email-copia" required placeholder="tua@email.it" ' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                        '<input type="tel" id="tel-copia" placeholder="Telefono (facoltativo, per richiamarti)" inputmode="tel" autocomplete="tel" ' +
+                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
+                        '<button type="submit" id="email-copia-btn" ' +
+                            'class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">Invia copia</button>' +
+                    '</form>' +
+                    '<p id="email-copia-ok" class="hidden text-xs text-green-600 mt-3 font-semibold flex items-center gap-1">' +
+                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>' +
+                        'Richiesta ricevuta! Ti invieremo il riepilogo entro poche ore.' +
+                    '</p>' +
+                '</div>' +
+                '<p class="text-center text-xs text-gray-300 mt-4">⚠ ' + avviso + ' Il prezzo definitivo richiede sopralluogo tecnico.</p>';
+        }
 
         function preFillQuantita() {
             var d = _stato.desc;
@@ -1745,6 +1756,7 @@
         function mostraDomande() {
             var tipi = _stato.tipi;
             if (!tipi.length) { affinaStima(); return; }
+            traccia('preventivo_domande', { origine: 'locale', categorie: tipi.join(',') });
 
             var form = document.getElementById('preventivo-form');
             var el   = document.getElementById('preventivo-domande');
@@ -1818,9 +1830,9 @@
                 totMin += r.min;
                 totMax += r.max;
             });
-            if (!voci.length) return;
+            if (!voci.length) { mostraNonCapito(); return; }
             _stato.ultimo = { voci: voci, totMin: totMin, totMax: totMax };
-            inviaNotifica(_stato.desc, totMin, totMax);
+            traccia('preventivo_stima', { origine: 'locale', categorie: _stato.tipi.join(','), totale_min: totMin, totale_max: totMax });
             mostraRisultatoAffinato(voci, totMin, totMax);
         };
 
@@ -1836,8 +1848,9 @@
             btn.disabled = true; btn.textContent = 'Invio…';
             var u = _stato.ultimo || { voci:[], totMin:0, totMax:0 };
             var dettaglio = u.voci.map(function(v) {
-                return '• ' + titoloTipo(v.tipo) + (v.nota ? ' (' + v.nota + ')' : '') + ': ' + fmt(v.min) + ' – ' + fmt(v.max);
+                return '• ' + (v.titolo || titoloTipo(v.tipo)) + (v.nota ? ' (' + v.nota + ')' : '') + ': ' + fmt(v.min) + ' – ' + fmt(v.max);
             }).join('\n');
+            traccia('preventivo_contatto', { con_telefono: telefono ? 'si' : 'no' });
             try {
                 fetch('https://formspree.io/f/mvzgnwnp', {
                     method: 'POST',
@@ -1849,7 +1862,7 @@
                         richiamare: telefono ? 'SI - il cliente ha lasciato il telefono' : 'no',
                         descrizione_lavori: _stato.desc,
                         voci_dettaglio: dettaglio,
-                        stima_totale: fmt(u.totMin) + ' – ' + fmt(u.totMax),
+                        stima_totale: fmt(u.totMin) + ' – ' + fmt(u.totMax) + ' IVA esclusa (circa ' + fmt(conIva(u.totMin)) + ' – ' + fmt(conIva(u.totMax)) + ' con IVA 10%)',
                         richiesta: 'Inviare copia riepilogo al cliente',
                         _replyto: email
                     })
@@ -1869,7 +1882,6 @@
             var el   = document.getElementById('preventivo-risultato');
             var dom  = document.getElementById('preventivo-domande');
             if (dom) dom.classList.add('hidden');
-            var waMsg = encodeURIComponent('Ciao, ho usato il preventivo AI sul vostro sito. Vorrei un sopralluogo gratuito per un preventivo preciso.');
 
             var titoli = voci.map(function(v){ return titoloTipo(v.tipo); }).join(' + ');
             var dettaglio = voci.map(function(v) {
@@ -1894,43 +1906,17 @@
                         '<span class="font-black text-2xl text-blue-600">' + fmt(totMin) + ' – ' + fmt(totMax) + '</span>' +
                     '</div>' +
                     (voci.length === 1 && voci[0].nota ? '<p class="text-xs text-gray-500 mt-1">' + esc(voci[0].nota) + '</p>' : '') +
-                    '<p class="text-xs text-gray-500 mt-1">IVA esclusa · Zona Prato-Firenze-Pistoia</p>' +
+                    htmlIva(totMin, totMax) +
                 '</div>' +
                 '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa basata su Prezzario DEI Toscana 2026. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
-                '<div class="flex flex-col sm:flex-row gap-3">' +
-                    '<a href="https://wa.me/393279371705?text=' + waMsg + '" target="_blank" rel="noopener" ' +
-                       'class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition flex items-center justify-center gap-2 text-sm">' +
-                        '<svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>' +
-                        'Sopralluogo Gratuito (WhatsApp)' +
-                    '</a>' +
-                    '<button onclick="resetPreventivo()" ' +
-                        'class="flex-1 border-2 border-gray-200 text-gray-600 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition text-sm text-center">' +
-                        '↩ Nuova Stima' +
-                    '</button>' +
-                '</div>' +
-                '<div id="email-copia-box" class="bg-gray-50 border border-gray-100 rounded-xl p-5 mt-5">' +
-                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo?</p>' +
-                    '<p class="text-xs text-gray-500 mb-3">Ti inviamo una copia dettagliata della stima. Se lasci anche il telefono ti richiamiamo per capire meglio il lavoro, senza impegno.</p>' +
-                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col gap-2">' +
-                        '<input type="email" id="email-copia" required placeholder="tua@email.it" ' +
-                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
-                        '<input type="tel" id="tel-copia" placeholder="Telefono (facoltativo, per richiamarti)" inputmode="tel" autocomplete="tel" ' +
-                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
-                        '<button type="submit" id="email-copia-btn" ' +
-                            'class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">Invia copia</button>' +
-                    '</form>' +
-                    '<p id="email-copia-ok" class="hidden text-xs text-green-600 mt-3 font-semibold flex items-center gap-1">' +
-                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>' +
-                        'Richiesta ricevuta! Ti invieremo il riepilogo entro poche ore.' +
-                    '</p>' +
-                '</div>' +
-                '<p class="text-center text-xs text-gray-300 mt-4">⚠ Stima puramente orientativa. Il prezzo definitivo richiede sopralluogo tecnico.</p>';
+                htmlAzioniFinali('Stima puramente orientativa.');
             el.classList.remove('hidden');
             el.scrollIntoView({ behavior:'smooth', block:'nearest' });
         }
 
         // Render delle domande di chiarimento dall'AI (modalità "chiarimento")
         function mostraDomandeAI(domande) {
+            traccia('preventivo_domande', { origine: 'ai', n_domande: domande.length });
             var form = document.getElementById('preventivo-form');
             var dom  = document.getElementById('preventivo-domande');
             var res  = document.getElementById('preventivo-risultato');
@@ -2013,11 +1999,11 @@
                     return;
                 }
                 if (stima && Array.isArray(stima.voci) && stima.voci.length) {
-                    inviaNotifica(nuovaDesc, stima.totale_min, stima.totale_max);
                     mostraRisultatoAI(stima);
                     return;
                 }
                 // Fallback se l'AI non risponde più
+                traccia('preventivo_errore', { fase: 'ricalcolo' });
                 if (btn) { btn.disabled = false; btn.textContent = 'Calcola Stima →'; }
                 alert('Mi dispiace, non sono riuscito a generare una stima. Prova a riformulare la descrizione o contattaci direttamente.');
             });
@@ -2025,13 +2011,28 @@
 
         // Render del risultato AI end-to-end (con voci, incertezza, fuori_listino, domande)
         function mostraRisultatoAI(stima) {
+            // Salva la stima prima del render: la usano il link WhatsApp e la richiesta di copia via email
+            _stato.ultimo = {
+                voci: stima.voci.map(function(v) {
+                    return { tipo: v.categoria, titolo: v.titolo, min: v.min, max: v.max, nota: v.nota };
+                }),
+                totMin: stima.totale_min,
+                totMax: stima.totale_max
+            };
+            traccia('preventivo_stima', {
+                origine: 'ai',
+                categorie: stima.voci.map(function(v) { return v.categoria; }).join(','),
+                totale_min: stima.totale_min,
+                totale_max: stima.totale_max,
+                incertezza: stima.incertezza
+            });
+
             var el   = document.getElementById('preventivo-risultato');
             var form = document.getElementById('preventivo-form');
             var dom  = document.getElementById('preventivo-domande');
             if (dom) dom.classList.add('hidden');
             if (form) form.classList.add('hidden');
 
-            var waMsg = encodeURIComponent('Ciao, ho usato il preventivo AI sul vostro sito. Vorrei un sopralluogo gratuito per un preventivo preciso.');
 
             var dettaglio = stima.voci.map(function(v) {
                 return '<div class="flex items-start justify-between gap-4 py-3 border-b border-gray-100 last:border-0">' +
@@ -2088,57 +2089,15 @@
                         '<span class="font-bold text-gray-700">Stima totale orientativa</span>' +
                         '<span class="font-black text-2xl text-blue-600">' + fmt(stima.totale_min) + ' – ' + fmt(stima.totale_max) + '</span>' +
                     '</div>' +
-                    '<p class="text-xs text-gray-500 mt-1">IVA esclusa · Zona Prato-Firenze-Pistoia</p>' +
+                    htmlIva(stima.totale_min, stima.totale_max) +
                 '</div>' +
                 fuoriHtml +
                 domandeHtml +
                 '<p class="text-xs text-gray-400 italic mb-5">Stima orientativa generata da Claude AI sulla base del Prezzario DEI Toscana 2026. Il prezzo definitivo dipende da misurazioni reali, finiture scelte e condizioni del cantiere.</p>' +
-                '<div class="flex flex-col sm:flex-row gap-3">' +
-                    '<a href="https://wa.me/393279371705?text=' + waMsg + '" target="_blank" rel="noopener" ' +
-                       'class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition flex items-center justify-center gap-2 text-sm">' +
-                        '<svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>' +
-                        'Sopralluogo Gratuito (WhatsApp)' +
-                    '</a>' +
-                    '<button onclick="resetPreventivo()" ' +
-                        'class="flex-1 border-2 border-gray-200 text-gray-600 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition text-sm text-center">' +
-                        '↩ Nuova Stima' +
-                    '</button>' +
-                '</div>' +
-                '<div id="email-copia-box" class="bg-gray-50 border border-gray-100 rounded-xl p-5 mt-5">' +
-                    '<p class="text-sm font-bold text-gray-800 mb-1">📧 Vuoi ricevere il riepilogo?</p>' +
-                    '<p class="text-xs text-gray-500 mb-3">Ti inviamo una copia dettagliata della stima. Se lasci anche il telefono ti richiamiamo per capire meglio il lavoro, senza impegno.</p>' +
-                    '<form onsubmit="return inviaCopiaEmail(event)" class="flex flex-col gap-2">' +
-                        '<input type="email" id="email-copia" required placeholder="tua@email.it" ' +
-                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
-                        '<input type="tel" id="tel-copia" placeholder="Telefono (facoltativo, per richiamarti)" inputmode="tel" autocomplete="tel" ' +
-                            'class="border border-gray-200 rounded-lg px-4 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">' +
-                        '<button type="submit" id="email-copia-btn" ' +
-                            'class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition whitespace-nowrap">Invia copia</button>' +
-                    '</form>' +
-                    '<p id="email-copia-ok" class="hidden text-xs text-green-600 mt-3 font-semibold flex items-center gap-1">' +
-                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>' +
-                        'Richiesta ricevuta! Ti invieremo il riepilogo entro poche ore.' +
-                    '</p>' +
-                '</div>' +
-                '<p class="text-center text-xs text-gray-300 mt-4">⚠ Stima generata da AI. Il prezzo definitivo richiede sopralluogo tecnico.</p>';
+                htmlAzioniFinali('Stima generata da AI.');
 
             el.classList.remove('hidden');
             el.scrollIntoView({ behavior:'smooth', block:'nearest' });
-        }
-
-        function inviaNotifica(desc, min, max) {
-            try {
-                fetch('https://formspree.io/f/mvzgnwnp', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        _subject: 'Preventivo AI calcolato sul sito GIAL',
-                        descrizione_lavori: desc,
-                        stima_totale: fmt(min) + ' – ' + fmt(max),
-                        _replyto: 'noreply@preventivo-ai'
-                    })
-                });
-            } catch(e) { /* silent */ }
         }
 
         window.usaSuggerimento = function(testo) {
@@ -2170,6 +2129,7 @@
                 txt.textContent = 'Calcola Stima AI';
             };
 
+            traccia('preventivo_avvio');
             stimaConAI(desc).then(function(stima) {
                 try {
                     _stato.desc = desc;
@@ -2186,46 +2146,48 @@
 
                     // Caso 1 — l'AI ha prodotto una stima utilizzabile: render diretto
                     if (stima && Array.isArray(stima.voci) && stima.voci.length) {
-                        var voci = stima.voci.map(function(v) {
-                            return { tipo: v.categoria, titolo: v.titolo, min: v.min, max: v.max, nota: v.nota };
-                        });
-                        _stato.ultimo = { voci: voci, totMin: stima.totale_min, totMax: stima.totale_max };
-                        inviaNotifica(desc, stima.totale_min, stima.totale_max);
                         fineCaricamento();
                         mostraRisultatoAI(stima);
                         return;
                     }
 
                     // Caso 2 — fallback locale (Worker giù, AI ha fallito, o nessuna voce stimabile)
+                    traccia('preventivo_errore', { fase: stima ? 'nessuna_voce' : 'ai_non_disponibile' });
                     _stato.tipi = rilevaTipi(desc);
                     _stato.risposte = {};
                     preFillQuantita();
-                    fineCaricamento();
-                    if (_stato.tipi.length) {
-                        mostraDomande();
-                    } else {
-                        inviaNotifica(desc, 1200, 5000);
-                        var el = document.getElementById('preventivo-risultato');
-                        var form = document.getElementById('preventivo-form');
-                        var waMsg = encodeURIComponent('Ciao, ho usato il preventivo AI sul vostro sito. Vorrei un sopralluogo gratuito per un preventivo preciso.');
-                        el.innerHTML =
-                            '<div class="flex items-center gap-2 mb-4">' +
-                                '<svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
-                                '<span class="font-bold text-gray-800">Descrizione non abbastanza specifica</span>' +
-                            '</div>' +
-                            '<p class="text-sm text-gray-600 mb-5">Per una stima automatica accurata, specifica il tipo di intervento (es: caldaia, finestre, bagno, climatizzatore, pompa di calore, fotovoltaico). Oppure contattaci direttamente per un preventivo gratuito.</p>' +
-                            '<div class="flex flex-col sm:flex-row gap-3">' +
-                                '<a href="https://wa.me/393279371705?text=' + waMsg + '" target="_blank" rel="noopener" class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition text-sm flex items-center justify-center gap-2">' +
-                                    'Contattaci su WhatsApp</a>' +
-                                '<button onclick="resetPreventivo()" class="flex-1 border-2 border-gray-200 text-gray-600 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition text-sm">↩ Riprova</button>' +
-                            '</div>';
-                        form.classList.add('hidden');
-                        el.classList.remove('hidden');
-                        el.scrollIntoView({ behavior:'smooth', block:'nearest' });
-                    }
+                    caricaPrezzi().then(function() {
+                        fineCaricamento();
+                        if (_stato.tipi.length && P) mostraDomande();
+                        else mostraNonCapito();
+                    });
                 } catch(e) { console.error(e); fineCaricamento(); }
             });
         };
+
+        // Nessuna stima possibile: invito a contattarci, con la descrizione già nel messaggio WhatsApp
+        function mostraNonCapito() {
+            traccia('preventivo_non_capito');
+            _stato.ultimo = null;
+            var el   = document.getElementById('preventivo-risultato');
+            var form = document.getElementById('preventivo-form');
+            var dom  = document.getElementById('preventivo-domande');
+            el.innerHTML =
+                '<div class="flex items-center gap-2 mb-4">' +
+                    '<svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
+                    '<span class="font-bold text-gray-800">Non riesco a stimare questo lavoro in automatico</span>' +
+                '</div>' +
+                '<p class="text-sm text-gray-600 mb-5">Prova a specificare il tipo di intervento (es: caldaia, finestre, bagno, climatizzatore, pompa di calore, fotovoltaico). Oppure scrivici: la tua descrizione è già nel messaggio WhatsApp.</p>' +
+                '<div class="flex flex-col sm:flex-row gap-3">' +
+                    '<a href="' + esc(linkWhatsApp()) + '" target="_blank" rel="noopener" onclick="gialTraccia(\'preventivo_whatsapp\')" class="flex-1 bg-green-500 text-white py-3 px-4 rounded-xl font-bold text-center hover:bg-green-600 transition text-sm flex items-center justify-center gap-2">' +
+                        WA_ICON + 'Contattaci su WhatsApp</a>' +
+                    '<button onclick="resetPreventivo()" class="flex-1 border-2 border-gray-200 text-gray-600 py-3 px-4 rounded-xl font-semibold hover:bg-gray-50 transition text-sm">↩ Riprova</button>' +
+                '</div>';
+            form.classList.add('hidden');
+            if (dom) dom.classList.add('hidden');
+            el.classList.remove('hidden');
+            el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+        }
 
         window.resetPreventivo = function() {
             _stato = { desc:'', tipi:[], risposte:{}, ultimo:null, descOriginale:'', domandeAI:[], risposteAI:{} };

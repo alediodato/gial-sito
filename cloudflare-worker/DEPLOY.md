@@ -20,10 +20,9 @@ Tempo stimato: **15 minuti**. Costo: **0 €** (free tier Cloudflare + ~5 € di
 1. Clicca **Create application → Create Worker**
 2. Dagli un nome: `gial-preventivo-ai` (l'URL sarà `https://gial-preventivo-ai.<TUO-SOTTODOMINIO>.workers.dev`)
 3. Clicca **Deploy** (deploya il codice di esempio)
-4. Clicca **Edit code** (pulsante in alto a destra)
-5. Nell'editor che si apre, **cancella tutto il contenuto** del file `worker.js`
-6. Apri il file `cloudflare-worker/worker.js` di questo repo, **copia tutto il contenuto** e incollalo nell'editor Cloudflare
-7. Clicca **Deploy** in alto a destra
+4. Pubblica il codice vero da terminale, nella cartella `cloudflare-worker/`:
+   `npx -y wrangler@4 deploy --keep-vars`
+   (non copiare/incollare `worker.js` nell'editor Cloudflare: importa i prezzi da `../data/prezzi.json` e solo wrangler li incorpora)
 
 ## 4. Aggiungi la chiave Anthropic come variabile segreta
 
@@ -86,8 +85,9 @@ Committa, push, e GitHub Pages aggiornerà il sito da solo. **Fatto.**
 
 ## Fallback
 
-Il sito chiama il Worker con timeout di 6 secondi. Se il Worker è giù, è lento, o la chiave Anthropic ha esaurito i crediti, il sito usa automaticamente il vecchio rilevamento basato su regex. **Non si rompe mai.**
+Il sito chiama il Worker con timeout di 12 secondi. Se il Worker è giù, è lento, o la chiave Anthropic ha esaurito i crediti, il sito usa automaticamente il vecchio rilevamento basato su regex, con i prezzi letti da `/data/prezzi.json`. **Non si rompe mai.**
 
 ## Aggiornamenti futuri
 
-Per modificare le categorie, le percentuali, o il prompt: edita `worker.js`, incollalo nell'editor Cloudflare, clicca Deploy. Nessun deploy richiesto sul sito.
+- **Prezzi macro** (bagno, caldaia, infissi…): modifica solo `data/prezzi.json`. Poi pubblica il sito (push su `main`) **e** rifai il deploy del worker con `npx -y wrangler@4 deploy --keep-vars`. Le guide e le landing hanno i prezzi scritti nel testo: vanno allineate a mano.
+- **Prompt, voci unitarie o regole**: modifica `worker.js` e rifai il deploy del worker. Nessun deploy richiesto sul sito.

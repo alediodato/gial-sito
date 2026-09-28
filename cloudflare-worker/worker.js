@@ -2,6 +2,10 @@
 // L'AI riceve la descrizione e la confronta con un catalogo aggregato di interventi
 // finiti (macro) + un set di voci unitarie DEI (€/h, €/mq, €/cad, €/m).
 // Scegli la combinazione giusta per coprire qualsiasi richiesta.
+// I prezzi macro arrivano da ../data/prezzi.json (fonte unica, condivisa con il sito):
+// wrangler li incorpora al deploy.
+
+import PREZZI from '../data/prezzi.json';
 
 const ALLOWED_ORIGINS = [
     'https://gialtermoidraulica.it',
@@ -10,6 +14,13 @@ const ALLOWED_ORIGINS = [
 
 // Pattern per origini di sviluppo locali (qualsiasi porta)
 const LOCAL_ORIGIN_RE = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+
+
+// Formattazione "1.580" e range "1.580-1.760", eventualmente moltiplicato per quantità
+const eur = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const rg = (r, q = 1) => eur(r[0] * q) + '-' + eur(r[1] * q);
+const fasce = o => `economico ${rg(o.basso)}, standard ${rg(o.standard)}, premium ${rg(o.alto)}`;
+const P = PREZZI;
 
 const CATALOGO = `CATALOGO PREZZI GIAL 2026 — derivato dal Prezzario DEI Toscana 2026 (Firenze).
 Tutti i prezzi sono in EUR, IVA esclusa, zona Prato/Firenze/Pistoia.
@@ -21,72 +32,72 @@ Già comprensive di: fornitura + materiali + trasporto + montaggio + posa + docu
 ═══════════════════════════════════════════════════
 
 ## INFISSI (per finestra ~1,4 mq, fornitura+posa, ref. DEI PR.P70.001-004 + 02.E07.005)
-- INFISSO PVC doppio/triplo vetro:    economico 540-790, standard 790-950, premium 950-1.110
-- INFISSO Alluminio taglio termico:   economico 1.220-1.580, standard 1.580-1.760, premium 1.760-1.940
-- INFISSO Legno:                      economico 1.520-2.180, standard 2.180-2.640, premium 2.640-3.100
-- INFISSO Legno-alluminio (Fibex):    economico 2.080-2.650, standard 2.650-3.200, premium 3.200-3.780
+- INFISSO PVC doppio/triplo vetro:    ${fasce(P.infissi.pvc)}
+- INFISSO Alluminio taglio termico:   ${fasce(P.infissi.alu)}
+- INFISSO Legno:                      ${fasce(P.infissi.legno)}
+- INFISSO Legno-alluminio (Fibex):    ${fasce(P.infissi.legnoalu)}
 - TAPPARELLA motorizzata:             cad 650-1.000
 - PERSIANA blindata:                  cad 700-1.200
 
 ## RIFACIMENTO BAGNO (totale per bagno: sanitari + tubature + posa + rivestimenti + finiture)
-- BAGNO Piccolo (<5mq):  economico 4.800-6.200, standard 6.200-8.500, premium 8.500-12.000
-- BAGNO Medio (5-8mq):   economico 6.800-8.800, standard 8.800-12.500, premium 12.500-17.000
-- BAGNO Grande (>8mq):   economico 9.500-12.500, standard 12.500-17.000, premium 17.000-23.000
+- BAGNO Piccolo (<5mq):  ${fasce(P.bagno.piccolo)}
+- BAGNO Medio (5-8mq):   ${fasce(P.bagno.medio)}
+- BAGNO Grande (>8mq):   ${fasce(P.bagno.grande)}
 
 ## CALDAIA A CONDENSAZIONE (sostituzione chiavi in mano, ref. DEI 06.I04P)
-- CALDAIA fino 24 kW (mono/bilocale):        1.900-3.000
-- CALDAIA 25-35 kW (3-4 locali, 90-120mq):   2.600-4.400
-- CALDAIA 36-70 kW (villa, >120mq):          3.900-6.900
-- CALDAIA con rifacimento impianto completo: 6.500-11.000
+- CALDAIA fino 24 kW (mono/bilocale):        ${rg(P.caldaia.piccola.standard)}
+- CALDAIA 25-35 kW (3-4 locali, 90-120mq):   ${rg(P.caldaia.media.standard)}
+- CALDAIA 36-70 kW (villa, >120mq):          ${rg(P.caldaia.grande.standard)}
+- CALDAIA con rifacimento impianto completo: ${rg(P.caldaia.con_imp.standard)}
 
 ## CLIMATIZZAZIONE SPLIT (chiavi in mano, ref. DEI 06.I06A)
-- SPLIT Mono (1 ambiente):             1.550-3.500
-- SPLIT Dual (2 ambienti):             2.900-3.500
-- SPLIT Trial (3 ambienti):            3.600-4.900
-- SPLIT Quadri (4+ ambienti):          4.900-6.400
+- SPLIT Mono (1 ambiente):             ${rg(P.clima.mono.standard)}
+- SPLIT Dual (2 ambienti):             ${rg(P.clima.dual.standard)}
+- SPLIT Trial (3 ambienti):            ${rg(P.clima.trial.standard)}
+- SPLIT Quadri (4+ ambienti):          ${rg(P.clima.quad.standard)}
 
 ## POMPA DI CALORE ARIA-ACQUA (ref. DEI 06 + PR.P30.200)
 - POMPA piccola (<100mq):
-  · solo pompa: 7.000-9.500   · con adeguamento impianto: 9.500-13.000   · ristrutturazione completa: 13.000-18.000
+  · solo pompa: ${rg(P.pompa.piccola.basso)}   · con adeguamento impianto: ${rg(P.pompa.piccola.standard)}   · ristrutturazione completa: ${rg(P.pompa.piccola.alto)}
 - POMPA media (100-180mq):
-  · solo pompa: 9.000-12.000  · con adeguamento: 12.000-16.000           · ristrutturazione: 16.000-22.000
+  · solo pompa: ${rg(P.pompa.media.basso)}  · con adeguamento: ${rg(P.pompa.media.standard)}           · ristrutturazione: ${rg(P.pompa.media.alto)}
 - POMPA grande (>180mq):
-  · solo pompa: 12.000-16.000 · con adeguamento: 16.000-22.000           · ristrutturazione: 22.000-30.000
+  · solo pompa: ${rg(P.pompa.grande.basso)} · con adeguamento: ${rg(P.pompa.grande.standard)}           · ristrutturazione: ${rg(P.pompa.grande.alto)}
 
 ## FOTOVOLTAICO chiavi in mano
-- FV 3 kWp (<3.000 kWh/anno):  5.500-8.000
-- FV 6 kWp (3.000-6.000 kWh):  9.500-14.000
-- FV 10 kWp (>6.000 kWh):     15.000-22.000
+- FV 3 kWp (<3.000 kWh/anno):  ${rg(P.fotovoltaico.kw3.standard)}
+- FV 6 kWp (3.000-6.000 kWh):  ${rg(P.fotovoltaico.kw6.standard)}
+- FV 10 kWp (>6.000 kWh):     ${rg(P.fotovoltaico.kw10.standard)}
 
 ## CUCINA (impianti idraulico/elettrico + posa elettrodomestici, NO mobili)
-- CUCINA Piccola (<10mq):  2.500-4.000
-- CUCINA Media (10-18mq):  4.000-7.000
-- CUCINA Grande (>18mq):   7.000-12.000
+- CUCINA Piccola (<10mq):  ${rg(P.cucina.piccola.standard)}
+- CUCINA Media (10-18mq):  ${rg(P.cucina.media.standard)}
+- CUCINA Grande (>18mq):   ${rg(P.cucina.grande.standard)}
 
 ## SCALDABAGNO (sostituzione totale, ref. DEI PR.P30.042-043)
-- SCALDABAGNO elettrico:        500-900
-- SCALDABAGNO a gas:            950-1.700
-- SCALDABAGNO pompa di calore:  1.850-3.700
+- SCALDABAGNO elettrico:        ${rg(P.scaldabagno.elettrico.standard)}
+- SCALDABAGNO a gas:            ${rg(P.scaldabagno.gas.standard)}
+- SCALDABAGNO pompa di calore:  ${rg(P.scaldabagno.pompa_calore.standard)}
 
 ## TINTEGGIATURA (pareti+soffitti, totale appartamento)
-- TINT Piccolo (~50mq):  1.300-2.400
-- TINT Medio (~80mq):    2.000-3.800
-- TINT Grande (120+mq):  3.000-5.800
+- TINT Piccolo (~50mq):  ${rg(P.tinteggiatura.piccolo.standard)}
+- TINT Medio (~80mq):    ${rg(P.tinteggiatura.medio.standard)}
+- TINT Grande (120+mq):  ${rg(P.tinteggiatura.grande.standard)}
 
 ## POSA PAVIMENTI chiavi in mano (gres/parquet/ceramica, posa+materiale standard)
-- PAV Piccolo (~50mq):    4.000-6.500
-- PAV Medio (~80mq):      6.500-10.500
-- PAV Grande (120+mq):   10.000-16.000
+- PAV Piccolo (~50mq):    ${rg(P.pavimenti.piccolo.standard)}
+- PAV Medio (~80mq):      ${rg(P.pavimenti.medio.standard)}
+- PAV Grande (120+mq):   ${rg(P.pavimenti.grande.standard)}
 
 ## IMPIANTO ELETTRICO (rifacimento appartamento)
-- ELE Piccolo (<70mq):     3.500-5.500
-- ELE Medio (70-110mq):    5.500-8.500
-- ELE Grande (>110mq):     8.500-13.000
+- ELE Piccolo (<70mq):     ${rg(P.elettrico.piccolo.standard)}
+- ELE Medio (70-110mq):    ${rg(P.elettrico.medio.standard)}
+- ELE Grande (>110mq):     ${rg(P.elettrico.grande.standard)}
 
 ## TERRAZZO/BALCONE (impermeabilizzazione + posa pavimentazione)
-- TERR Piccolo (<10mq):   2.200-3.500
-- TERR Medio (10-25mq):   3.500-6.500
-- TERR Grande (>25mq):    6.500-12.000
+- TERR Piccolo (<10mq):   ${rg(P.terrazzo.piccolo.standard)}
+- TERR Medio (10-25mq):   ${rg(P.terrazzo.medio.standard)}
+- TERR Grande (>25mq):    ${rg(P.terrazzo.grande.standard)}
 
 ═══════════════════════════════════════════════════
 PARTE 2 — VOCI UNITARIE DEI
@@ -160,7 +171,7 @@ ${CATALOGO}
 REGOLE FERREE - DEVI rispettarle TUTTE:
 
 0. MODALITÀ: prima di tutto decidi se hai abbastanza info per stimare.
-   • Se mancano info CRITICHE che farebbero variare il prezzo del 50%+ (es: "voglio rifare due bagni" senza dimensioni → range varia da 4.800 a 23.000 per bagno!) → modalita="chiarimento", voci=[], domande_chiarimento con 2-4 domande cliccabili.
+   • Se mancano info CRITICHE che farebbero variare il prezzo del 50%+ (es: "voglio rifare due bagni" senza dimensioni → range varia da ${eur(P.bagno.piccolo.basso[0])} a ${eur(P.bagno.grande.alto[1])} per bagno!) → modalita="chiarimento", voci=[], domande_chiarimento con 2-4 domande cliccabili.
    • Se hai abbastanza info per stimare anche con incertezza media → modalita="stima" con voci popolate.
    ESEMPI:
    • "Voglio rifare due bagni uno piccolo e uno grande" → MODALITÀ STIMA. Hai dimensioni. Manca solo finitura → assumi standard, eventualmente in domande_suggerite proponi "Vuoi specificare la finitura?".
@@ -181,53 +192,54 @@ REGOLE FERREE - DEVI rispettarle TUTTE:
 
    REGOLA D'ORO sulle domande: una DOMANDA PER OGGETTO se la quantità è esplicita ("due bagni" = 2 domande dimensione, una per bagno). Una DOMANDA AGGREGATA se la quantità è ignota ("i bagni" = 1 domanda per quantità + 1 per finitura).
    NON chiedere mai info che l'utente ha già fornito.
+   UN SOLO GIRO DI DOMANDE: se la descrizione contiene "Dettagli aggiuntivi:", l'utente ha già risposto ai chiarimenti → modalita="stima" SEMPRE. Per ciò che manca ancora assumi i default della regola 5 e dichiarali nella nota.
 
 1. SCEGLI MACRO O UNITARIA con criterio:
    • Se l'utente descrive un INTERVENTO TIPICO ("rifacimento bagno", "sostituzione caldaia", "metti il fotovoltaico") → usa una voce MACRO.
    • Se l'utente è ATOMICO ("voglio sostituire solo il vaso WC", "10 metri di tubo multistrato", "tinteggia 30 mq") → usa voci UNITARIE.
    • Se l'utente mischia ("rifacimento bagno + sostituzione caldaia") → una macro per ciascuno.
-   • Se la descrizione richiede dettaglio dentro un intervento ("rifacimento bagno con vasca rimossa e box doccia premium") → puoi sommare macro+unitarie. Esempio: macro "BAGNO Medio standard" + unitaria "BOX doccia premium 1.500".
+   • Se la descrizione richiede dettaglio dentro un intervento ("rifacimento bagno con vasca rimossa e box doccia premium") → puoi sommare macro+unitarie. Esempio: macro "BAGNO Medio standard" + unitaria "BOX doccia in cristallo 500-1.500".
 
 2. USA SOLO PREZZI DEL CATALOGO. Ogni voce DEVE avere min/max che corrispondono ESATTAMENTE a un range del catalogo (eventualmente moltiplicato per la quantità). Non inventare prezzi. Non interpolare. Non fare medie.
 
 3. MOLTIPLICA PER QUANTITÀ solo se gli oggetti sono IDENTICI (stessa dimensione + stessa finitura + stesso materiale).
-   • "5 finestre PVC standard" → UNA voce: 490-630 × 5 = 2.450-3.150 con titolo "5 finestre PVC standard". OK.
-   • "2 bagni medi standard" → UNA voce: 8.800-12.500 × 2 = 17.600-25.000. OK.
+   • "5 finestre PVC standard" → UNA voce: ${rg(P.infissi.pvc.standard)} × 5 = ${rg(P.infissi.pvc.standard, 5)} con titolo "5 finestre PVC standard". OK.
+   • "2 bagni medi standard" → UNA voce: ${rg(P.bagno.medio.standard)} × 2 = ${rg(P.bagno.medio.standard, 2)}. OK.
    • "10 metri di tubo multistrato 20mm" → UNA voce: 8-15 × 10 = 80-150. OK.
 
 3-bis. QUANTITÀ ETEROGENEE → VOCI SEPARATE. Se gli oggetti hanno proprietà diverse (dimensione/finitura/materiale diversi), NON moltiplicare: crea una voce per ogni variante.
    • "Rifare 2 bagni, uno piccolo e uno grande" → DUE voci:
-       - voce 1: "Bagno piccolo standard"  → 6.200-8.500
-       - voce 2: "Bagno grande standard"   → 12.500-17.000
+       - voce 1: "Bagno piccolo standard"  → ${rg(P.bagno.piccolo.standard)}
+       - voce 2: "Bagno grande standard"   → ${rg(P.bagno.grande.standard)}
    • "5 finestre: 3 in PVC e 2 in alluminio" → DUE voci:
-       - voce 1: "3 finestre PVC standard"     → 490-630 × 3 = 1.470-1.890
-       - voce 2: "2 finestre alluminio standard" → 750-950 × 2 = 1.500-1.900
+       - voce 1: "3 finestre PVC standard"     → ${rg(P.infissi.pvc.standard)} × 3 = ${rg(P.infissi.pvc.standard, 3)}
+       - voce 2: "2 finestre alluminio standard" → ${rg(P.infissi.alu.standard)} × 2 = ${rg(P.infissi.alu.standard, 2)}
    • "Sostituzione 1 vaso WC, 1 bidet, 1 lavabo" → 1 sola voce CUMULATIVA "Sostituzione 3 sanitari (vaso+bidet+lavabo)" sommando i range (es. 220-380 + 220-360 + 260-500 = 700-1.240) — perché qui sono "fungibili" come categoria sanitari.
 
 3-ter. COMBINAZIONI MACRO + UNITARIE quando una macro non basta. Se l'utente specifica un'aggiunta a un intervento tipico, usa due voci:
-   • "Sostituzione caldaia con accumulo" → DUE voci:
-       - voce 1: "Caldaia 24kW media potenza"  → 2.440-3.030 (macro)
+   • "Sostituzione caldaia 24 kW con accumulo" → DUE voci:
+       - voce 1: "Caldaia fino a 24 kW"        → ${rg(P.caldaia.piccola.standard)} (macro)
        - voce 2: "Bollitore accumulo 200-300L" → 1.000-1.300 (unitaria)
    • "Rifacimento bagno con box doccia premium" → DUE voci:
-       - voce 1: "Bagno medio standard"        → 8.800-12.500 (macro)
-       - voce 2: "Box doccia in cristallo premium" → 1.000-1.500 (unitaria)
+       - voce 1: "Bagno medio standard"        → ${rg(P.bagno.medio.standard)} (macro)
+       - voce 2: "Box doccia in cristallo" → 500-1.500 (unitaria)
    • "Rifacimento bagno + sostituzione 5 finestre" → DUE voci macro distinte.
 
 4. CATEGORIE NON IN CATALOGO: se il lavoro non rientra (es: irrigazione giardino, canna fumaria, sgombero, opere strutturali importanti), NON inventare prezzi. Aggiungi al campo "fuori_listino" come stringa testuale.
 
-5. INFORMAZIONI MANCANTI:
-   • Se mancano dimensione/finitura per scegliere il range → copri tutto lo spettro plausibile (es: "voglio rifare il bagno" senza dimensione → 4.800-23.000 unendo da bagno piccolo economico a grande premium) e imposta "incertezza":"alta". Inserisci in "domande_suggerite" 1-2 domande che restringerebbero la stima.
-   • Se manca quantità → assumi un default realistico (5 finestre per appartamento, 1 bagno, 1 cucina) e dichiaralo nella nota.
+5. INFORMAZIONI MANCANTI (in modalità stima):
+   • Se manca un'info CRITICA (dimensione del bagno, potenza della caldaia, taglia del fotovoltaico, quantità ignota di oggetti costosi) NON stimare coprendo tutto lo spettro: usa modalita="chiarimento" come da regola 0.
+   • Se manca solo un'info SECONDARIA → assumi un default e dichiaralo nella nota: finitura "standard"; quantità realistica (5 finestre per appartamento, 1 bagno, 1 cucina). Metti "incertezza":"media" e in "domande_suggerite" 1-2 domande che restringerebbero la stima.
 
 6. INCERTEZZA: bassa = utente ha specificato dimensione+finitura+quantità. media = manca uno dei tre. alta = mancano due+, oppure descrizione vaga.
 
-7. NESSUN MARGINE FUORI CATALOGO. Se il catalogo dice "BAGNO Medio standard 8.800-12.500" il min DEVE essere ≥8.800 e il max ≤12.500. Non aggiungere "premium plus" o "extra economico".
+7. NESSUN MARGINE FUORI CATALOGO. Se il catalogo dice "BAGNO Medio standard ${rg(P.bagno.medio.standard)}" il min DEVE essere ≥${eur(P.bagno.medio.standard[0])} e il max ≤${eur(P.bagno.medio.standard[1])}. Non aggiungere "premium plus" o "extra economico".
 
 8. MANODOPERA: NON aggiungerla come voce separata se stai usando una voce macro o una voce unitaria con "fornitura+posa" — la manodopera è già inclusa. Aggiungila SOLO se l'utente chiede esplicitamente "quanto costa l'ora del tecnico" o lavori in economia.
 
 9. MASSIMO 6 VOCI. Se l'utente descrive moltissimi lavori, raggruppa o seleziona i 6 più rilevanti.
 
-10. NOTA delle voci: indica sempre quantità, dimensione assunta, finitura, e (per le voci macro) la sigla DEI di riferimento se disponibile (es. "Caldaia 24kW media potenza, ref. DEI 06.I04P.020").
+10. NOTA delle voci: indica sempre quantità, dimensione assunta, finitura, e (per le voci macro) la sigla DEI di riferimento se disponibile (es. "Caldaia fino a 24 kW, ref. DEI 06.I04P.020").
 
 Chiama SEMPRE lo strumento "invia_stima" con i dati strutturati. Non rispondere mai in testo libero.`;
 
@@ -444,6 +456,13 @@ export default {
         if (desc.length < 10)   return jsonResponse({ error: 'Descrizione troppo breve' }, 400, cors);
         if (desc.length > 2000) return jsonResponse({ error: 'Descrizione troppo lunga' }, 400, cors);
 
+        // Dopo le domande di chiarimento il sito rimanda la descrizione con "Dettagli aggiuntivi:":
+        // lo ribadiamo nel messaggio, perché Haiku tende a richiedere di nuovo le stesse cose.
+        const giaRisposto = desc.includes('Dettagli aggiuntivi:');
+        const contenuto = giaRisposto
+            ? desc + '\n\n[Il cliente ha già risposto alle domande di chiarimento: usa modalita="stima".]'
+            : desc;
+
         try {
             const r = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
@@ -464,7 +483,7 @@ export default {
                     ],
                     tools: [TOOL_SCHEMA],
                     tool_choice: { type: 'tool', name: 'invia_stima' },
-                    messages: [{ role: 'user', content: desc }],
+                    messages: [{ role: 'user', content: contenuto }],
                 }),
             });
 

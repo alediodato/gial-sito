@@ -1,0 +1,66 @@
+{
+    "_nota": "Fonte unica dei prezzi macro del Preventivo AI (EUR, IVA esclusa, Prezzario DEI Toscana 2026). La usano il worker Cloudflare (al deploy) e il calcolo di riserva in index.html. Dopo una modifica: ripubblicare il sito e rifare il deploy del worker. Guide e landing hanno i prezzi scritti nel testo: vanno allineate a mano.",
+    "infissi": {
+        "pvc":      { "basso": [540, 790],   "standard": [790, 950],   "alto": [950, 1110] },
+        "alu":      { "basso": [1220, 1580], "standard": [1580, 1760], "alto": [1760, 1940] },
+        "legno":    { "basso": [1520, 2180], "standard": [2180, 2640], "alto": [2640, 3100] },
+        "legnoalu": { "basso": [2080, 2650], "standard": [2650, 3200], "alto": [3200, 3780] }
+    },
+    "bagno": {
+        "piccolo": { "basso": [4800, 6200],  "standard": [6200, 8500],   "alto": [8500, 12000] },
+        "medio":   { "basso": [6800, 8800],  "standard": [8800, 12500],  "alto": [12500, 17000] },
+        "grande":  { "basso": [9500, 12500], "standard": [12500, 17000], "alto": [17000, 23000] }
+    },
+    "caldaia": {
+        "piccola": { "standard": [1900, 3000] },
+        "media":   { "standard": [2600, 4400] },
+        "grande":  { "standard": [3900, 6900] },
+        "con_imp": { "standard": [6500, 11000] }
+    },
+    "clima": {
+        "mono":  { "standard": [1550, 3500] },
+        "dual":  { "standard": [2900, 3500] },
+        "trial": { "standard": [3600, 4900] },
+        "quad":  { "standard": [4900, 6400] }
+    },
+    "pompa": {
+        "piccola": { "basso": [7000, 9500],   "standard": [9500, 13000],  "alto": [13000, 18000] },
+        "media":   { "basso": [9000, 12000],  "standard": [12000, 16000], "alto": [16000, 22000] },
+        "grande":  { "basso": [12000, 16000], "standard": [16000, 22000], "alto": [22000, 30000] }
+    },
+    "fotovoltaico": {
+        "kw3":  { "standard": [5500, 8000] },
+        "kw6":  { "standard": [9500, 14000] },
+        "kw10": { "standard": [15000, 22000] }
+    },
+    "cucina": {
+        "piccola": { "standard": [2500, 4000] },
+        "media":   { "standard": [4000, 7000] },
+        "grande":  { "standard": [7000, 12000] }
+    },
+    "scaldabagno": {
+        "elettrico":    { "standard": [500, 900] },
+        "gas":          { "standard": [950, 1700] },
+        "pompa_calore": { "standard": [1850, 3700] }
+    },
+    "tinteggiatura": {
+        "piccolo": { "standard": [1300, 2400] },
+        "medio":   { "standard": [2000, 3800] },
+        "grande":  { "standard": [3000, 5800] }
+    },
+    "pavimenti": {
+        "piccolo": { "standard": [4000, 6500] },
+        "medio":   { "standard": [6500, 10500] },
+        "grande":  { "standard": [10000, 16000] }
+    },
+    "elettrico": {
+        "piccolo": { "standard": [3500, 5500] },
+        "medio":   { "standard": [5500, 8500] },
+        "grande":  { "standard": [8500, 13000] }
+    },
+    "terrazzo": {
+        "piccolo": { "standard": [2200, 3500] },
+        "medio":   { "standard": [3500, 6500] },
+        "grande":  { "standard": [6500, 12000] }
+    }
+}
