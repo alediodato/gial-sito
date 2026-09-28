@@ -9,3 +9,4 @@ package-lock.json
 .claude/
 # Materiale protetto da copyright: MAI committare
 Prezzario*/
+.wrangler/
