@@ -963,3 +963,16 @@ span[id][aria-hidden] { display: block; height: 0; }
 @media (max-width: 1023px) {
     .g-grid-hair > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
+
+/* Da telefono il pulsante "Chiama ora" dell'hero deve stare nella prima
+   schermata: meno aria sopra il titolo e banner cookie compatto, che
+   altrimenti lo copre finche' non si sceglie. */
+
+@media (max-width: 639px) {
+    .g-hero { padding-top: 6.25rem; }
+    .g-crumbs { margin-bottom: 1rem; }
+    .g-hero--center .g-eyebrow { margin-bottom: 1rem; }
+
+    #cookie-banner { flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 0.9rem; }
+    #cookie-banner > div:first-child { flex-basis: 100%; font-size: 0.8rem; line-height: 1.45; }
+}
