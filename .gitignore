@@ -10,3 +10,6 @@ package-lock.json
 # Materiale protetto da copyright: MAI committare
 Prezzario*/
 .wrangler/
+# File di prova locali
+font-lab.html
+style-lab.html

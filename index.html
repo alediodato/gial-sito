@@ -164,7 +164,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="preload" as="image" href="/img/gial-logo-rettangolo-nosfondo.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="/img/lavori/studio-medico-bagno.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/img/lavori/studio-medico-bagno.webp" imagesrcset="/img/lavori/studio-medico-bagno-700.webp 700w, /img/lavori/studio-medico-bagno-1050.webp 1050w, /img/lavori/studio-medico-bagno.webp 1400w" imagesizes="(max-width: 767px) calc(100vw - 32px), 50vw" fetchpriority="high">
     <!-- Titoli: Fraunces (serif) · testo: Inter -->
     <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -585,7 +585,7 @@
                 </div>
             </div>
             <div class="g-hero-shot">
-                <img src="img/lavori/studio-medico-bagno.webp" width="1400" height="2099" alt="Rifacimento bagno a Prato — GIAL SRL" fetchpriority="high">
+                <img src="img/lavori/studio-medico-bagno.webp" srcset="img/lavori/studio-medico-bagno-700.webp 700w, img/lavori/studio-medico-bagno-1050.webp 1050w, img/lavori/studio-medico-bagno.webp 1400w" sizes="(max-width: 767px) calc(100vw - 32px), 50vw" width="1400" height="2099" alt="Rifacimento bagno a Prato — GIAL SRL" fetchpriority="high">
                 <a href="#assicurazione-postuma" class="g-seal" aria-label="Vai alla sezione Assicurazione postuma 10 anni">
                     <strong>Assicurazione postuma</strong>
                     <span>Dieci anni di copertura su ogni intervento, inclusa nel prezzo.</span>
@@ -600,7 +600,7 @@
         <div class="g-wrap grid md:grid-cols-2 gap-12 items-center">
             <div class="h-[28rem] overflow-hidden relative" style="border-radius:4px;background:var(--g-paper-alt)">
                 <button id="gial-prev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine precedente"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7' /></svg></button>
-                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="1000" height="1007" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full transition duration-500" loading="lazy" />
+                <img id="gial-slideshow" src="img/gial/gial-1.webp" width="750" height="755" alt="Staff GIAL SRL - Idraulici esperti a Prato" class="object-cover h-full w-full transition duration-500" loading="lazy" />
                 <button id="gial-next" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Immagine successiva"><svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7' /></svg></button>
                 <button id="gial-pause" class="absolute right-2 bottom-2 z-10 bg-white/80 rounded-full p-2 shadow hover:bg-white" aria-label="Metti in pausa lo slideshow" aria-pressed="false"><svg id="gial-pause-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5'><path d='M6 5h4v14H6zM14 5h4v14h-4z'/></svg><svg id="gial-play-icon" xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24' class='w-5 h-5 hidden'><path d='M8 5v14l11-7z'/></svg></button>
             </div>
@@ -939,7 +939,7 @@
                 </figure>
                 <!-- RACCOLTA 2: Good Life Studio (solo anteprima visibile) -->
                 <figure>
-                    <img src="img/lavori/villa-prato-bagno-2.webp" width="1150" height="1343" alt="Ristrutturazione bagno villa a Prato – impianti termoidraulici" class="portfolio-img" loading="lazy" data-gallery="villa-prato" data-index="0" />
+                    <img src="img/lavori/villa-prato-bagno-2.webp" width="862" height="1007" alt="Ristrutturazione bagno villa a Prato – impianti termoidraulici" class="portfolio-img" loading="lazy" data-gallery="villa-prato" data-index="0" />
                     <figcaption>Villa, Prato &middot; bagni e facciata</figcaption>
                 </figure>
                 <!-- RACCOLTA 3: Altro (solo anteprima visibile) -->
@@ -1386,7 +1386,7 @@
         <div class="g-wrap">
             <div style="display:flex;gap:2.5rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem">
                 <a href="/" aria-label="Home GIAL SRL">
-                    <img src="img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:64px; width:auto;">
+                    <img src="img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:64px; width:auto;" loading="lazy">
                 </a>
                 <div style="display:flex;align-items:center;gap:1rem;padding-left:2.5rem;border-left:1px solid var(--g-line)" class="g-footer-cert">
                     <img src="img/itec.webp" width="300" height="99" alt="Certificazione ITEC F-GAS – GIAL SRL abilitata alla gestione di gas fluorurati" style="max-width:120px; height:auto;" loading="lazy">
@@ -1405,6 +1405,7 @@
                     <a href="/infissi-serramenti-prato/">Infissi e serramenti</a>
                     <a href="/pronto-intervento-idraulico-prato/">Pronto intervento</a>
                     <a href="/guide/quanto-costa-ristrutturare-casa-prato/">Guida ai costi</a>
+                    <a href="https://share.google/5cYydscKeJ7SE0OyX" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_reviews',{'posizione':'footer_home'}); }">Recensioni Google</a>
             </nav>
             <p class="g-footer-meta">
                 &copy; 2026 GIAL SRL &middot; P.IVA 02435030974 &middot; REA PO-535347 &middot; Capitale sociale &euro; 10.000<br>
