@@ -50,13 +50,46 @@
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Font di riserva "tarati": Arial e Georgia ridimensionati per occupare
+   lo stesso spazio di Inter e Source Serif 4. Così, quando i font veri
+   arrivano (font-display: swap), il testo non cambia altezza e la hero
+   non salta (era il CLS 0,12 della home su desktop). Misure prese con
+   canvas.measureText su una frase tipo del sito. */
+@font-face {
+    font-family: 'Inter Fallback';
+    font-weight: 400;
+    src: local('Arial'), local('ArialMT');
+    size-adjust: 106.75%;
+    ascent-override: 90.9%;
+    descent-override: 22.5%;
+    line-gap-override: 0%;
+}
+@font-face {
+    font-family: 'Inter Fallback';
+    font-weight: 600;
+    src: local('Arial Bold'), local('Arial-BoldMT');
+    size-adjust: 100.5%;
+    ascent-override: 96.5%;
+    descent-override: 23.9%;
+    line-gap-override: 0%;
+}
+@font-face {
+    font-family: 'Source Serif Fallback';
+    font-weight: 400 600;
+    src: local('Georgia');
+    size-adjust: 91.4%;
+    ascent-override: 113.4%;
+    descent-override: 36.7%;
+    line-gap-override: 0%;
+}
+
 :root {
     /* Marchio */
     --g-navy: #173D6C;
     --g-navy-deep: #122E52;
     --g-navy-soft: #E7EDF5;
     --g-gold: #A87C22;
-    --g-gold-text: #8F6A1C;   /* variante con contrasto AA sul testo piccolo */
+    --g-gold-text: #8A661B;   /* variante con contrasto AA sul testo piccolo */
     --g-gold-bright: #F0B00C; /* solo su fondo navy o come dettaglio grafico */
     --g-red: #A81B1A;         /* urgenze e pronto intervento */
 
@@ -64,13 +97,13 @@
     --g-paper: #FBFAF7;
     --g-paper-alt: #F4F1EA;
     --g-ink: #333B45;
-    --g-ink-soft: #5A6675;
+    --g-ink-soft: #56616F;
     --g-line: #E3DED4;
     --g-line-strong: #D3CBBC;
 
     /* Tipografia */
-    --g-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    --g-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --g-serif: 'Source Serif 4', 'Source Serif Fallback', Georgia, 'Times New Roman', serif;
+    --g-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
     /* Ritmo verticale unico: niente più py-16/py-20 a caso */
     --g-section: 6.5rem;
@@ -568,7 +601,9 @@ strong, b { font-weight: 600; color: var(--g-ink); }
 .g-contact { background: var(--g-navy); color: #fff; }
 .g-contact h2, .g-contact h3 { color: #fff; }
 .g-contact .g-eyebrow { color: var(--g-gold-bright); }
-.g-contact a { color: #fff; }
+/* :not(.g-btn-gold): il pulsante giallo resta con il testo blu (in bianco
+   su giallo era illeggibile, contrasto 1,9) */
+.g-contact a:not(.g-btn-gold) { color: #fff; }
 
 .g-contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: start; }
 
@@ -921,9 +956,9 @@ textarea.g-field { min-height: 11rem; resize: vertical; }
 .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded { border-radius: var(--g-radius) !important; }
 
 /* Verde WhatsApp coerente con quello dei pulsanti fissi */
-.bg-green-500 { background-color: #128C7E !important; }
-.hover\:bg-green-600:hover { background-color: #0F7468 !important; }
-.text-green-600 { color: #128C7E !important; }
+.bg-green-500 { background-color: #0F7F72 !important; }
+.hover\:bg-green-600:hover { background-color: #0C6A5F !important; }
+.text-green-600 { color: #0F7F72 !important; }
 
 /* ---------- Menu mobile ----------
    L'etichetta di gruppo era definita solo nel <style> della home:
