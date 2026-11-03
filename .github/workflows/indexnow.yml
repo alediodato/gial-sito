@@ -1,0 +1,43 @@
+# Avvisa Bing (IndexNow) delle pagine della sitemap modificate a ogni push su main.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths: ['**/index.html']
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Invia le pagine modificate
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          HOST: gialtermoidraulica.it
+          KEY: 7c9a1402adef54d4b9a661af761e5639
+        run: |
+          urls=""
+          for f in $(git diff --name-only "$BEFORE" "$AFTER" -- '*index.html'); do
+            path="${f%index.html}"
+            url="https://$HOST/$path"
+            if grep -qF "<loc>$url</loc>" sitemap.xml; then
+              urls="$urls\"$url\","
+            fi
+          done
+          if [ -z "$urls" ]; then
+            echo "Nessuna pagina della sitemap da inviare"
+            exit 0
+          fi
+          # Lascia a GitHub Pages il tempo di pubblicare le modifiche
+          sleep 90
+          curl --fail-with-body -sS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"$HOST\",\"key\":\"$KEY\",\"keyLocation\":\"https://$HOST/$KEY.txt\",\"urlList\":[${urls%,}]}"
