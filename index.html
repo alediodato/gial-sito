@@ -410,6 +410,15 @@
         <!-- Cookie consent: carica gtag solo dopo consenso -->
         <script>
                 (function(){
+                // Consent Mode v2: Analytics parte sempre, ma senza cookie finché il visitatore non accetta
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+                var _gc = (document.cookie.match(/(?:^|; )gial_cookie_consent=([^;]*)/) || [])[1];
+                gtag('consent', 'default', {'analytics_storage': _gc === 'granted' ? 'granted' : 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied'});
+                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+                var _gs = document.createElement('script'); _gs.async = true; _gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(_gs);
+                if (_gc === 'granted') window.gtagLoaded = true;
+            
                     function setCookie(name,value,days){
                         var d=new Date();
                         d.setTime(d.getTime()+days*24*60*60*1000);
@@ -419,12 +428,7 @@
                         document.cookie = s;
                     }
                     function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
-                    function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true;
-                        var s = document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(s);
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
-                        gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
-                    }
+                    function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true; window.gtag('consent', 'update', {'analytics_storage': 'granted'}); }
                     window.GIALCookieConsent = {
                         accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
                         decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
@@ -493,7 +497,7 @@
                         </svg>
                     </button>
                     <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_home'}); }" class="md:hidden" style="background:var(--g-navy);color:#fff;padding:.6rem 1.1rem;font-size:.85rem;font-weight:600;border-radius:4px" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
-                    <button id="callBtn" onclick="if(window.gtag){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','open_call_modal',{'posizione':'pulsante_chiama_ora'}); }, {once:true}); }" class="hidden md:block g-nav-phone" aria-label="Chiama ora: mostra il numero di telefono">Chiama ora</button>
+                    <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_desktop_home'}); }" class="hidden md:block g-nav-phone" aria-label="Chiama GIAL SRL al 327 937 1705">📞 327 937 1705</a>
                 </div>
             </div>
             <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
@@ -1301,14 +1305,14 @@
             <div class="g-section-head" style="margin-bottom:2.75rem">
                 <p class="g-eyebrow">Contatti</p>
                 <h2 class="g-h2" id="contatti-heading" style="color:#fff">Parliamo del vostro lavoro</h2>
-                <p class="g-h2-sub" style="color:#C9D4E4">Preferite una risposta veloce? Scriveteci su <a href="https://wa.me/393279371705" onclick="if(window.gtag) { gtag('event', 'click_whatsapp', {'posizione': 'testo_contatti'}); }" class="g-card-link" style="color:#fff" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'testo_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'testo_contatti'}); }, {once:true}); }" class="g-card-link" style="color:#fff">chiamate</a> direttamente.</p>
+                <p class="g-h2-sub" style="color:#C9D4E4">Preferite una risposta veloce? Scriveteci su <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20GIAL." onclick="if(window.gtag) { gtag('event', 'click_whatsapp', {'posizione': 'testo_contatti'}); }" class="g-card-link" style="color:#fff" target="_blank" rel="noopener">WhatsApp</a> o <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'testo_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'testo_contatti'}); }, {once:true}); }" class="g-card-link" style="color:#fff">chiamate</a> direttamente.</p>
             </div>
             <div class="g-contact-grid">
                 <div>
                     <ul class="g-contact-list">
                         <li><b>Sede</b><span>Via Traversa Pistoiese 12/L, Prato</span></li>
                         <li><b>Telefono</b><span><a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'sezione_contatti'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'sezione_contatti'}); }, {once:true}); }">+39 327 937 1705</a></span></li>
-                        <li><b>Email</b><span>info@gialtermoidraulica.it</span></li>
+                        <li><b>Email</b><span><a href="mailto:info@gialtermoidraulica.it">info@gialtermoidraulica.it</a></span></li>
                         <li><b>PEC</b><span>gialsrl@pec.cgn.it</span></li>
                         <li><b>Orari</b><span>Luned&igrave;&ndash;sabato 8:00&ndash;20:00 &middot; domenica 8:00&ndash;13:00</span></li>
                     </ul>
@@ -1335,15 +1339,35 @@
                     }
                     </script>
                 </div>
-                <form class="space-y-4" action="https://formspree.io/f/mvzgnwnp" method="POST" aria-labelledby="contatti-heading" id="contact-form">
-                    <label for="nome" class="sr-only">Nome</label>
-                    <input id="nome" type="text" name="nome" placeholder="Nome" required class="g-field">
+                <form class="space-y-4" action="https://formspree.io/f/mvzgnwnp" method="POST" aria-labelledby="contatti-heading" id="contact-form" data-gial-lead="form_home">
+                    <input type="hidden" name="pagina" value="home">
+                    <input type="hidden" name="_subject" value="[Sito] Richiesta dalla home">
+                    <div class="g-hp" aria-hidden="true"><label>Lascia vuoto <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
-                    <label for="email" class="sr-only">Email</label>
-                    <input id="email" type="email" name="email" placeholder="Email" required class="g-field">
+                    <label for="nome" class="sr-only">Nome</label>
+                    <input id="nome" type="text" name="nome" placeholder="Nome" autocomplete="name" required class="g-field">
 
                     <label for="telefono" class="sr-only">Telefono</label>
-                    <input id="telefono" type="tel" name="telefono" placeholder="Telefono (per risponderti prima)" inputmode="tel" autocomplete="tel" class="g-field">
+                    <input id="telefono" type="tel" name="telefono" placeholder="Telefono" inputmode="tel" autocomplete="tel" required class="g-field">
+
+                    <label for="email" class="sr-only">Email (facoltativa)</label>
+                    <input id="email" type="email" name="email" placeholder="Email (facoltativa)" autocomplete="email" class="g-field">
+
+                    <label for="servizio" class="sr-only">Di cosa hai bisogno</label>
+                    <select id="servizio" name="servizio" required class="g-field">
+                        <option value="" selected disabled>Di cosa hai bisogno?</option>
+                        <option>Riparazione o pronto intervento</option>
+                        <option>Rifacimento bagno</option>
+                        <option>Sostituzione caldaia</option>
+                        <option>Climatizzazione</option>
+                        <option>Pompa di calore</option>
+                        <option>Fotovoltaico</option>
+                        <option>Infissi e serramenti</option>
+                        <option>Impianto gas</option>
+                        <option>Ristrutturazione</option>
+                        <option>Impianti per aziende o cantieri</option>
+                        <option>Altro</option>
+                    </select>
 
                     <div class="flex items-start gap-2 text-left">
                         <input id="richiamami" type="checkbox" name="preferisce_essere_richiamato" value="s&igrave;" class="mt-1 shrink-0">
@@ -1358,7 +1382,8 @@
                         <label for="privacy-consent" class="text-sm" style="color:#C9D4E4">Ho letto l&rsquo;<a href="#privacy" style="color:#fff;text-decoration:underline">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta.</label>
                     </div>
 
-                    <button type="submit" onclick="if(window.gtag){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','send_message',{'event_category':'conversion','event_label':'form_contatti_submit'}); }, {once:true}); }" class="w-full g-btn g-btn-gold">Invia messaggio</button>
+                    <button type="submit" class="w-full g-btn g-btn-gold">Invia messaggio</button>
+                    <p class="g-lead-msg" aria-live="polite"></p>
                 </form>
             </div>
         </div>
@@ -1369,10 +1394,10 @@
             <p class="g-eyebrow">Informativa</p>
             <h2 class="g-h2" style="margin-bottom:1.75rem">Privacy e cookie</h2>
             <p class="text-gray-700 mb-4">
-                Il titolare del trattamento è GIAL SRL. Raccogliamo i dati che ci invii tramite il modulo contatti (nome, email, messaggio) al solo fine di rispondere alla tua richiesta.
+                Il titolare del trattamento è GIAL SRL. Raccogliamo i dati che ci invii tramite i moduli contatti (nome, telefono, email se la indichi, comune, servizio richiesto e messaggio) al solo fine di rispondere alla tua richiesta.
             </p>
             <p class="text-gray-700 mb-4">
-                Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie di analisi per migliorare l’esperienza (Google Analytics). Puoi accettare o rifiutare dal banner.
+                Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie di analisi per migliorare l’esperienza (Google Analytics). Senza consenso Google Analytics non salva cookie sul tuo dispositivo e riceve solo segnali anonimi, usati per contare le visite in forma aggregata (Consent Mode di Google). Puoi accettare o rifiutare dal banner.
             </p>
             <p class="text-gray-700 mb-4">
                 I dati inviati tramite il form sono gestiti dal servizio Formspree e non vengono ceduti a terzi per finalità di marketing.
@@ -1416,33 +1441,6 @@
             </p>
         </div>
 
-        <!-- Modale numero di telefono -->
-        <div id="callModal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
-                <div class="bg-white p-8 max-w-xs w-full text-center" style="border-radius:4px;box-shadow:0 20px 50px rgba(23,61,108,.25)">
-                        <h3 class="g-h2" style="font-size:1.4rem;margin-bottom:1rem">Chiama GIAL SRL</h3>
-                        <p class="mb-4 text-gray-800">Numero di telefono:</p>
-                        <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'modale'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_call',{'posizione':'modale'}); }, {once:true}); }" class="text-lg font-bold text-blue-700 block mb-4">+39 327 937 1705</a>
-                        <button id="closeModal" class="g-btn g-btn-outline" style="padding:.5rem 1.25rem;font-size:.85rem">Chiudi</button>
-                </div>
-        </div>
-
-        <script>
-            const callBtn = document.getElementById('callBtn');
-            const callModal = document.getElementById('callModal');
-            const closeModal = document.getElementById('closeModal');
-            if(callBtn && callModal && closeModal) {
-                callBtn.addEventListener('click', function() {
-                    callModal.classList.remove('hidden');
-                });
-                closeModal.addEventListener('click', function() {
-                    callModal.classList.add('hidden');
-                });
-                // Chiudi modale cliccando fuori
-                callModal.addEventListener('click', function(e) {
-                    if(e.target === callModal) callModal.classList.add('hidden');
-                });
-            }
-        </script>
         <script>
         (function(){
             const banner = document.getElementById('cookie-banner');
@@ -1456,7 +1454,7 @@
         </script>
     </footer>
 
-    <a href="https://wa.me/393279371705" 
+    <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20GIAL." 
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'});}else{window.addEventListener('gtagLoaded', function(){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso'}); }, {once:true}); }" 
        class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#0F7F72;box-shadow:0 6px 20px rgba(15,127,114,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
@@ -2208,7 +2206,8 @@
     <!-- Barra fissa mobile: chiamata diretta -->
     <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
         <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_home'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
-        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_home'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20GIAL." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_home'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
+    <script src="/js/gial-lead.js" defer></script>
 </body>
 </html>

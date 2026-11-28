@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richiesta ricevuta — GIAL SRL Termoidraulica Prato</title>
+    <meta name="description" content="Abbiamo ricevuto la tua richiesta: ti ricontattiamo negli orari di apertura." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="preload" href="/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gial-studio.css">
+    <meta name="theme-color" content="#173D6C">
+    <!-- Cookie consent: carica gtag solo dopo consenso (stessa logica della home) -->
+    <script>
+        (function(){
+                // Consent Mode v2: Analytics parte sempre, ma senza cookie finché il visitatore non accetta
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+                var _gc = (document.cookie.match(/(?:^|; )gial_cookie_consent=([^;]*)/) || [])[1];
+                gtag('consent', 'default', {'analytics_storage': _gc === 'granted' ? 'granted' : 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied'});
+                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+                var _gs = document.createElement('script'); _gs.async = true; _gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(_gs);
+                if (_gc === 'granted') window.gtagLoaded = true;
+            
+            function setCookie(name,value,days){
+                var d=new Date();
+                d.setTime(d.getTime()+days*24*60*60*1000);
+                var expires = "expires="+d.toUTCString();
+                var s=name+"="+value+";"+expires+";path=/;SameSite=Lax";
+                if(location.protocol==='https:') s += ";Secure";
+                document.cookie = s;
+            }
+            function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
+            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true; window.gtag('consent', 'update', {'analytics_storage': 'granted'}); }
+            window.GIALCookieConsent = {
+                accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
+                decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
+            };
+            function updateCookieBanner() {
+                var consent = getCookie('gial_cookie_consent');
+                var b = document.getElementById('cookie-banner');
+                if (consent) {
+                    if (b) b.classList.add('hidden');
+                    if (consent === 'granted') loadGtag();
+                } else {
+                    if (b) b.classList.remove('hidden');
+                }
+            }
+            document.addEventListener('DOMContentLoaded', updateCookieBanner);
+        })();
+    </script>
+</head>
+<body>
+    <main class="g-section text-center" style="padding-top:5rem">
+        <div class="g-wrap-narrow">
+            <a href="/" aria-label="Home GIAL SRL">
+                <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:64px; width:auto;" class="mx-auto mb-10">
+            </a>
+            <p class="g-eyebrow">Richiesta inviata</p>
+            <h1 class="g-h1">Grazie, abbiamo ricevuto la tua richiesta</h1>
+            <p class="g-lead" style="margin:0 auto 2.5rem">Ti ricontattiamo negli orari di apertura: luned&igrave;&ndash;sabato 8:00&ndash;20:00, domenica 8:00&ndash;13:00. Se il lavoro &egrave; urgente, non aspettare: chiamaci.</p>
+            <div class="g-hero-actions" style="justify-content:center;margin-bottom:2.5rem">
+                <a href="tel:+393279371705" class="g-btn g-btn-primary" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'pagina_grazie'}); }">📞 327 937 1705</a>
+                <a href="/" class="g-btn g-btn-outline">Torna alla Home</a>
+            </div>
+            <p class="g-h2-sub" style="margin:0 auto">Nel frattempo puoi leggere cosa dicono di noi i clienti <a href="https://www.google.com/maps?cid=2999171132930111984" target="_blank" rel="noopener" class="g-card-link">su Google</a>, oppure farti un&rsquo;idea dei costi con la <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="g-card-link">guida ai prezzi</a>.</p>
+        </div>
+    </main>
+</body>
+</html>

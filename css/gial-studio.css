@@ -1011,3 +1011,20 @@ span[id][aria-hidden] { display: block; height: 0; }
     #cookie-banner { flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 0.9rem; }
     #cookie-banner > div:first-child { flex-basis: 100%; font-size: 0.8rem; line-height: 1.45; }
 }
+
+/* Modulo "ti richiamiamo noi" sulle pagine servizio e in home */
+.g-lead-box { max-width: 36rem; margin: 0 auto 2.25rem; text-align: left; border: 1px solid rgba(255, 255, 255, .2); border-radius: var(--g-radius); padding: 1.75rem; }
+.g-lead-title { font-weight: 600; font-size: 1.15rem; color: #fff; margin: 0 0 .35rem; }
+.g-lead-sub { color: #C9D4E4; font-size: .92rem; margin: 0 0 1.25rem; }
+.g-lead-form { display: grid; gap: .75rem; }
+.g-lead-form textarea.g-field { min-height: 6rem; }
+.g-lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+@media (max-width: 560px) { .g-lead-row { grid-template-columns: 1fr; } }
+.g-lead-check { display: flex; gap: .5rem; align-items: flex-start; font-size: .85rem; color: #C9D4E4; }
+.g-lead-check input { margin-top: .2rem; flex-shrink: 0; }
+.g-lead-msg { font-size: .9rem; color: #ffd77a; margin: 0; }
+.g-lead-msg:empty { display: none; }
+.g-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+select.g-field option { color: #173D6C; background: #fff; }
+.g-nav-num { display: none; }
+@media (min-width: 768px) { .g-nav-num { display: inline; } .g-nav-txt { display: none; } }

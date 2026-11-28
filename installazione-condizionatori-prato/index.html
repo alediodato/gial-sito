@@ -156,7 +156,7 @@
                 "name": "Quanto costa installare un condizionatore a Prato?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Come stima orientativa chiavi in mano basata sul Prezzario DEI Toscana 2026 (macchina e installazione, IVA esclusa): mono split per un ambiente da 1.550 a 3.500 euro, dual split per due ambienti da 2.900 a 3.500 euro, trial split per tre ambienti da 3.600 a 4.900 euro, quadri split per quattro o più ambienti da 4.900 a 6.400 euro. La differenza dipende dalla potenza, dalla classe della macchina e dalla lunghezza dei percorsi delle tubazioni. Il prezzo esatto lo definiamo con il sopralluogo, che è gratuito."
+                    "text": "Come stima orientativa chiavi in mano basata sul Prezzario DEI Toscana 2026 (macchina e installazione, IVA esclusa): mono split per un ambiente da 1.000 a 2.000 euro, dual split per due ambienti da 2.900 a 3.500 euro, trial split per tre ambienti da 3.600 a 4.900 euro, quadri split per quattro o più ambienti da 4.900 a 6.400 euro. La differenza dipende dalla potenza, dalla classe della macchina e dalla lunghezza dei percorsi delle tubazioni. Il prezzo esatto lo definiamo con il sopralluogo, che è gratuito."
                 }
             },
             {
@@ -222,6 +222,15 @@
     <!-- Cookie consent: carica gtag solo dopo consenso (stessa logica della home) -->
     <script>
         (function(){
+                // Consent Mode v2: Analytics parte sempre, ma senza cookie finché il visitatore non accetta
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+                var _gc = (document.cookie.match(/(?:^|; )gial_cookie_consent=([^;]*)/) || [])[1];
+                gtag('consent', 'default', {'analytics_storage': _gc === 'granted' ? 'granted' : 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied'});
+                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+                var _gs = document.createElement('script'); _gs.async = true; _gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(_gs);
+                if (_gc === 'granted') window.gtagLoaded = true;
+            
             function setCookie(name,value,days){
                 var d=new Date();
                 d.setTime(d.getTime()+days*24*60*60*1000);
@@ -231,12 +240,7 @@
                 document.cookie = s;
             }
             function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
-            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true;
-                var s = document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(s);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
-                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
-            }
+            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true; window.gtag('consent', 'update', {'analytics_storage': 'granted'}); }
             window.GIALCookieConsent = {
                 accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
                 decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
@@ -290,7 +294,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_clima'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
+            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_clima'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL"><span class="g-nav-txt">Chiama ora</span><span class="g-nav-num">📞 327 937 1705</span></a>
             </div>
         </div>
             <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
@@ -354,7 +358,7 @@
             <p class="g-lead">Non solo per l'estate: un climatizzatore moderno <strong>raffresca d'estate e riscalda d'inverno</strong>. Lo montiamo come si deve — vuoto con pompa, prova di tenuta, collaudo e registrazione in <strong>Banca Dati F-GAS</strong>.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
                 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_clima'}); }" class="g-btn g-btn-primary">📞 Chiama ora: 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_clima'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+                <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Climatizzazione." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_clima'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
             </div>
             <p class="text-sm text-gray-500">Lun–Sab 8:00–20:00 · Dom 8:00–13:00 · al telefono ti diamo subito una <strong>fascia di prezzo realistica</strong>, senza farti aspettare il sopralluogo</p>
         </div>
@@ -452,7 +456,7 @@
                 <div class="g-card g-price">
                     <h3 class="">Mono split</h3>
                     <p class="g-price-note">1 ambiente</p>
-                    <p class="g-price-val">1.550 – 3.500 €</p>
+                    <p class="g-price-val">1.000 – 2.000 €</p>
                     <p class="text-gray-600 text-sm">una unità interna, tipico per camera o soggiorno</p>
                 </div>
                 <div class="g-card g-price">
@@ -658,7 +662,7 @@
                         <h3 class="text-lg font-bold">Quanto costa installare un condizionatore a Prato?</h3>
                         <span class="shrink-0 text-blue-600 font-bold" aria-hidden="true">+</span>
                     </summary>
-                    <p class="mt-4 leading-relaxed text-gray-700">Chiavi in mano (macchina e installazione, IVA esclusa), su base <strong>Prezzario DEI Toscana 2026</strong>: mono split <strong>1.550–3.500 €</strong>, dual split <strong>2.900–3.500 €</strong>, trial split <strong>3.600–4.900 €</strong>, quadri split <strong>4.900–6.400 €</strong>. La differenza dipende da potenza, classe della macchina e lunghezza dei percorsi. Il prezzo esatto lo definiamo con il <strong>sopralluogo gratuito</strong>.</p>
+                    <p class="mt-4 leading-relaxed text-gray-700">Chiavi in mano (macchina e installazione, IVA esclusa), su base <strong>Prezzario DEI Toscana 2026</strong>: mono split <strong>1.000–2.000 €</strong>, dual split <strong>2.900–3.500 €</strong>, trial split <strong>3.600–4.900 €</strong>, quadri split <strong>4.900–6.400 €</strong>. La differenza dipende da potenza, classe della macchina e lunghezza dei percorsi. Il prezzo esatto lo definiamo con il <strong>sopralluogo gratuito</strong>.</p>
                 </details>
                 <details class="group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
                     <summary class="flex items-center justify-between gap-1.5 text-gray-900">
@@ -713,15 +717,52 @@
         </div>
     </section>
 
+    <section class="g-section g-section--line" aria-label="Recensione di un cliente">
+        <div class="g-wrap">
+            <div class="g-note text-center" style="max-width:42rem;margin-left:auto;margin-right:auto">
+                <span class="text-yellow-400 text-2xl mb-2 inline-block" aria-label="5 stelle su 5">★★★★★</span>
+                <blockquote class="text-gray-700 mb-4 text-lg">«Ho affidato a GIAL l&rsquo;installazione di 3 condizionatori a casa mia e sono estremamente soddisfatta. Alessandro mi ha consigliato con chiarezza i modelli pi&ugrave; adatti alle stanze, i ragazzi sono stati puntuali e precisi e hanno lasciato tutto pulito. Il prezzo &egrave; stato quello concordato, senza sorprese. Professionali e gentili, li consiglio a chiunque!»</blockquote>
+                <p class="text-sm text-gray-500"><strong class="text-gray-700">Gianna Vignani</strong> · recensione Google · <a href="https://www.google.com/maps?cid=2999171132930111984" target="_blank" rel="noopener" class="g-card-link" onclick="if(window.gtag){ gtag('event','click_reviews',{'posizione':'recensione_clima'}); }">Leggile tutte su Google &rarr;</a></p>
+            </div>
+        </div>
+    </section>
+
     <section id="contatti-clima" class="g-section g-contact">
         <div class="g-wrap-narrow text-center">
             <h2 class="g-h2" style="color:#fff">Parliamone al telefono</h2>
             <p class="mb-8 text-lg text-blue-100">Dicci quanti ambienti vuoi climatizzare e in che tipo di casa: ti diamo subito una fascia di prezzo realistica e, se serve, fissiamo il sopralluogo gratuito.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_finale_clima'}); }" class="g-btn g-btn-gold">📞 +39 327 937 1705</a>
-                <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_finale_clima'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+                <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Climatizzazione." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_finale_clima'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+            </div>
+            <div class="g-lead-box">
+                <p class="g-lead-title">Preferisci che ti richiamiamo noi?</p>
+                <p class="g-lead-sub">Lascia nome e telefono: ti richiamiamo negli orari di apertura, senza impegno.</p>
+                <form class="g-lead-form" action="https://formspree.io/f/mvzgnwnp" method="POST" data-gial-lead="form_clima">
+                    <input type="hidden" name="servizio" value="Climatizzazione">
+                    <input type="hidden" name="pagina" value="clima">
+                    <input type="hidden" name="_subject" value="[Sito] Richiesta Climatizzazione">
+                    <div class="g-hp" aria-hidden="true"><label>Lascia vuoto <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+                    <div class="g-lead-row">
+                        <label class="sr-only" for="lead-nome-clima">Nome</label>
+                        <input id="lead-nome-clima" class="g-field" type="text" name="nome" placeholder="Nome" autocomplete="name" required>
+                        <label class="sr-only" for="lead-tel-clima">Telefono</label>
+                        <input id="lead-tel-clima" class="g-field" type="tel" name="telefono" placeholder="Telefono" inputmode="tel" autocomplete="tel" required>
+                    </div>
+                    <label class="sr-only" for="lead-comune-clima">Comune</label>
+                    <input id="lead-comune-clima" class="g-field" type="text" name="comune" placeholder="Comune (es. Prato, Montemurlo)" autocomplete="address-level2">
+                    <label class="sr-only" for="lead-msg-clima">Due righe sul lavoro</label>
+                    <textarea id="lead-msg-clima" class="g-field" name="messaggio" rows="3" placeholder="Es. trial split per soggiorno e due camere"></textarea>
+                    <div class="g-lead-check">
+                        <input id="lead-privacy-clima" type="checkbox" name="privacy_consent" value="accettato" required>
+                        <label for="lead-privacy-clima">Ho letto l&rsquo;<a href="/#privacy" class="underline">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato.</label>
+                    </div>
+                    <button type="submit" class="g-btn g-btn-gold">Richiamatemi</button>
+                    <p class="g-lead-msg" aria-live="polite"></p>
+                </form>
             </div>
             <p class="text-blue-100">Oppure scrivici a <a href="mailto:info@gialtermoidraulica.it" class="underline text-white">info@gialtermoidraulica.it</a> · Via Traversa Pistoiese 12/L, Prato · Lun–Sab 8:00–20:00 · Dom 8:00–13:00</p>
+            <p class="text-blue-100" style="margin-top:1rem"><a href="https://www.google.com/maps?cid=2999171132930111984" target="_blank" rel="noopener" class="underline text-white" onclick="if(window.gtag){ gtag('event','click_reviews',{'posizione':'contatti_clima'}); }">Leggi le recensioni dei clienti su Google &rarr;</a></p>
         </div>
     </section>
 
@@ -737,22 +778,23 @@
             <p class="text-gray-600 font-semibold mb-2 text-base">Azienda certificata F-GAS</p>
             <img src="/img/itec.webp" width="600" height="190" alt="Certificazione ITEC F-GAS – GIAL SRL abilitata alla gestione di gas fluorurati" style="border-radius:4px; max-width:200px; height:auto;" loading="lazy">
         </div>
-        <p class="mb-2"><a href="/" class="">Idraulico a Prato</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/impianto-fotovoltaico-prato/" class="">Fotovoltaico</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/pronto-intervento-idraulico-prato/" class="">Pronto Intervento</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="">Guida ai costi</a> · <a href="https://g.page/r/CfC5505BMp8pEAE/review" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_lascia_recensione',{'posizione':'footer_installazione-condizionatori-prato\index.html'}); }">Lasciaci una recensione</a> · <a href="/#privacy" class="">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="">Idraulico a Prato</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/impianto-fotovoltaico-prato/" class="">Fotovoltaico</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/pronto-intervento-idraulico-prato/" class="">Pronto Intervento</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="">Guida ai costi</a> · <a href="https://g.page/r/CfC5505BMp8pEAE/review" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_lascia_recensione',{'posizione':'footer_installazione-condizionatori-prato'}); }">Lasciaci una recensione</a> · <a href="/#privacy" class="">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
     <!-- Barra fissa mobile: chiamata diretta, la conversione principale della pagina -->
     <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
         <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
-        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Climatizzazione." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
 
-    <a href="https://wa.me/393279371705"
+    <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Climatizzazione."
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_clima'}); }"
        class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#0F7F72;box-shadow:0 6px 20px rgba(15,127,114,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.607zM7.994 14.52a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
         </svg>
     </a>
+    <script src="/js/gial-lead.js" defer></script>
 </body>
 </html>

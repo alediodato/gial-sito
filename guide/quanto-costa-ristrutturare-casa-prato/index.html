@@ -199,6 +199,15 @@
     <!-- Cookie consent: carica gtag solo dopo consenso (stessa logica della home) -->
     <script>
         (function(){
+                // Consent Mode v2: Analytics parte sempre, ma senza cookie finché il visitatore non accetta
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+                var _gc = (document.cookie.match(/(?:^|; )gial_cookie_consent=([^;]*)/) || [])[1];
+                gtag('consent', 'default', {'analytics_storage': _gc === 'granted' ? 'granted' : 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied'});
+                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+                var _gs = document.createElement('script'); _gs.async = true; _gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(_gs);
+                if (_gc === 'granted') window.gtagLoaded = true;
+            
             function setCookie(name,value,days){
                 var d=new Date();
                 d.setTime(d.getTime()+days*24*60*60*1000);
@@ -208,12 +217,7 @@
                 document.cookie = s;
             }
             function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
-            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true;
-                var s = document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(s);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
-                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
-            }
+            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true; window.gtag('consent', 'update', {'analytics_storage': 'granted'}); }
             window.GIALCookieConsent = {
                 accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
                 decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
@@ -266,7 +270,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_guida'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
+            <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_guida'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL"><span class="g-nav-txt">Chiama ora</span><span class="g-nav-num">📞 327 937 1705</span></a>
             </div>
         </div>
             <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
@@ -363,7 +367,7 @@
             <h3 style="font-size:1.25rem;font-weight:400;margin:2.5rem 0 .9rem">Climatizzazione</h3>
             <div class="table-wrap mb-10"><table class="price-table">
                 <tr><th>Configurazione</th><th>Range indicativo</th></tr>
-                <tr><td>Monosplit (1 ambiente)</td><td>1.550 – 3.500 €</td></tr>
+                <tr><td>Monosplit (1 ambiente)</td><td>1.000 – 2.000 €</td></tr>
                 <tr><td>Dualsplit (2 ambienti)</td><td>2.900 – 3.500 €</td></tr>
                 <tr><td>Trialsplit (3 ambienti)</td><td>3.600 – 4.900 €</td></tr>
                 <tr><td>4 o più ambienti</td><td>4.900 – 6.400 €</td></tr>
@@ -538,7 +542,7 @@
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
-    <a href="https://wa.me/393279371705"
+    <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20dopo%20aver%20letto%20la%20guida%20ai%20costi."
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_guida'}); }"
        class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#0F7F72;box-shadow:0 6px 20px rgba(15,127,114,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -549,7 +553,8 @@
     <!-- Barra fissa mobile: chiamata diretta -->
     <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
         <a href="tel:+393279371705" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_guida'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
-        <a href="https://wa.me/393279371705" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_guida'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/393279371705?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20dopo%20aver%20letto%20la%20guida%20ai%20costi." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_guida'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
+    <script src="/js/gial-lead.js" defer></script>
 </body>
 </html>

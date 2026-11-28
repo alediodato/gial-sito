@@ -18,7 +18,7 @@
         "con_imp": { "standard": [6500, 11000] }
     },
     "clima": {
-        "mono":  { "standard": [1550, 3500] },
+        "mono":  { "standard": [1000, 2000] },
         "dual":  { "standard": [2900, 3500] },
         "trial": { "standard": [3600, 4900] },
         "quad":  { "standard": [4900, 6400] }

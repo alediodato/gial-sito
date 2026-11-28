@@ -191,6 +191,15 @@
     <!-- Cookie consent: carica gtag solo dopo consenso (stessa logica della home) -->
     <script>
         (function(){
+                // Consent Mode v2: Analytics parte sempre, ma senza cookie finché il visitatore non accetta
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
+                var _gc = (document.cookie.match(/(?:^|; )gial_cookie_consent=([^;]*)/) || [])[1];
+                gtag('consent', 'default', {'analytics_storage': _gc === 'granted' ? 'granted' : 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied'});
+                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
+                var _gs = document.createElement('script'); _gs.async = true; _gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(_gs);
+                if (_gc === 'granted') window.gtagLoaded = true;
+            
             function setCookie(name,value,days){
                 var d=new Date();
                 d.setTime(d.getTime()+days*24*60*60*1000);
@@ -200,12 +209,7 @@
                 document.cookie = s;
             }
             function getCookie(name){var m=document.cookie.split('; ').find(row=>row.startsWith(name+'=')); return m?m.split('=')[1]:null;}
-            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true;
-                var s = document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-4QWQKJ6TL6'; document.head.appendChild(s);
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);} window.gtag = gtag;
-                gtag('js', new Date()); gtag('config', 'G-4QWQKJ6TL6');
-            }
+            function loadGtag(){ if(window.gtagLoaded) return; window.gtagLoaded = true; window.gtag('consent', 'update', {'analytics_storage': 'granted'}); }
             window.GIALCookieConsent = {
                 accept: function(){ setCookie('gial_cookie_consent','granted',365); loadGtag(); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');},
                 decline: function(){ setCookie('gial_cookie_consent','denied',365); var b=document.getElementById('cookie-banner'); if(b) b.classList.add('hidden');}
@@ -257,7 +261,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <a href="tel:+393406441294" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_pronto'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
+            <a href="tel:+393406441294" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'nav_pronto'}); }" class="g-nav-phone" aria-label="Chiama ora GIAL SRL"><span class="g-nav-txt">Chiama ora</span><span class="g-nav-num">📞 340 644 1294</span></a>
             </div>
         </div>
             <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 py-2" role="navigation" aria-label="Menu mobile">
@@ -319,7 +323,7 @@
             <p class="g-lead">Perdita d'acqua, allagamento, scarico otturato? Chiamaci: tariffe e tempi di arrivo te li diciamo al telefono, il costo del lavoro dopo la diagnosi — <strong>sempre prima di iniziare</strong>.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
                 <a href="tel:+393406441294" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'hero_pronto'}); }" class="g-btn g-btn-primary">📞 Chiama ora: 340 644 1294</a>
-                <a href="https://wa.me/393406441294" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_pronto'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+                <a href="https://wa.me/393406441294?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Riparazione%20idraulica%20%28non%20urgente%29." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'hero_pronto'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
             </div>
             <p class="text-sm text-gray-500">Uscita <strong>50 € + IVA</strong>, scalati dal conto se esegui il lavoro · manodopera <strong>35 €/h + IVA</strong> · costi concordati prima dell'intervento</p>
         </div>
@@ -574,9 +578,36 @@
             <p class="mb-8 text-lg text-blue-100">Non aspettare che il danno peggiori: chiamaci e ti diciamo subito come intervenire.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a href="tel:+393406441294" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'cta_pronto'}); }" class="g-btn g-btn-gold">📞 340 644 1294</a>
-                <a href="https://wa.me/393406441294" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_pronto'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+                <a href="https://wa.me/393406441294?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Riparazione%20idraulica%20%28non%20urgente%29." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'cta_pronto'}); }" class="g-btn" style="background:#0F7F72;color:#fff;border:1px solid #0F7F72">Scrivici su WhatsApp</a>
+            </div>
+            <div class="g-lead-box">
+                <p class="g-lead-title">Non è urgente? Ti richiamiamo noi</p>
+                <p class="g-lead-sub">Per le emergenze chiama subito il numero qui sopra. Per una riparazione da programmare lascia nome e telefono.</p>
+                <form class="g-lead-form" action="https://formspree.io/f/mvzgnwnp" method="POST" data-gial-lead="form_pronto">
+                    <input type="hidden" name="servizio" value="Riparazione idraulica (non urgente)">
+                    <input type="hidden" name="pagina" value="pronto">
+                    <input type="hidden" name="_subject" value="[Sito] Richiesta Riparazione idraulica (non urgente)">
+                    <div class="g-hp" aria-hidden="true"><label>Lascia vuoto <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+                    <div class="g-lead-row">
+                        <label class="sr-only" for="lead-nome-pronto">Nome</label>
+                        <input id="lead-nome-pronto" class="g-field" type="text" name="nome" placeholder="Nome" autocomplete="name" required>
+                        <label class="sr-only" for="lead-tel-pronto">Telefono</label>
+                        <input id="lead-tel-pronto" class="g-field" type="tel" name="telefono" placeholder="Telefono" inputmode="tel" autocomplete="tel" required>
+                    </div>
+                    <label class="sr-only" for="lead-comune-pronto">Comune</label>
+                    <input id="lead-comune-pronto" class="g-field" type="text" name="comune" placeholder="Comune (es. Prato, Montemurlo)" autocomplete="address-level2">
+                    <label class="sr-only" for="lead-msg-pronto">Due righe sul lavoro</label>
+                    <textarea id="lead-msg-pronto" class="g-field" name="messaggio" rows="3" placeholder="Es. rubinetto che gocciola, scarico lento"></textarea>
+                    <div class="g-lead-check">
+                        <input id="lead-privacy-pronto" type="checkbox" name="privacy_consent" value="accettato" required>
+                        <label for="lead-privacy-pronto">Ho letto l&rsquo;<a href="/#privacy" class="underline">informativa privacy</a> e acconsento al trattamento dei dati per essere ricontattato.</label>
+                    </div>
+                    <button type="submit" class="g-btn g-btn-gold">Richiamatemi</button>
+                    <p class="g-lead-msg" aria-live="polite"></p>
+                </form>
             </div>
             <p class="text-blue-100">Via Traversa Pistoiese 12/L, Prato · Lun–Sab 8:00–20:00 · Dom 8:00–13:00 · emergenze anche nei festivi, su disponibilità</p>
+            <p class="text-blue-100" style="margin-top:1rem"><a href="https://www.google.com/maps?cid=2999171132930111984" target="_blank" rel="noopener" class="underline text-white" onclick="if(window.gtag){ gtag('event','click_reviews',{'posizione':'contatti_pronto'}); }">Leggi le recensioni dei clienti su Google &rarr;</a></p>
         </div>
     </section>
 
@@ -588,11 +619,11 @@
                 <img src="/img/gial-logo-rettangolo-nosfondo.webp" width="527" height="197" alt="Logo GIAL Termoidraulica Prato" style="height:80px; width:auto;" class="mx-auto mb-2" loading="lazy">
             </a>
         </div>
-        <p class="mb-2"><a href="/" class="">Idraulico a Prato</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/impianto-fotovoltaico-prato/" class="">Fotovoltaico</a> · <a href="/installazione-condizionatori-prato/" class="">Condizionatori</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="">Guida ai costi</a> · <a href="https://g.page/r/CfC5505BMp8pEAE/review" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_lascia_recensione',{'posizione':'footer_pronto-intervento-idraulico-prato\index.html'}); }">Lasciaci una recensione</a> · <a href="/#privacy" class="">Privacy</a></p>
+        <p class="mb-2"><a href="/" class="">Idraulico a Prato</a> · <a href="/rifacimento-bagno-prato/" class="">Rifacimento Bagno</a> · <a href="/infissi-serramenti-prato/" class="">Infissi</a> · <a href="/sostituzione-caldaia-prato/" class="">Sostituzione Caldaia</a> · <a href="/impianti-termoidraulici-aziende-prato/" class="">Impianti per aziende</a> · <a href="/ristrutturazioni-chiavi-in-mano-prato/" class="">Ristrutturazioni</a> · <a href="/impianti-gas-prato/" class="">Impianti Gas</a> · <a href="/pompa-di-calore-prato/" class="">Pompa di Calore</a> · <a href="/impianto-fotovoltaico-prato/" class="">Fotovoltaico</a> · <a href="/installazione-condizionatori-prato/" class="">Condizionatori</a> · <a href="/guide/quanto-costa-ristrutturare-casa-prato/" class="">Guida ai costi</a> · <a href="https://g.page/r/CfC5505BMp8pEAE/review" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_lascia_recensione',{'posizione':'footer_pronto-intervento-idraulico-prato'}); }">Lasciaci una recensione</a> · <a href="/#privacy" class="">Privacy</a></p>
         &copy; 2026 GIAL SRL. P.IVA 02435030974 · REA PO-535347 · Capitale sociale € 10.000
     </footer>
 
-    <a href="https://wa.me/393406441294"
+    <a href="https://wa.me/393406441294?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Riparazione%20idraulica%20%28non%20urgente%29."
        onclick="if(window.gtag){ gtag('event','click_whatsapp',{'event_category':'contatti','event_label':'pulsante_fisso_pronto'}); }"
        class="hidden md:flex fixed bottom-6 right-6 text-white rounded-full z-50 items-center justify-center" style="width:52px;height:52px;background:#0F7F72;box-shadow:0 6px 20px rgba(15,127,114,.35)" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -603,7 +634,8 @@
     <!-- Barra fissa mobile: chiamata diretta -->
     <div class="call-bar flex" style="background:#fff;border-top:1px solid var(--g-line);box-shadow:0 -4px 16px rgba(23,61,108,.1)">
         <a href="tel:+393406441294" onclick="if(window.gtag){ gtag('event','click_call',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:var(--g-navy)" aria-label="Chiama ora GIAL SRL">Chiama ora</a>
-        <a href="https://wa.me/393406441294" target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/393406441294?text=Ciao%2C%20vi%20scrivo%20dal%20sito%20per%3A%20Riparazione%20idraulica%20%28non%20urgente%29." target="_blank" rel="noopener" onclick="if(window.gtag){ gtag('event','click_whatsapp',{'posizione':'barra_fissa_mobile_pronto'}); }" class="flex-1 text-white py-3 font-semibold text-center" style="background:#0F7F72" aria-label="Scrivici su WhatsApp">WhatsApp</a>
     </div>
+    <script src="/js/gial-lead.js" defer></script>
 </body>
 </html>
